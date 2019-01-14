@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58658521ECFD1C0071DE10 /* AppDelegate.swift */; };
-		2D58658821ECFD1C0071DE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58658721ECFD1C0071DE10 /* ViewController.swift */; };
 		2D58658B21ECFD1C0071DE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D58658921ECFD1C0071DE10 /* Main.storyboard */; };
 		2D58658D21ECFD1D0071DE10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D58658C21ECFD1D0071DE10 /* Assets.xcassets */; };
 		2D58659021ECFD1D0071DE10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D58658E21ECFD1D0071DE10 /* LaunchScreen.storyboard */; };
 		2D58659B21ECFD1D0071DE10 /* TalarisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58659A21ECFD1D0071DE10 /* TalarisTests.swift */; };
 		2D5865A621ECFD1D0071DE10 /* TalarisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865A521ECFD1D0071DE10 /* TalarisUITests.swift */; };
+		2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865B421ED04330071DE10 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		2D58658221ECFD1C0071DE10 /* Talaris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talaris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D58658521ECFD1C0071DE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2D58658721ECFD1C0071DE10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2D58658A21ECFD1C0071DE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D58658C21ECFD1D0071DE10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D58658F21ECFD1D0071DE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		2D5865A121ECFD1D0071DE10 /* TalarisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalarisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5865A521ECFD1D0071DE10 /* TalarisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalarisUITests.swift; sourceTree = "<group>"; };
 		2D5865A721ECFD1D0071DE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D5865B421ED04330071DE10 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +77,7 @@
 		2D58657921ECFD1C0071DE10 = {
 			isa = PBXGroup;
 			children = (
+				2D5865B321ED03F50071DE10 /* controllers */,
 				2D58658421ECFD1C0071DE10 /* Talaris */,
 				2D58659921ECFD1D0071DE10 /* TalarisTests */,
 				2D5865A421ECFD1D0071DE10 /* TalarisUITests */,
@@ -98,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				2D58658521ECFD1C0071DE10 /* AppDelegate.swift */,
-				2D58658721ECFD1C0071DE10 /* ViewController.swift */,
 				2D58658921ECFD1C0071DE10 /* Main.storyboard */,
 				2D58658C21ECFD1D0071DE10 /* Assets.xcassets */,
 				2D58658E21ECFD1D0071DE10 /* LaunchScreen.storyboard */,
@@ -123,6 +123,14 @@
 				2D5865A721ECFD1D0071DE10 /* Info.plist */,
 			);
 			path = TalarisUITests;
+			sourceTree = "<group>";
+		};
+		2D5865B321ED03F50071DE10 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2D5865B421ED04330071DE10 /* LoginViewController.swift */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D58658821ECFD1C0071DE10 /* ViewController.swift in Sources */,
+				2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
