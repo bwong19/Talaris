@@ -7,17 +7,15 @@
 //
 
 import UIKit
-import FirebaseDatabase
+import Firebase
 
 class LoginViewController: UIViewController {
-    var ref : DatabaseReference!
     let emailTextField = UITextField()
     let passwordTextField = UITextField()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ref = Database.database().reference()
         self.view.backgroundColor = .white
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -94,11 +92,18 @@ class LoginViewController: UIViewController {
     }
     
     @objc func login() {
-        
+        Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { user, error in
+            
+            if error == nil {
+                print("here")
+            } else {
+                print(error)
+            }
+        }
     }
     
     @objc func signup() {
-        
+        self.navigationController!.pushViewController(SignUpViewController(), animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

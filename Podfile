@@ -8,6 +8,7 @@ target 'Talaris' do
   # Pods for Talaris
   pod 'Firebase/Core' 
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
 
   target 'TalarisTests' do
