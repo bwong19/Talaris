@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58658521ECFD1C0071DE10 /* AppDelegate.swift */; };
+		2D58658821ECFD1C0071DE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58658721ECFD1C0071DE10 /* ViewController.swift */; };
+		2D58658B21ECFD1C0071DE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D58658921ECFD1C0071DE10 /* Main.storyboard */; };
+		2D58658D21ECFD1D0071DE10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D58658C21ECFD1D0071DE10 /* Assets.xcassets */; };
+		2D58659021ECFD1D0071DE10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D58658E21ECFD1D0071DE10 /* LaunchScreen.storyboard */; };
+		2D58659B21ECFD1D0071DE10 /* TalarisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58659A21ECFD1D0071DE10 /* TalarisTests.swift */; };
+		2D5865A621ECFD1D0071DE10 /* TalarisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865A521ECFD1D0071DE10 /* TalarisUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D58659721ECFD1D0071DE10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D58657A21ECFD1C0071DE10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D58658121ECFD1C0071DE10;
+			remoteInfo = Talaris;
+		};
+		2D5865A221ECFD1D0071DE10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D58657A21ECFD1C0071DE10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D58658121ECFD1C0071DE10;
+			remoteInfo = Talaris;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D58658221ECFD1C0071DE10 /* Talaris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talaris.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D58658521ECFD1C0071DE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2D58658721ECFD1C0071DE10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2D58658A21ECFD1C0071DE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2D58658C21ECFD1D0071DE10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D58658F21ECFD1D0071DE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2D58659121ECFD1D0071DE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D58659621ECFD1D0071DE10 /* TalarisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalarisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D58659A21ECFD1D0071DE10 /* TalarisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalarisTests.swift; sourceTree = "<group>"; };
+		2D58659C21ECFD1D0071DE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D5865A121ECFD1D0071DE10 /* TalarisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalarisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5865A521ECFD1D0071DE10 /* TalarisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalarisUITests.swift; sourceTree = "<group>"; };
+		2D5865A721ECFD1D0071DE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D58657F21ECFD1C0071DE10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D58659321ECFD1D0071DE10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D58659E21ECFD1D0071DE10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D58657921ECFD1C0071DE10 = {
+			isa = PBXGroup;
+			children = (
+				2D58658421ECFD1C0071DE10 /* Talaris */,
+				2D58659921ECFD1D0071DE10 /* TalarisTests */,
+				2D5865A421ECFD1D0071DE10 /* TalarisUITests */,
+				2D58658321ECFD1C0071DE10 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2D58658321ECFD1C0071DE10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D58658221ECFD1C0071DE10 /* Talaris.app */,
+				2D58659621ECFD1D0071DE10 /* TalarisTests.xctest */,
+				2D5865A121ECFD1D0071DE10 /* TalarisUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D58658421ECFD1C0071DE10 /* Talaris */ = {
+			isa = PBXGroup;
+			children = (
+				2D58658521ECFD1C0071DE10 /* AppDelegate.swift */,
+				2D58658721ECFD1C0071DE10 /* ViewController.swift */,
+				2D58658921ECFD1C0071DE10 /* Main.storyboard */,
+				2D58658C21ECFD1D0071DE10 /* Assets.xcassets */,
+				2D58658E21ECFD1D0071DE10 /* LaunchScreen.storyboard */,
+				2D58659121ECFD1D0071DE10 /* Info.plist */,
+			);
+			path = Talaris;
+			sourceTree = "<group>";
+		};
+		2D58659921ECFD1D0071DE10 /* TalarisTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D58659A21ECFD1D0071DE10 /* TalarisTests.swift */,
+				2D58659C21ECFD1D0071DE10 /* Info.plist */,
+			);
+			path = TalarisTests;
+			sourceTree = "<group>";
+		};
+		2D5865A421ECFD1D0071DE10 /* TalarisUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2D5865A521ECFD1D0071DE10 /* TalarisUITests.swift */,
+				2D5865A721ECFD1D0071DE10 /* Info.plist */,
+			);
+			path = TalarisUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D58658121ECFD1C0071DE10 /* Talaris */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D5865AA21ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "Talaris" */;
+			buildPhases = (
+				2D58657E21ECFD1C0071DE10 /* Sources */,
+				2D58657F21ECFD1C0071DE10 /* Frameworks */,
+				2D58658021ECFD1C0071DE10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Talaris;
+			productName = Talaris;
+			productReference = 2D58658221ECFD1C0071DE10 /* Talaris.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D58659521ECFD1D0071DE10 /* TalarisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D5865AD21ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "TalarisTests" */;
+			buildPhases = (
+				2D58659221ECFD1D0071DE10 /* Sources */,
+				2D58659321ECFD1D0071DE10 /* Frameworks */,
+				2D58659421ECFD1D0071DE10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D58659821ECFD1D0071DE10 /* PBXTargetDependency */,
+			);
+			name = TalarisTests;
+			productName = TalarisTests;
+			productReference = 2D58659621ECFD1D0071DE10 /* TalarisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2D5865A021ECFD1D0071DE10 /* TalarisUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D5865B021ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "TalarisUITests" */;
+			buildPhases = (
+				2D58659D21ECFD1D0071DE10 /* Sources */,
+				2D58659E21ECFD1D0071DE10 /* Frameworks */,
+				2D58659F21ECFD1D0071DE10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D5865A321ECFD1D0071DE10 /* PBXTargetDependency */,
+			);
+			name = TalarisUITests;
+			productName = TalarisUITests;
+			productReference = 2D5865A121ECFD1D0071DE10 /* TalarisUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2D58657A21ECFD1C0071DE10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Talaris;
+				TargetAttributes = {
+					2D58658121ECFD1C0071DE10 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					2D58659521ECFD1D0071DE10 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 2D58658121ECFD1C0071DE10;
+					};
+					2D5865A021ECFD1D0071DE10 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 2D58658121ECFD1C0071DE10;
+					};
+				};
+			};
+			buildConfigurationList = 2D58657D21ECFD1C0071DE10 /* Build configuration list for PBXProject "Talaris" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2D58657921ECFD1C0071DE10;
+			productRefGroup = 2D58658321ECFD1C0071DE10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2D58658121ECFD1C0071DE10 /* Talaris */,
+				2D58659521ECFD1D0071DE10 /* TalarisTests */,
+				2D5865A021ECFD1D0071DE10 /* TalarisUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D58658021ECFD1C0071DE10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D58659021ECFD1D0071DE10 /* LaunchScreen.storyboard in Resources */,
+				2D58658D21ECFD1D0071DE10 /* Assets.xcassets in Resources */,
+				2D58658B21ECFD1C0071DE10 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D58659421ECFD1D0071DE10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D58659F21ECFD1D0071DE10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2D58657E21ECFD1C0071DE10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D58658821ECFD1C0071DE10 /* ViewController.swift in Sources */,
+				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D58659221ECFD1D0071DE10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D58659B21ECFD1D0071DE10 /* TalarisTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D58659D21ECFD1D0071DE10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D5865A621ECFD1D0071DE10 /* TalarisUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D58659821ECFD1D0071DE10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D58658121ECFD1C0071DE10 /* Talaris */;
+			targetProxy = 2D58659721ECFD1D0071DE10 /* PBXContainerItemProxy */;
+		};
+		2D5865A321ECFD1D0071DE10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D58658121ECFD1C0071DE10 /* Talaris */;
+			targetProxy = 2D5865A221ECFD1D0071DE10 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2D58658921ECFD1C0071DE10 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D58658A21ECFD1C0071DE10 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2D58658E21ECFD1D0071DE10 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D58658F21ECFD1D0071DE10 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2D5865A821ECFD1D0071DE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2D5865A921ECFD1D0071DE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2D5865AB21ECFD1D0071DE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7W2989TXA5;
+				INFOPLIST_FILE = Talaris/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D5865AC21ECFD1D0071DE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7W2989TXA5;
+				INFOPLIST_FILE = Talaris/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2D5865AE21ECFD1D0071DE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TalarisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.TalarisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Talaris.app/Talaris";
+			};
+			name = Debug;
+		};
+		2D5865AF21ECFD1D0071DE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TalarisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.TalarisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Talaris.app/Talaris";
+			};
+			name = Release;
+		};
+		2D5865B121ECFD1D0071DE10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TalarisUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.TalarisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Talaris;
+			};
+			name = Debug;
+		};
+		2D5865B221ECFD1D0071DE10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TalarisUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.TalarisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Talaris;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D58657D21ECFD1C0071DE10 /* Build configuration list for PBXProject "Talaris" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D5865A821ECFD1D0071DE10 /* Debug */,
+				2D5865A921ECFD1D0071DE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D5865AA21ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "Talaris" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D5865AB21ECFD1D0071DE10 /* Debug */,
+				2D5865AC21ECFD1D0071DE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D5865AD21ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "TalarisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D5865AE21ECFD1D0071DE10 /* Debug */,
+				2D5865AF21ECFD1D0071DE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D5865B021ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "TalarisUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D5865B121ECFD1D0071DE10 /* Debug */,
+				2D5865B221ECFD1D0071DE10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2D58657A21ECFD1C0071DE10 /* Project object */;
+}
