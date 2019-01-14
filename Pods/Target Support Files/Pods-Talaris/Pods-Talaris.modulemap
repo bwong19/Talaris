@@ -1,0 +1,6 @@
+framework module Pods_Talaris {
+  umbrella header "Pods-Talaris-umbrella.h"
+
+  export *
+  module * { export * }
+}

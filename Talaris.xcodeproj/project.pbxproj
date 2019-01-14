@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		214B620B563BD51A74449170 /* Pods_TalarisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */; };
 		2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58658521ECFD1C0071DE10 /* AppDelegate.swift */; };
 		2D58658B21ECFD1C0071DE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D58658921ECFD1C0071DE10 /* Main.storyboard */; };
 		2D58658D21ECFD1D0071DE10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D58658C21ECFD1D0071DE10 /* Assets.xcassets */; };
@@ -14,6 +15,9 @@
 		2D58659B21ECFD1D0071DE10 /* TalarisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D58659A21ECFD1D0071DE10 /* TalarisTests.swift */; };
 		2D5865A621ECFD1D0071DE10 /* TalarisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865A521ECFD1D0071DE10 /* TalarisUITests.swift */; };
 		2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865B421ED04330071DE10 /* LoginViewController.swift */; };
+		2D5865B721ED089E0071DE10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */; };
+		8258B885026E068700594270 /* Pods_TalarisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */; };
+		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0405A296993B7C8197422B90 /* Pods_Talaris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Talaris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		13266D4EB009A8230112E81D /* Pods-TalarisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisUITests/Pods-TalarisUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2D58658221ECFD1C0071DE10 /* Talaris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talaris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D58658521ECFD1C0071DE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D58658A21ECFD1C0071DE10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +53,14 @@
 		2D5865A521ECFD1D0071DE10 /* TalarisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalarisUITests.swift; sourceTree = "<group>"; };
 		2D5865A721ECFD1D0071DE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D5865B421ED04330071DE10 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		498A44F65E08C6A38E13E3D7 /* Pods-TalarisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisUITests/Pods-TalarisUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		51D8D05E3BD985FFE212A6D3 /* Pods-TalarisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisTests/Pods-TalarisTests.release.xcconfig"; sourceTree = "<group>"; };
+		5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		925D76A058D0FD92BD836D8B /* Pods-TalarisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisTests/Pods-TalarisTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A94893F81361EF7E02715911 /* Pods-Talaris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talaris.release.xcconfig"; path = "Pods/Target Support Files/Pods-Talaris/Pods-Talaris.release.xcconfig"; sourceTree = "<group>"; };
+		D72930D0C7D370786A534C9B /* Pods-Talaris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talaris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Talaris/Pods-Talaris.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8258B885026E068700594270 /* Pods_TalarisTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214B620B563BD51A74449170 /* Pods_TalarisUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +99,8 @@
 				2D58659921ECFD1D0071DE10 /* TalarisTests */,
 				2D5865A421ECFD1D0071DE10 /* TalarisUITests */,
 				2D58658321ECFD1C0071DE10 /* Products */,
+				F4C9058A629643B556DD7E53 /* Pods */,
+				413F4DAD2AE8BB2ADE7C743F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +122,7 @@
 				2D58658C21ECFD1D0071DE10 /* Assets.xcassets */,
 				2D58658E21ECFD1D0071DE10 /* LaunchScreen.storyboard */,
 				2D58659121ECFD1D0071DE10 /* Info.plist */,
+				2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */,
 			);
 			path = Talaris;
 			sourceTree = "<group>";
@@ -133,6 +153,29 @@
 			path = controllers;
 			sourceTree = "<group>";
 		};
+		413F4DAD2AE8BB2ADE7C743F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0405A296993B7C8197422B90 /* Pods_Talaris.framework */,
+				5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */,
+				353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4C9058A629643B556DD7E53 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D72930D0C7D370786A534C9B /* Pods-Talaris.debug.xcconfig */,
+				A94893F81361EF7E02715911 /* Pods-Talaris.release.xcconfig */,
+				925D76A058D0FD92BD836D8B /* Pods-TalarisTests.debug.xcconfig */,
+				51D8D05E3BD985FFE212A6D3 /* Pods-TalarisTests.release.xcconfig */,
+				498A44F65E08C6A38E13E3D7 /* Pods-TalarisUITests.debug.xcconfig */,
+				13266D4EB009A8230112E81D /* Pods-TalarisUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D5865AA21ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "Talaris" */;
 			buildPhases = (
+				EFCA13ABB870B21F59A812FA /* [CP] Check Pods Manifest.lock */,
 				2D58657E21ECFD1C0071DE10 /* Sources */,
 				2D58657F21ECFD1C0071DE10 /* Frameworks */,
 				2D58658021ECFD1C0071DE10 /* Resources */,
+				83AC2FC075BA8CD0DE5BE0A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,6 +202,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D5865AD21ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "TalarisTests" */;
 			buildPhases = (
+				BF665A9DA199C2D25EC38D92 /* [CP] Check Pods Manifest.lock */,
 				2D58659221ECFD1D0071DE10 /* Sources */,
 				2D58659321ECFD1D0071DE10 /* Frameworks */,
 				2D58659421ECFD1D0071DE10 /* Resources */,
@@ -175,6 +221,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D5865B021ECFD1D0071DE10 /* Build configuration list for PBXNativeTarget "TalarisUITests" */;
 			buildPhases = (
+				A4DF1135B876FCABA6F798BB /* [CP] Check Pods Manifest.lock */,
 				2D58659D21ECFD1D0071DE10 /* Sources */,
 				2D58659E21ECFD1D0071DE10 /* Frameworks */,
 				2D58659F21ECFD1D0071DE10 /* Resources */,
@@ -238,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D58659021ECFD1D0071DE10 /* LaunchScreen.storyboard in Resources */,
+				2D5865B721ED089E0071DE10 /* GoogleService-Info.plist in Resources */,
 				2D58658D21ECFD1D0071DE10 /* Assets.xcassets in Resources */,
 				2D58658B21ECFD1C0071DE10 /* Main.storyboard in Resources */,
 			);
@@ -258,6 +306,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83AC2FC075BA8CD0DE5BE0A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Talaris/Pods-Talaris-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Talaris/Pods-Talaris-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4DF1135B876FCABA6F798BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TalarisUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF665A9DA199C2D25EC38D92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TalarisTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFCA13ABB870B21F59A812FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Talaris-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D58657E21ECFD1C0071DE10 /* Sources */ = {
@@ -438,6 +579,7 @@
 		};
 		2D5865AB21ECFD1D0071DE10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D72930D0C7D370786A534C9B /* Pods-Talaris.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -457,6 +599,7 @@
 		};
 		2D5865AC21ECFD1D0071DE10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A94893F81361EF7E02715911 /* Pods-Talaris.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -476,6 +619,7 @@
 		};
 		2D5865AE21ECFD1D0071DE10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 925D76A058D0FD92BD836D8B /* Pods-TalarisTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -496,6 +640,7 @@
 		};
 		2D5865AF21ECFD1D0071DE10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51D8D05E3BD985FFE212A6D3 /* Pods-TalarisTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -516,6 +661,7 @@
 		};
 		2D5865B121ECFD1D0071DE10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 498A44F65E08C6A38E13E3D7 /* Pods-TalarisUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +681,7 @@
 		};
 		2D5865B221ECFD1D0071DE10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13266D4EB009A8230112E81D /* Pods-TalarisUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
