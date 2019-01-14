@@ -95,7 +95,7 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { user, error in
             
             if error == nil {
-                self.navigationController!.pushViewController(NameViewController(), animated: true)
+                self.navigationController!.pushViewController(WelcomeViewController(), animated: true)
             } else {
                 print(error)
             }
