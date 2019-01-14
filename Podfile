@@ -7,6 +7,8 @@ target 'Talaris' do
 
   # Pods for Talaris
   pod 'Firebase/Core' 
+  pod 'Firebase/Database'
+
 
   target 'TalarisTests' do
     inherit! :search_paths

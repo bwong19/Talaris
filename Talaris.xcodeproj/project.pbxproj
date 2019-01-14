@@ -54,6 +54,7 @@
 		2D5865A721ECFD1D0071DE10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D5865B421ED04330071DE10 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2D5865B821ED17BB0071DE10 /* Talaris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Talaris.entitlements; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		498A44F65E08C6A38E13E3D7 /* Pods-TalarisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisUITests/Pods-TalarisUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		51D8D05E3BD985FFE212A6D3 /* Pods-TalarisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisTests/Pods-TalarisTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 		2D58658421ECFD1C0071DE10 /* Talaris */ = {
 			isa = PBXGroup;
 			children = (
+				2D5865B821ED17BB0071DE10 /* Talaris.entitlements */,
 				2D58658521ECFD1C0071DE10 /* AppDelegate.swift */,
 				2D58658921ECFD1C0071DE10 /* Main.storyboard */,
 				2D58658C21ECFD1D0071DE10 /* Assets.xcassets */,
@@ -248,6 +250,11 @@
 				TargetAttributes = {
 					2D58658121ECFD1C0071DE10 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					2D58659521ECFD1D0071DE10 = {
 						CreatedOnToolsVersion = 10.1;
@@ -318,6 +325,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Talaris/Pods-Talaris-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -325,6 +333,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +591,7 @@
 			baseConfigurationReference = D72930D0C7D370786A534C9B /* Pods-Talaris.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Talaris/Talaris.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7W2989TXA5;
 				INFOPLIST_FILE = Talaris/Info.plist;
@@ -602,6 +612,7 @@
 			baseConfigurationReference = A94893F81361EF7E02715911 /* Pods-Talaris.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Talaris/Talaris.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7W2989TXA5;
 				INFOPLIST_FILE = Talaris/Info.plist;
