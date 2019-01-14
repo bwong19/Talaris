@@ -17,7 +17,7 @@
 		2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865B421ED04330071DE10 /* LoginViewController.swift */; };
 		2D5865B721ED089E0071DE10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */; };
 		2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865B921ED2B480071DE10 /* SignUpViewController.swift */; };
-		2D5865BC21ED303D0071DE10 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865BB21ED303D0071DE10 /* TestViewController.swift */; };
+		2D5865BC21ED303D0071DE10 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865BB21ED303D0071DE10 /* NameViewController.swift */; };
 		8258B885026E068700594270 /* Pods_TalarisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */; };
 		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; };
 /* End PBXBuildFile section */
@@ -58,7 +58,7 @@
 		2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D5865B821ED17BB0071DE10 /* Talaris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Talaris.entitlements; sourceTree = "<group>"; };
 		2D5865B921ED2B480071DE10 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		2D5865BB21ED303D0071DE10 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		2D5865BB21ED303D0071DE10 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		498A44F65E08C6A38E13E3D7 /* Pods-TalarisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisUITests/Pods-TalarisUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		51D8D05E3BD985FFE212A6D3 /* Pods-TalarisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisTests/Pods-TalarisTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 			children = (
 				2D5865B421ED04330071DE10 /* LoginViewController.swift */,
 				2D5865B921ED2B480071DE10 /* SignUpViewController.swift */,
-				2D5865BB21ED303D0071DE10 /* TestViewController.swift */,
+				2D5865BB21ED303D0071DE10 /* NameViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 			files = (
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
 				2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */,
-				2D5865BC21ED303D0071DE10 /* TestViewController.swift in Sources */,
+				2D5865BC21ED303D0071DE10 /* NameViewController.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

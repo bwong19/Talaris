@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class TestViewController: UIViewController {
+class NameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class TestViewController: UIViewController {
             guard let user = user else { return }
             
             let ref = Database.database().reference().child("users").child(user.uid).child("first-name")
-            ref.observe(.value, with: { snapshot in
+            ref.observeSingleEvent(of: .value, with: { snapshot in
                 self.navigationItem.title = "Hello \(snapshot.value ?? "")!"
             })
             
