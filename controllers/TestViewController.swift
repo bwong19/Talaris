@@ -47,7 +47,6 @@ class TestViewController: UIViewController {
         testImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
         testImage.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20).isActive = true
         
-        let descriptionText = UILabel()
         descriptionText.translatesAutoresizingMaskIntoConstraints = false
         descriptionText.text = "This test measures speed."
         descriptionText.textColor = UIColor(red:0.00, green:146/255, blue:1, alpha:1.0)
@@ -116,20 +115,22 @@ class TestViewController: UIViewController {
         if (self.current < 0) {
             self.current = 2
         }
-        let imageName = tests[current] + ".png"
-        testImage.image = UIImage(named: imageName)
-        if (tests[current] == "tug") {
-            testText.text = "TUG Test"
-            descriptionText.text = "This test measures speed."
-        } else if (tests[current] == "6mwt") {
-            testText.text = "Six Minute Walk Test";
-            descriptionText.text = "This test measures endurance."
-        } else if (tests[current] == "sway") {
-            testText.text = "Sway Test"
-            descriptionText.text = "This test measures balance."
+        
+        let imageName = self.tests[self.current] + ".png"
+        self.testImage.image = UIImage(named: imageName)
+        if (self.tests[self.current] == "tug") {
+            self.testText.text = "TUG Test"
+            self.descriptionText.text = "This test measures speed."
+        } else if (self.tests[self.current] == "6mwt") {
+            self.testText.text = "Six Minute Walk Test";
+            self.descriptionText.text = "This test measures endurance."
+        } else if (self.tests[self.current] == "sway") {
+            self.testText.text = "Sway Test"
+            self.descriptionText.text = "This test measures balance."
         } else {
             print("Error")
         }
+        
     }
     
     @objc func goRight(_ sender : UIButton) {
@@ -137,7 +138,7 @@ class TestViewController: UIViewController {
         if (self.current > 2) {
             self.current = 0
         }
-        print(self.current)
+        
         let imageName = tests[current] + ".png"
         testImage.image = UIImage(named: imageName)
         

@@ -97,7 +97,6 @@ class LoginViewController: UIViewController {
             if error == nil {
                 self.navigationController!.pushViewController(WelcomeViewController(), animated: true)
             } else {
-                print(error)
             }
         }
     }

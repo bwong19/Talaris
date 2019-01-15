@@ -8,78 +8,149 @@
 
 import UIKit
 import CoreMotion
+import AVFoundation
+
 
 class TUGViewController: UIViewController {
-    
-    let x_label = UILabel()
+    var timer = Timer()
+    var counter = 0.0
+    let timeLabel = UILabel()
     
     let motionManager = CMMotionManager()
-    var timer: Timer!
+    let sampling_rate = 10.0
+    var motionTimer = Timer()
+    var accelData : [Dictionary<String, Double>] = []    // acceleration measured in G's
+    var rotData : [Dictionary<String, Double>] = []      // rotation rate measured in radians/sec
+    var magfieldData : [Dictionary<String, Double>] = [] // magnetic field measured in microteslas
     
-//    public init() {
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
+    let angleLabel = UILabel()
     
+    let soundCode = 1005
+    var hasStoodUp = false
     
     override func viewDidLoad() {
-        view.backgroundColor = .white
-
-        print("in TUG")
         super.viewDidLoad()
-        motionManager.startAccelerometerUpdates()
-        motionManager.startGyroUpdates()
-        motionManager.startMagnetometerUpdates()
-        motionManager.startDeviceMotionUpdates()
+        self.view.backgroundColor = .white
         
-        x_label.translatesAutoresizingMaskIntoConstraints = false
-        x_label.text = "hello"
-        x_label.adjustsFontSizeToFitWidth = true
-        view.addSubview(x_label)
-        x_label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        x_label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        x_label.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        x_label.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        // timer time label
+        self.timeLabel.text = "0.0"
+        self.timeLabel.font = timeLabel.font.withSize(72)
+        self.timeLabel.adjustsFontSizeToFitWidth = true
+        self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(self.timeLabel)
+        self.timeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.timeLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -self.view.frame.height / 6).isActive = true
+        
+        // angle label
+        self.angleLabel.text = ""
+        self.angleLabel.font = timeLabel.font.withSize(36)
+        self.angleLabel.adjustsFontSizeToFitWidth = true
+        self.angleLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(self.angleLabel)
+        self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+            self.startTest()
+        })
+        
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func startTest() {
+        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        self.view.backgroundColor = .green
+        // start timer
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        self.counter  = 0.0
+        self.timeLabel.text = "0.0"
+        
+        // start collecting data
+        self.motionManager.startDeviceMotionUpdates()
+        self.motionManager.startAccelerometerUpdates()
+        self.motionManager.startGyroUpdates()
+        self.motionManager.startMagnetometerUpdates()
+        self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
+        
+        self.accelData = []
+        self.rotData = []
+        self.magfieldData = []
+    }
+    
+    func stopTest() {
+        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        self.view.backgroundColor = .white
+        
+        // stop timer
+        self.timer.invalidate()
+        
+        // stop collecting data
+        self.motionManager.stopDeviceMotionUpdates()
+        self.motionManager.stopAccelerometerUpdates()
+        self.motionManager.stopGyroUpdates()
+        self.motionManager.stopMagnetometerUpdates()
+        self.motionTimer.invalidate()
+    }
+    
+    @objc func updateTimer() {
+        self.counter += 0.1
+        self.timeLabel.text = String(format: "%.1f", counter)
+    }
+    
+    @objc func getData() {
+        
+        if let pitch = motionManager.deviceMotion?.attitude.pitch {
+            
+            self.angleLabel.text = "\(pitch)"
+            
+            if (pitch >= 1.0 || pitch <= -1.0) {
+                hasStoodUp = true
+            }
+            
+            if (pitch >= -0.5 && pitch <= 0.5 && hasStoodUp) {
+                stopTest()
+                return
+            }
+        }
         
         
-        //        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(HomeViewController.update), userInfo: nil, repeats: true)
+        // get accel data
+        if let accelerometerData = motionManager.accelerometerData {
+            let accelDict = ["x":accelerometerData.acceleration.x, "y":accelerometerData.acceleration.y, "z": accelerometerData.acceleration.z]
+            self.accelData.append(accelDict)
+        }
         
-        for i in 1...5 {
-            update()
-            sleep(5)
+        // get rotation data
+        if let gyroscopeData = motionManager.gyroData {
+            let rotDict = ["x":gyroscopeData.rotationRate.x, "y":gyroscopeData.rotationRate.y, "z": gyroscopeData.rotationRate.z]
+            self.rotData.append(rotDict)
+        }
+        
+        // get magnetic field data
+        if let magnetometerData = motionManager.magnetometerData {
+            let magfieldDict = ["x":magnetometerData.magneticField.x, "y":magnetometerData.magneticField.y, "z": magnetometerData.magneticField.z]
+            self.magfieldData.append(magfieldDict)
         }
     }
     
-    @objc func update() {
-        if let accelerometerData = motionManager.accelerometerData {
-            x_label.text = accelerometerData.description
-            print(accelerometerData)
-        }
-        //        if let gyroData = motionManager.gyroData {
-        //            print(gyroData)
-        //        }
-        //        if let magnetometerData = motionManager.magnetometerData {
-        //            print(magnetometerData)
-        //        }
-        //        if let deviceMotion = motionManager.deviceMotion {
-        //            print(deviceMotion)
-        //        }
+    override func viewWillDisappear(_ animated: Bool) {
+        // stop timer
+        self.timer.invalidate()
+        
+        // stop collecting data
+        self.motionManager.stopDeviceMotionUpdates()
+        self.motionManager.stopAccelerometerUpdates()
+        self.motionManager.stopGyroUpdates()
+        self.motionManager.stopMagnetometerUpdates()
+        self.motionTimer.invalidate()
+        
+        super.viewWillDisappear(animated)
     }
     
 }
-        // Do any additional setup after loading the view.
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-

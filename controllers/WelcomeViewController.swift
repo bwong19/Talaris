@@ -16,27 +16,39 @@ class WelcomeViewController: UIViewController {
 //    required init?(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
 //    }
-
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-//        navigationItem.title = "Talaris"
-        print(view.frame)
+
+        Auth.auth().addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = user
+            let ref = Database.database().reference().child("users").child(user.uid).child("first-name")
+            ref.observeSingleEvent(of: .value, with: { snapshot in
+                self.setupUI(name: "\(snapshot.value ?? "")")
+            })
+        }
+    }
+    
+    func setupUI(name: String) {
+        //        navigationItem.title = "Talaris"
         
-//        let largeTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 35)]
-//        let smallTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, NSAttributedString.KeyNSAttributedString.Key.font: UIFont.systemFont(ofSize: 25)]
-//
-//        navigationController?.navigationBar.largeTitleTextAttributes = largeTextAttributes
-//        navigationController?.navigationBar.titleTextAttributes = smallTextAttributes
+        //        let largeTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 35)]
+        //        let smallTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, NSAttributedString.KeyNSAttributedString.Key.font: UIFont.systemFont(ofSize: 25)]
+        //
+        //        navigationController?.navigationBar.largeTitleTextAttributes = largeTextAttributes
+        //        navigationController?.navigationBar.titleTextAttributes = smallTextAttributes
         
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.37, blue:0.72, alpha:1.0)
-//        navigationController?.navigationBar.tintColor = .white
-//        navigationController?.toolbar.barTintColor = UIColor(red:0.00, green:0.37, blue:0.72, alpha:1.0)
+        //        navigationController?.navigationBar.prefersLargeTitles = true
+        //        navigationController?.navigationBar.barTintColor = UIColor(red:0.00, green:0.37, blue:0.72, alpha:1.0)
+        //        navigationController?.navigationBar.tintColor = .white
+        //        navigationController?.toolbar.barTintColor = UIColor(red:0.00, green:0.37, blue:0.72, alpha:1.0)
         
         let welcomeText = UILabel()
         welcomeText.translatesAutoresizingMaskIntoConstraints = false
-        welcomeText.text = "Welcome!"
+        welcomeText.text = "Welcome \(name)!"
         welcomeText.textColor = UIColor(red:0.00, green:146/255, blue:1, alpha:1.0)
         welcomeText.numberOfLines = 0
         welcomeText.textAlignment = .center
@@ -95,18 +107,6 @@ class WelcomeViewController: UIViewController {
         profileButton.centerYAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 40).isActive = true
         profileButton.heightAnchor.constraint(equalToConstant: view.frame.height / 12).isActive = true
         profileButton.widthAnchor.constraint(equalToConstant: view.frame.width - 30).isActive = true
-
-        // Do any additional setup after loading the view.
-        
-        Auth.auth().addStateDidChangeListener { auth, user in
-            guard let user = user else { return }
-            
-            let ref = Database.database().reference().child("users").child(user.uid).child("first-name")
-            ref.observeSingleEvent(of: .value, with: { snapshot in
-                welcomeText.text = "Welcome \(snapshot.value ?? "")!"
-            })
-        }
-        
     }
     
     @objc func enterTest(_ sender : UIButton) {
