@@ -118,21 +118,17 @@ class TestViewController: UIViewController {
         }
         let imageName = tests[current] + ".png"
         testImage.image = UIImage(named: imageName)
-        switch tests[current] {
-        case "tug":
-            testText.text = "TUG Test";
-            descriptionText.text = "This test measures speed.";
-            fallthrough
-        case "6mwt":
+        if (tests[current] == "tug") {
+            testText.text = "TUG Test"
+            descriptionText.text = "This test measures speed."
+        } else if (tests[current] == "6mwt") {
             testText.text = "Six Minute Walk Test";
-            descriptionText.text = "This test measures endurance.";
-            fallthrough
-        case "sway":
-            testText.text = "Sway Test";
-            descriptionText.text = "This test measures balance.";
-            fallthrough
-        default:
-            break
+            descriptionText.text = "This test measures endurance."
+        } else if (tests[current] == "sway") {
+            testText.text = "Sway Test"
+            descriptionText.text = "This test measures balance."
+        } else {
+            print("Error")
         }
     }
     
@@ -144,20 +140,17 @@ class TestViewController: UIViewController {
         print(self.current)
         let imageName = tests[current] + ".png"
         testImage.image = UIImage(named: imageName)
-        switch tests[current] {
-        case "tug":
-            testText.text = "TUG Test";
-            descriptionText.text = "This test measures speed.";
-            fallthrough
-        case "6mwt":
+        
+        if (tests[current] == "tug") {
+            testText.text = "TUG Test"
+            descriptionText.text = "This test measures speed."
+        } else if (tests[current] == "6mwt") {
             testText.text = "Six Minute Walk Test";
-            descriptionText.text = "This test measures endurance.";
-            fallthrough
-        case "sway":
-            testText.text = "Sway Test";
-            descriptionText.text = "This test measures balance.";
-            fallthrough
-        default:
+            descriptionText.text = "This test measures endurance."
+        } else if (tests[current] == "sway") {
+            testText.text = "Sway Test"
+            descriptionText.text = "This test measures balance."
+        } else {
             print("Error")
         }
     }
