@@ -90,7 +90,7 @@ class SignUpViewController: UIViewController {
         lastNameTextField.heightAnchor.constraint(equalToConstant: 0.05 * self.view.frame.height).isActive = true
         
         // signup button
-        let signupButton = UIButton()
+        let signupButton = CustomButton()
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         signupButton.addTarget(self, action: #selector(signup), for: .touchUpInside)
         signupButton.setTitle("Sign Up", for: .normal)
@@ -110,7 +110,14 @@ class SignUpViewController: UIViewController {
                 
                 Auth.auth().signIn(withEmail: self.emailTextField.text!,
                                    password: self.passwordTextField.text!)
+                
+                self.navigationController!.pushViewController(WelcomeViewController(), animated: true)
             } else {
+                let message = error?.localizedDescription
+                let alert = UIAlertController(title: "Sign up Error", message: message, preferredStyle : .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Default action"), style: .default, handler: { _ in
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

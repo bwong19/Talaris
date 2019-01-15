@@ -12,9 +12,9 @@ class CheckViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = .white
         let yesNoStackView = UIStackView()
         yesNoStackView.translatesAutoresizingMaskIntoConstraints = false
         yesNoStackView.axis = .vertical
@@ -26,7 +26,7 @@ class CheckViewController: UIViewController {
         yesNoStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
         yesNoStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
         
-        let yesButton = UIButton()
+        let yesButton = CustomButton()
         yesButton.translatesAutoresizingMaskIntoConstraints = false
         yesButton.addTarget(self, action: #selector(backToHome), for: .touchUpInside)
         yesButton.setTitle("Yes", for: .normal)
@@ -36,7 +36,7 @@ class CheckViewController: UIViewController {
         yesNoStackView.addArrangedSubview(yesButton)
         
         // no button
-        let noButton = UIButton()
+        let noButton = CustomButton()
         noButton.translatesAutoresizingMaskIntoConstraints = false
         noButton.addTarget(self, action: #selector(restart), for: .touchUpInside)
         noButton.setTitle("No", for: .normal)

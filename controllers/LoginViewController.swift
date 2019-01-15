@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
         passwordTextField.heightAnchor.constraint(equalToConstant: 0.05 * self.view.frame.height).isActive = true
         
         // login button
-        let loginButton = UIButton()
+        let loginButton = CustomButton()
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         loginButton.setTitle("Login", for: .normal)
@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
         loginStackView.addArrangedSubview(loginButton)
         
         // signup button
-        let signupButton = UIButton()
+        let signupButton = CustomButton()
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         signupButton.addTarget(self, action: #selector(signup), for: .touchUpInside)
         signupButton.setTitle("Sign Up", for: .normal)
@@ -97,10 +97,15 @@ class LoginViewController: UIViewController {
             if error == nil {
                 self.navigationController!.pushViewController(WelcomeViewController(), animated: true)
             } else {
+                let message = error?.localizedDescription
+                let alert = UIAlertController(title: "Sign in Error", message: message, preferredStyle : .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Default action"), style: .default, handler: { _ in
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
-    
+
     @objc func signup() {
         self.navigationController!.pushViewController(SignUpViewController(), animated: true)
     }
