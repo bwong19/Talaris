@@ -96,6 +96,9 @@ class TUGViewController: UIViewController {
         self.motionManager.stopGyroUpdates()
         self.motionManager.stopMagnetometerUpdates()
         self.motionTimer.invalidate()
+        
+        self.navigationController!.pushViewController(CheckViewController(), animated: true)
+        
     }
     
     @objc func updateTimer() {
