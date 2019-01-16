@@ -36,7 +36,7 @@ class CheckViewController: UIViewController {
         statusText.translatesAutoresizingMaskIntoConstraints = false
         statusText.text = String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", result ?? 0.0, sit2stand ?? 0.0)
         statusText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
-        statusText.numberOfLines = 0
+        statusText.numberOfLines = 3
         statusText.textAlignment = .center
         statusText.font = UIFont.systemFont(ofSize: 24)
         self.view.addSubview(statusText)
