@@ -97,7 +97,7 @@ class TUGViewController: UIViewController {
         self.motionManager.stopMagnetometerUpdates()
         self.motionTimer.invalidate()
         
-        self.navigationController!.pushViewController(CheckViewController(), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(result: counter), animated: true)
         
     }
     

@@ -78,6 +78,7 @@ class WelcomeViewController: UIViewController {
         startButton.setTitle("Start Assessment", for: .normal)
         startButton.titleLabel?.font = .systemFont(ofSize: 24)
         startButton.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
+        startButton.layer.cornerRadius = 10
         self.view.addSubview(startButton)
         startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
         startButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 10).isActive = true
@@ -90,6 +91,7 @@ class WelcomeViewController: UIViewController {
         scheduleButton.setTitle("My Schedule", for: .normal)
         scheduleButton.titleLabel?.font = .systemFont(ofSize: 24)
         scheduleButton.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
+        scheduleButton.layer.cornerRadius = 10
         self.view.addSubview(scheduleButton)
         scheduleButton.centerXAnchor.constraint(equalTo: startButton.centerXAnchor).isActive = true
         scheduleButton.centerYAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 40).isActive = true
@@ -102,6 +104,7 @@ class WelcomeViewController: UIViewController {
         profileButton.setTitle("My Profile", for: .normal)
         profileButton.titleLabel?.font = .systemFont(ofSize: 24)
         profileButton.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
+        profileButton.layer.cornerRadius = 10
         self.view.addSubview(profileButton)
         profileButton.centerXAnchor.constraint(equalTo: scheduleButton.centerXAnchor).isActive = true
         profileButton.centerYAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 40).isActive = true

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        let navController = UINavigationController(rootViewController: LoginViewController())
+        let navController = UINavigationController(rootViewController: TestViewController())
         window?.rootViewController = navController
         
         // Override point for customization after application launch.

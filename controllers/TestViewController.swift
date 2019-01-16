@@ -103,6 +103,7 @@ class TestViewController: UIViewController {
         proceedButton.setTitle("Proceed", for: .normal)
         proceedButton.titleLabel?.font = .systemFont(ofSize: 20)
         proceedButton.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
+        proceedButton.layer.cornerRadius = 10
         self.view.addSubview(proceedButton)
         proceedButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         proceedButton.centerYAnchor.constraint(equalTo: testText.bottomAnchor, constant: 60).isActive = true
