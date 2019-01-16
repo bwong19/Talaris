@@ -11,11 +11,9 @@ import CoreMotion
 import AVFoundation
 
 
-class TUGViewController: UIViewController {
+class SIXMWTViewController: UIViewController {
     var timer = Timer()
     var counter = 0.0
-    var sit2stand = 0.0
-    var stand2sit = 0.0
     let timeLabel = UILabel()
     
     let motionManager = CMMotionManager()
@@ -29,7 +27,6 @@ class TUGViewController: UIViewController {
     
     let soundCode = 1005
     var hasStoodUp = false
-    var walking = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +97,7 @@ class TUGViewController: UIViewController {
         self.motionManager.stopMagnetometerUpdates()
         self.motionTimer.invalidate()
         
-        self.navigationController!.pushViewController(CheckViewController(result: counter, sit2stand: sit2stand), animated: true)
+//        self.navigationController!.pushViewController(CheckViewController(result: counter), animated: true)
         
     }
     
@@ -111,21 +108,9 @@ class TUGViewController: UIViewController {
     
     @objc func getData() {
         
-        if let pitch = motionManager.deviceMotion?.attitude.pitch {
+        if let roll = motionManager.deviceMotion?.attitude.roll {
             
-            self.angleLabel.text = "\(pitch)"
-            
-            if ((pitch >= 1.0 || pitch <= -1.0) && hasStoodUp == false) {
-                sit2stand = counter
-                hasStoodUp = true
-                walking = true
-            }
-            
-            
-            if (pitch >= -0.5 && pitch <= 0.5 && hasStoodUp) {
-                stopTest()
-                return
-            }
+            self.angleLabel.text = "\(roll)"
         }
         
         

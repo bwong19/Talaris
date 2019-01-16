@@ -99,7 +99,7 @@ class TestViewController: UIViewController {
         
         let proceedButton = UIButton()
         proceedButton.translatesAutoresizingMaskIntoConstraints = false
-        proceedButton.addTarget(self, action: #selector(enterTUG), for: .touchUpInside)
+        proceedButton.addTarget(self, action: #selector(enterTest), for: .touchUpInside)
         proceedButton.setTitle("Proceed", for: .normal)
         proceedButton.titleLabel?.font = .systemFont(ofSize: 20)
         proceedButton.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
@@ -157,8 +157,16 @@ class TestViewController: UIViewController {
         }
     }
     
-    @objc func enterTUG(_ sender : UIButton) {
-        self.navigationController!.pushViewController(TUGViewController(), animated: true)
+    @objc func enterTest(_ sender : UIButton) {
+        if (tests[current] == "tug") {
+            self.navigationController!.pushViewController(TUGViewController(), animated: true)
+        } else if (tests[current] == "6mwt") {
+            self.navigationController!.pushViewController(SIXMWTViewController(), animated: true)
+        } else if (tests[current] == "sway") {
+            print("not ready")
+        } else {
+            print("Error")
+        }
     }
     
 //    func numberOfItems(in carousel: iCarousel) -> Int {

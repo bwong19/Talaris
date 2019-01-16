@@ -23,6 +23,7 @@
 		2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C221EE72A00071DE10 /* CustomButton.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
+		3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */; };
 		8258B885026E068700594270 /* Pods_TalarisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */; };
 		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
 		3948270021EE6B3700EF8A14 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
+		3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIXMWTViewController.swift; sourceTree = "<group>"; };
 		498A44F65E08C6A38E13E3D7 /* Pods-TalarisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisUITests/Pods-TalarisUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		51D8D05E3BD985FFE212A6D3 /* Pods-TalarisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisTests/Pods-TalarisTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 			children = (
 				2D5865B421ED04330071DE10 /* LoginViewController.swift */,
 				2D5865BD21ED3C620071DE10 /* TestViewController.swift */,
+				3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */,
 				394826FE21EE4B9100EF8A14 /* TUGViewController.swift */,
 				3948270021EE6B3700EF8A14 /* CheckViewController.swift */,
 				2D5865B921ED2B480071DE10 /* SignUpViewController.swift */,
@@ -447,6 +450,7 @@
 			files = (
 				2D5865BE21ED3C620071DE10 /* TestViewController.swift in Sources */,
 				3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */,
+				3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */,
 				2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */,
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
 				2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */,
