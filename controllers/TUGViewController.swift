@@ -36,7 +36,7 @@ class TUGViewController: UIViewController {
         self.view.backgroundColor = .white
         
         // timer time label
-        self.timeLabel.text = "0.0"
+        self.timeLabel.text = "0.0s"
         self.timeLabel.font = timeLabel.font.withSize(72)
         self.timeLabel.adjustsFontSizeToFitWidth = true
         self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,6 @@ class TUGViewController: UIViewController {
         // start timer
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         self.counter  = 0.0
-        self.timeLabel.text = "0.0"
         
         // start collecting data
         self.motionManager.startDeviceMotionUpdates()
@@ -106,7 +105,7 @@ class TUGViewController: UIViewController {
     
     @objc func updateTimer() {
         self.counter += 0.1
-        self.timeLabel.text = String(format: "%.1f", counter)
+        self.timeLabel.text = String(format: "%.1fs", counter)
     }
     
     @objc func getData() {
@@ -148,18 +147,5 @@ class TUGViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        // stop timer
-        self.timer.invalidate()
-        
-        // stop collecting data
-        self.motionManager.stopDeviceMotionUpdates()
-        self.motionManager.stopAccelerometerUpdates()
-        self.motionManager.stopGyroUpdates()
-        self.motionManager.stopMagnetometerUpdates()
-        self.motionTimer.invalidate()
-        
-        super.viewWillDisappear(animated)
-    }
     
 }

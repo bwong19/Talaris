@@ -10,18 +10,17 @@ import UIKit
 import CoreMotion
 import AVFoundation
 
-
 class SIXMWTViewController: UIViewController {
     var timer = Timer()
     var counter = 0.0
     let timeLabel = UILabel()
     
-    let motionManager = CMMotionManager()
-    let sampling_rate = 10.0
+    let pedometer = CMPedometer()
+    var startDate = Date()
+    var initDistance = -1.0
+    let testDuration = 60.0 // in seconds
+    
     var motionTimer = Timer()
-    var accelData : [Dictionary<String, Double>] = []    // acceleration measured in G's
-    var rotData : [Dictionary<String, Double>] = []      // rotation rate measured in radians/sec
-    var magfieldData : [Dictionary<String, Double>] = [] // magnetic field measured in microteslas
     
     let angleLabel = UILabel()
     
@@ -33,7 +32,7 @@ class SIXMWTViewController: UIViewController {
         self.view.backgroundColor = .white
         
         // timer time label
-        self.timeLabel.text = "0.0"
+        self.timeLabel.text = "0.0s"
         self.timeLabel.font = timeLabel.font.withSize(72)
         self.timeLabel.adjustsFontSizeToFitWidth = true
         self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -50,18 +49,11 @@ class SIXMWTViewController: UIViewController {
         self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.startTest()
         })
         
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     func startTest() {
         AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
@@ -69,18 +61,27 @@ class SIXMWTViewController: UIViewController {
         // start timer
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         self.counter  = 0.0
-        self.timeLabel.text = "0.0"
         
         // start collecting data
-        self.motionManager.startDeviceMotionUpdates()
-        self.motionManager.startAccelerometerUpdates()
-        self.motionManager.startGyroUpdates()
-        self.motionManager.startMagnetometerUpdates()
-        self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
-        
-        self.accelData = []
-        self.rotData = []
-        self.magfieldData = []
+        self.startDate = Date() - 18000
+        print(startDate)
+        self.pedometer.startUpdates(from: startDate) { (data, err) in
+            if let error = err {
+                print(error)
+                return
+            }
+            
+            if (self.initDistance < 0) {
+                self.initDistance = (data?.distance?.doubleValue)!
+            }
+            
+            DispatchQueue.main.async {
+                self.angleLabel.text = "\((data?.distance?.doubleValue)! - self.initDistance)"
+                if (self.counter >= self.testDuration) {
+                    self.stopTest()
+                }
+            }
+        }
     }
     
     func stopTest() {
@@ -90,61 +91,12 @@ class SIXMWTViewController: UIViewController {
         // stop timer
         self.timer.invalidate()
         
-        // stop collecting data
-        self.motionManager.stopDeviceMotionUpdates()
-        self.motionManager.stopAccelerometerUpdates()
-        self.motionManager.stopGyroUpdates()
-        self.motionManager.stopMagnetometerUpdates()
-        self.motionTimer.invalidate()
         
-//        self.navigationController!.pushViewController(CheckViewController(result: counter), animated: true)
-        
+        self.pedometer.stopUpdates()
     }
     
     @objc func updateTimer() {
         self.counter += 0.1
-        self.timeLabel.text = String(format: "%.1f", counter)
+        self.timeLabel.text = String(format: "%.0fs", counter)
     }
-    
-    @objc func getData() {
-        
-        if let roll = motionManager.deviceMotion?.attitude.roll {
-            
-            self.angleLabel.text = "\(roll)"
-        }
-        
-        
-        // get accel data
-        if let accelerometerData = motionManager.accelerometerData {
-            let accelDict = ["x":accelerometerData.acceleration.x, "y":accelerometerData.acceleration.y, "z": accelerometerData.acceleration.z]
-            self.accelData.append(accelDict)
-        }
-        
-        // get rotation data
-        if let gyroscopeData = motionManager.gyroData {
-            let rotDict = ["x":gyroscopeData.rotationRate.x, "y":gyroscopeData.rotationRate.y, "z": gyroscopeData.rotationRate.z]
-            self.rotData.append(rotDict)
-        }
-        
-        // get magnetic field data
-        if let magnetometerData = motionManager.magnetometerData {
-            let magfieldDict = ["x":magnetometerData.magneticField.x, "y":magnetometerData.magneticField.y, "z": magnetometerData.magneticField.z]
-            self.magfieldData.append(magfieldDict)
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        // stop timer
-        self.timer.invalidate()
-        
-        // stop collecting data
-        self.motionManager.stopDeviceMotionUpdates()
-        self.motionManager.stopAccelerometerUpdates()
-        self.motionManager.stopGyroUpdates()
-        self.motionManager.stopMagnetometerUpdates()
-        self.motionTimer.invalidate()
-        
-        super.viewWillDisappear(animated)
-    }
-    
 }
