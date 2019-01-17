@@ -27,6 +27,8 @@ class SIXMWTViewController: UIViewController {
     let soundCode = 1005
     var hasStoodUp = false
     
+    var finalDistance = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -78,6 +80,11 @@ class SIXMWTViewController: UIViewController {
             DispatchQueue.main.async {
                 self.angleLabel.text = "\((data?.distance?.doubleValue)! - self.initDistance)"
                 if (self.counter >= self.testDuration) {
+                    
+//                    if let distVal = self.angleLabel.text, let dist = Double(self.angleLabel.text) {
+//                        self.finalDistance = Double(self.angleLabel.text)
+//                    }
+                    
                     self.stopTest()
                 }
             }
@@ -93,6 +100,7 @@ class SIXMWTViewController: UIViewController {
         
         
         self.pedometer.stopUpdates()
+        self.navigationController!.pushViewController(CheckViewController(message: "Your 6MWT distance was \(self.angleLabel.text)."), animated: true)
     }
     
     @objc func updateTimer() {

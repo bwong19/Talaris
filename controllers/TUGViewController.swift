@@ -99,7 +99,7 @@ class TUGViewController: UIViewController {
         self.motionManager.stopMagnetometerUpdates()
         self.motionTimer.invalidate()
         
-        self.navigationController!.pushViewController(CheckViewController(result: counter, sit2stand: sit2stand), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", counter ?? 0.0, sit2stand ?? 0.0)), animated: true)
         
     }
     

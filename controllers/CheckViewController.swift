@@ -10,13 +10,11 @@ import UIKit
 
 class CheckViewController: UIViewController {
     
-    var result: Double?
-    var sit2stand: Double?
+    var message: String?
     
-    public init(result: Double, sit2stand: Double) {
+    public init(message: String) {
         super.init(nibName: nil, bundle: nil)
-        self.result = result
-        self.sit2stand = sit2stand
+        self.message = message
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +32,7 @@ class CheckViewController: UIViewController {
         // display TUG time
         let statusText = UILabel()
         statusText.translatesAutoresizingMaskIntoConstraints = false
-        statusText.text = String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", result ?? 0.0, sit2stand ?? 0.0)
+        statusText.text = message
         statusText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
         statusText.numberOfLines = 3
         statusText.textAlignment = .center
@@ -79,7 +77,7 @@ class CheckViewController: UIViewController {
         //
         let questionText = UILabel()
         questionText.translatesAutoresizingMaskIntoConstraints = false
-        questionText.text = String(format: "Was the test completed properly?", result ?? 0.0)
+        questionText.text = "Was the test completed properly?"
         questionText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
         questionText.numberOfLines = 0
         questionText.textAlignment = .center
