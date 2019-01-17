@@ -79,8 +79,12 @@ class SIXMWTViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.angleLabel.text = "\((data?.distance?.doubleValue)! - self.initDistance)"
+                
+                print(self.counter)
                 if (self.counter >= self.testDuration) {
+                    self.finalDistance = (data?.distance?.doubleValue)! - self.initDistance
                     
+//
 //                    if let distVal = self.angleLabel.text, let dist = Double(self.angleLabel.text) {
 //                        self.finalDistance = Double(self.angleLabel.text)
 //                    }
@@ -100,7 +104,8 @@ class SIXMWTViewController: UIViewController {
         
         
         self.pedometer.stopUpdates()
-        self.navigationController!.pushViewController(CheckViewController(message: "Your 6MWT distance was \(self.angleLabel.text)."), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters.", self.finalDistance)), animated: true)
+    
     }
     
     @objc func updateTimer() {

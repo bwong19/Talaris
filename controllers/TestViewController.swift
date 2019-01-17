@@ -163,7 +163,7 @@ class TestViewController: UIViewController {
         } else if (tests[current] == "6mwt") {
             self.navigationController!.pushViewController(SIXMWTViewController(), animated: true)
         } else if (tests[current] == "sway") {
-            print("not ready")
+            self.navigationController!.pushViewController(SwayViewController(), animated: true)
         } else {
             print("Error")
         }

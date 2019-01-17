@@ -29,12 +29,12 @@ class CheckViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
         
-        // display TUG time
+        // display results time
         let statusText = UILabel()
         statusText.translatesAutoresizingMaskIntoConstraints = false
         statusText.text = message
         statusText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
-        statusText.numberOfLines = 3
+        statusText.numberOfLines = 0
         statusText.textAlignment = .center
         statusText.font = UIFont.systemFont(ofSize: 24)
         self.view.addSubview(statusText)

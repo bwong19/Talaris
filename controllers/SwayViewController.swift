@@ -11,11 +11,9 @@ import CoreMotion
 import AVFoundation
 
 
-class TUGViewController: UIViewController {
+class SwayViewController: UIViewController {
     var timer = Timer()
     var counter = 0.0
-    var sit2stand = 0.0
-    var stand2sit = 0.0
     let timeLabel = UILabel()
     
     let motionManager = CMMotionManager()
@@ -28,8 +26,10 @@ class TUGViewController: UIViewController {
     let angleLabel = UILabel()
     
     let soundCode = 1005
-    var hasStoodUp = false
-    var walking = true
+    
+    var swayList = [Double]()
+    var testDuration = 120.0
+    var std = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +53,6 @@ class TUGViewController: UIViewController {
         self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
         
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: "Place the phone in your pocket")
-        utterance.rate = 0.4
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
             self.startTest()
         })
@@ -71,15 +65,7 @@ class TUGViewController: UIViewController {
     }
     
     func startTest() {
-//        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
-        
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: "Start walking")
-        utterance.rate = 0.4
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
-        
-        
+        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
         self.view.backgroundColor = .green
         // start timer
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
@@ -98,14 +84,7 @@ class TUGViewController: UIViewController {
     }
     
     func stopTest() {
-//        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
-        
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: "Good work!")
-        utterance.rate = 0.4
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
-        
+        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
         self.view.backgroundColor = .white
         
         // stop timer
@@ -117,35 +96,46 @@ class TUGViewController: UIViewController {
         self.motionManager.stopGyroUpdates()
         self.motionManager.stopMagnetometerUpdates()
         self.motionTimer.invalidate()
-        
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", counter, sit2stand)), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your sway deviation was %.3lf.", self.std)), animated: true)
         
     }
+    
+    func normalize_list(list: [Double]) -> [Double]{
+        var retList = [Double]()
+        let avg = list.reduce(0, +) / Double(list.count)
+        
+        for (index, _) in list.enumerated() {
+            retList.append(list[index] - avg)
+        }
+        return retList
+    }
+    
+    func getStandardDeviation(arr : [Double]) -> Double {
+        let length = Double(arr.count)
+        let avg = arr.reduce(0, {$0 + $1}) / length
+        let sumOfSquaredAvgDiff = arr.map { pow($0 - avg, 2.0)}.reduce(0, {$0 + $1})
+        return sqrt(sumOfSquaredAvgDiff / length)
+    }
+
     
     @objc func updateTimer() {
         self.counter += 0.1
         self.timeLabel.text = String(format: "%.1fs", counter)
     }
     
+    
     @objc func getData() {
-        
-        if let pitch = motionManager.deviceMotion?.attitude.pitch {
+        if let yaw = motionManager.deviceMotion?.attitude.yaw, let pitch = motionManager.deviceMotion?.attitude.pitch {
             
-            self.angleLabel.text = "\(pitch)"
-            
-            if ((pitch >= 1.0 || pitch <= -1.0) && hasStoodUp == false) {
-                sit2stand = counter
-                hasStoodUp = true
-                walking = true
-            }
-            
-            
-            if (pitch >= -0.5 && pitch <= 0.5 && hasStoodUp) {
+            let VM = pow((pow(yaw, 2) + pow(pitch,2)), 0.5)
+            self.angleLabel.text = "\(VM)"
+            swayList.append(VM)
+            if (self.counter >= self.testDuration) {
+                swayList = normalize_list(list: swayList)
+                std = getStandardDeviation(arr: swayList)
                 stopTest()
-                return
             }
         }
-        
         
         // get accel data
         if let accelerometerData = motionManager.accelerometerData {
