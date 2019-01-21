@@ -72,7 +72,7 @@ class WelcomeViewController: UIViewController {
         conditionText.heightAnchor.constraint(equalToConstant: 1000).isActive = true
         conditionText.widthAnchor.constraint(equalToConstant: view.frame.width - 20).isActive = true
         
-        let startButton = UIButton()
+        let startButton = CustomButton()
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.addTarget(self, action: #selector(enterTest), for: .touchUpInside)
         startButton.setTitle("Start Assessment", for: .normal)
@@ -85,7 +85,7 @@ class WelcomeViewController: UIViewController {
         startButton.heightAnchor.constraint(equalToConstant: view.frame.height / 4).isActive = true
         startButton.widthAnchor.constraint(equalToConstant: view.frame.width - 30).isActive = true
         
-        let scheduleButton = UIButton()
+        let scheduleButton = CustomButton()
         scheduleButton.translatesAutoresizingMaskIntoConstraints = false
         //scheduleButton.addTarget(self, action: #selector(enterApp), for: .touchUpInside)
         scheduleButton.setTitle("My Schedule", for: .normal)
@@ -98,7 +98,7 @@ class WelcomeViewController: UIViewController {
         scheduleButton.heightAnchor.constraint(equalToConstant: view.frame.height / 12).isActive = true
         scheduleButton.widthAnchor.constraint(equalToConstant: view.frame.width - 30).isActive = true
         
-        let profileButton = UIButton()
+        let profileButton = CustomButton()
         profileButton.translatesAutoresizingMaskIntoConstraints = false
         //scheduleButton.addTarget(self, action: #selector(enterApp), for: .touchUpInside)
         profileButton.setTitle("My Profile", for: .normal)

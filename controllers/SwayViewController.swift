@@ -28,7 +28,7 @@ class SwayViewController: UIViewController {
     let soundCode = 1005
     
     var swayList = [Double]()
-    var testDuration = 120.0
+    var testDuration = 30.0
     var std = 0.0
     
     override func viewDidLoad() {
@@ -65,7 +65,14 @@ class SwayViewController: UIViewController {
     }
     
     func startTest() {
-        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: "Start standing")
+        utterance.rate = 0.4
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+        
         self.view.backgroundColor = .green
         // start timer
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
@@ -84,7 +91,13 @@ class SwayViewController: UIViewController {
     }
     
     func stopTest() {
-        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: "Good work!")
+        utterance.rate = 0.4
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+        
         self.view.backgroundColor = .white
         
         // stop timer

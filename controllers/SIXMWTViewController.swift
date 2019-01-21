@@ -18,7 +18,7 @@ class SIXMWTViewController: UIViewController {
     let pedometer = CMPedometer()
     var startDate = Date()
     var initDistance = -1.0
-    let testDuration = 60.0 // in seconds
+    let testDuration = 30.0 // in seconds
     
     var motionTimer = Timer()
     
@@ -58,7 +58,14 @@ class SIXMWTViewController: UIViewController {
     }
     
     func startTest() {
-        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: "Start walking")
+        utterance.rate = 0.4
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+        
         self.view.backgroundColor = .green
         // start timer
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
@@ -96,7 +103,14 @@ class SIXMWTViewController: UIViewController {
     }
     
     func stopTest() {
-        AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: "Good work!")
+        utterance.rate = 0.4
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+        
         self.view.backgroundColor = .white
         
         // stop timer

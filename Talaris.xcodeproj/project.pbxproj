@@ -26,7 +26,7 @@
 		3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */; };
 		3986DFFF21F1167A00A61F1C /* SwayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFE21F1167A00A61F1C /* SwayViewController.swift */; };
 		8258B885026E068700594270 /* Pods_TalarisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */; };
-		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; };
+		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

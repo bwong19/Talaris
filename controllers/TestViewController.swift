@@ -59,7 +59,7 @@ class TestViewController: UIViewController {
         descriptionText.heightAnchor.constraint(equalToConstant: view.frame.height / 10).isActive = true
         descriptionText.widthAnchor.constraint(equalToConstant: view.frame.width - 20).isActive = true
         
-        let leftButton = UIButton()
+        let leftButton = CustomButton()
         leftButton.translatesAutoresizingMaskIntoConstraints = false
         leftButton.addTarget(self, action: #selector(goLeft), for: .touchUpInside)
         leftButton.setTitle("<-", for: .normal)
@@ -72,7 +72,7 @@ class TestViewController: UIViewController {
         leftButton.heightAnchor.constraint(equalToConstant: view.frame.height / 2).isActive = true
         leftButton.widthAnchor.constraint(equalToConstant: view.frame.width/6).isActive = true
         
-        let rightButton = UIButton()
+        let rightButton = CustomButton()
         rightButton.translatesAutoresizingMaskIntoConstraints = false
         rightButton.addTarget(self, action: #selector(goRight), for: .touchUpInside)
         rightButton.setTitle("->", for: .normal)
@@ -97,7 +97,7 @@ class TestViewController: UIViewController {
         testText.heightAnchor.constraint(equalToConstant: 40).isActive = true
         testText.widthAnchor.constraint(equalToConstant: view.frame.width - 20).isActive = true
         
-        let proceedButton = UIButton()
+        let proceedButton = CustomButton()
         proceedButton.translatesAutoresizingMaskIntoConstraints = false
         proceedButton.addTarget(self, action: #selector(enterTest), for: .touchUpInside)
         proceedButton.setTitle("Proceed", for: .normal)

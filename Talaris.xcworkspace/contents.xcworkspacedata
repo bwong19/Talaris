@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:controllers/SwayViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:Talaris.xcodeproj">
    </FileRef>
    <FileRef
