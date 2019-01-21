@@ -101,6 +101,7 @@ class WelcomeViewController: UIViewController {
         let profileButton = CustomButton()
         profileButton.translatesAutoresizingMaskIntoConstraints = false
         //scheduleButton.addTarget(self, action: #selector(enterApp), for: .touchUpInside)
+        profileButton.addTarget(self, action: #selector(enterProfile), for: .touchUpInside)
         profileButton.setTitle("My Profile", for: .normal)
         profileButton.titleLabel?.font = .systemFont(ofSize: 24)
         profileButton.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
@@ -116,6 +117,9 @@ class WelcomeViewController: UIViewController {
         self.navigationController!.pushViewController(TestViewController(), animated: true)
     }
     
+    @objc func enterProfile(_ sender : UIButton) {
+        self.navigationController!.pushViewController(MetricGraphsViewController(), animated: true)
+    }
 
     /*
     // MARK: - Navigation

@@ -17,10 +17,10 @@
 		2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865B421ED04330071DE10 /* LoginViewController.swift */; };
 		2D5865B721ED089E0071DE10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */; };
 		2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865B921ED2B480071DE10 /* SignUpViewController.swift */; };
-		2D5865BC21ED303D0071DE10 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865BB21ED303D0071DE10 /* NameViewController.swift */; };
 		2D5865BE21ED3C620071DE10 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865BD21ED3C620071DE10 /* TestViewController.swift */; };
 		2D5865C021ED3C7B0071DE10 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */; };
 		2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C221EE72A00071DE10 /* CustomButton.swift */; };
+		2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
 		3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */; };
@@ -65,10 +65,10 @@
 		2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D5865B821ED17BB0071DE10 /* Talaris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Talaris.entitlements; sourceTree = "<group>"; };
 		2D5865B921ED2B480071DE10 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		2D5865BB21ED303D0071DE10 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		2D5865BD21ED3C620071DE10 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		2D5865C221EE72A00071DE10 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGraphsViewController.swift; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
 		3948270021EE6B3700EF8A14 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				2D5865C121EE72860071DE10 /* CustomUI */,
-				2D5865B321ED03F50071DE10 /* controllers */,
+				2D5865B321ED03F50071DE10 /* Controllers */,
 				2D58658421ECFD1C0071DE10 /* Talaris */,
 				2D58659921ECFD1D0071DE10 /* TalarisTests */,
 				2D5865A421ECFD1D0071DE10 /* TalarisUITests */,
@@ -166,20 +166,15 @@
 			path = TalarisUITests;
 			sourceTree = "<group>";
 		};
-		2D5865B321ED03F50071DE10 /* controllers */ = {
+		2D5865B321ED03F50071DE10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2D5865B421ED04330071DE10 /* LoginViewController.swift */,
-				2D5865BD21ED3C620071DE10 /* TestViewController.swift */,
-				3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */,
-				3986DFFE21F1167A00A61F1C /* SwayViewController.swift */,
-				394826FE21EE4B9100EF8A14 /* TUGViewController.swift */,
-				3948270021EE6B3700EF8A14 /* CheckViewController.swift */,
-				2D5865B921ED2B480071DE10 /* SignUpViewController.swift */,
+				2D5865C721F65CD00071DE10 /* LoginControllers */,
+				2D5865C621F65CA10071DE10 /* TestControllers */,
 				2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */,
-				2D5865BB21ED303D0071DE10 /* NameViewController.swift */,
+				2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */,
 			);
-			path = controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		2D5865C121EE72860071DE10 /* CustomUI */ = {
@@ -188,6 +183,27 @@
 				2D5865C221EE72A00071DE10 /* CustomButton.swift */,
 			);
 			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		2D5865C621F65CA10071DE10 /* TestControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2D5865BD21ED3C620071DE10 /* TestViewController.swift */,
+				3948270021EE6B3700EF8A14 /* CheckViewController.swift */,
+				394826FE21EE4B9100EF8A14 /* TUGViewController.swift */,
+				3986DFFE21F1167A00A61F1C /* SwayViewController.swift */,
+				3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */,
+			);
+			path = TestControllers;
+			sourceTree = "<group>";
+		};
+		2D5865C721F65CD00071DE10 /* LoginControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2D5865B921ED2B480071DE10 /* SignUpViewController.swift */,
+				2D5865B421ED04330071DE10 /* LoginViewController.swift */,
+			);
+			path = LoginControllers;
 			sourceTree = "<group>";
 		};
 		413F4DAD2AE8BB2ADE7C743F /* Frameworks */ = {
@@ -459,8 +475,8 @@
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
 				2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */,
 				2D5865C021ED3C7B0071DE10 /* WelcomeViewController.swift in Sources */,
-				2D5865BC21ED303D0071DE10 /* NameViewController.swift in Sources */,
 				394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */,
+				2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
