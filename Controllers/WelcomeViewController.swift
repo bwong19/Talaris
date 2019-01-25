@@ -13,23 +13,28 @@ import FirebaseDatabase
 
 class WelcomeViewController: UIViewController {
     
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
     var user: User?
+
+    public init(user: User) {
+        super.init(nibName: nil, bundle: nil)
+        self.user = user
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationItem.hidesBackButton = true
 
-        Auth.auth().addStateDidChangeListener { auth, user in
-            guard let user = user else { return }
-            self.user = user
-            let ref = Database.database().reference().child("users").child(user.uid).child("first-name")
-            ref.observeSingleEvent(of: .value, with: { snapshot in
-                self.setupUI(name: "\(snapshot.value ?? "")")
-            })
-        }
+        guard let user = self.user else { return }
+        let ref = Database.database().reference().child("users").child(user.uid).child("first-name")
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            self.setupUI(name: "\(snapshot.value ?? "")")
+        })
+        
     }
     
     func setupUI(name: String) {
@@ -111,6 +116,19 @@ class WelcomeViewController: UIViewController {
         profileButton.centerYAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 40).isActive = true
         profileButton.heightAnchor.constraint(equalToConstant: view.frame.height / 12).isActive = true
         profileButton.widthAnchor.constraint(equalToConstant: view.frame.width - 30).isActive = true
+        
+        let logoutButton = CustomButton()
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.titleLabel?.font = .systemFont(ofSize: 24)
+        logoutButton.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
+        logoutButton.layer.cornerRadius = 10
+        self.view.addSubview(logoutButton)
+        logoutButton.centerXAnchor.constraint(equalTo: profileButton.centerXAnchor).isActive = true
+        logoutButton.centerYAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 40).isActive = true
+        logoutButton.heightAnchor.constraint(equalToConstant: view.frame.height / 12).isActive = true
+        logoutButton.widthAnchor.constraint(equalToConstant: view.frame.width - 30).isActive = true
     }
     
     @objc func enterTest(_ sender : UIButton) {
@@ -119,6 +137,15 @@ class WelcomeViewController: UIViewController {
     
     @objc func enterProfile(_ sender : UIButton) {
         self.navigationController!.pushViewController(MetricGraphsViewController(), animated: true)
+    }
+    
+    @objc func logout(_ sender : UIButton) {
+        do {
+            try Auth.auth().signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+        } catch (let error) {
+            print("Auth sign out failed: \(error)")
+        }
     }
 
     /*

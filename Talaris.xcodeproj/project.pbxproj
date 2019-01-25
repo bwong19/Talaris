@@ -21,6 +21,7 @@
 		2D5865C021ED3C7B0071DE10 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */; };
 		2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C221EE72A00071DE10 /* CustomButton.swift */; };
 		2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */; };
+		2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
 		3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */; };
@@ -69,6 +70,7 @@
 		2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		2D5865C221EE72A00071DE10 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGraphsViewController.swift; sourceTree = "<group>"; };
+		2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
 		3948270021EE6B3700EF8A14 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				2D5865B921ED2B480071DE10 /* SignUpViewController.swift */,
 				2D5865B421ED04330071DE10 /* LoginViewController.swift */,
+				2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */,
 			);
 			path = LoginControllers;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				2D5865BE21ED3C620071DE10 /* TestViewController.swift in Sources */,
 				3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */,
 				3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */,
+				2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */,
 				2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */,
 				3986DFFF21F1167A00A61F1C /* SwayViewController.swift in Sources */,
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
@@ -661,7 +665,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7W2989TXA5;
 				INFOPLIST_FILE = Talaris/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -685,7 +689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7W2989TXA5;
 				INFOPLIST_FILE = Talaris/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

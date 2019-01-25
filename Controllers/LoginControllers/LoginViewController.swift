@@ -12,7 +12,6 @@ import Firebase
 class LoginViewController: UIViewController {
     let emailTextField = UITextField()
     let passwordTextField = UITextField()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,8 +93,8 @@ class LoginViewController: UIViewController {
     @objc func login() {
         Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { user, error in
             
-            if error == nil {
-                self.navigationController!.pushViewController(WelcomeViewController(), animated: true)
+            if user != nil {
+                self.navigationController!.pushViewController(WelcomeViewController(user: user!.user), animated: true)
             } else {
                 let message = error?.localizedDescription
                 let alert = UIAlertController(title: "Sign in Error", message: message, preferredStyle : .alert)

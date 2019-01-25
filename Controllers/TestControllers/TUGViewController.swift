@@ -35,6 +35,8 @@ class TUGViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationItem.hidesBackButton = true
+
         
         // timer time label
         self.timeLabel.text = "0.0s"

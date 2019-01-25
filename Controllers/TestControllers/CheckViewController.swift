@@ -28,6 +28,7 @@ class CheckViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
+        self.navigationItem.hidesBackButton = true
         
         // display results time
         let statusText = UILabel()
@@ -91,11 +92,25 @@ class CheckViewController: UIViewController {
     }
     
     @objc func backToHome() {
-        self.navigationController!.pushViewController(WelcomeViewController(), animated: true)
+        if let navController = self.navigationController {
+            for controller in navController.viewControllers {
+                if controller is WelcomeViewController {
+                    navController.popToViewController(controller, animated:true)
+                    break
+                }
+            }
+        }
     }
     
     @objc func restart() {
-        self.navigationController!.pushViewController(TestViewController(), animated: true)
+        if let navController = self.navigationController {
+            for controller in navController.viewControllers {
+                if controller is TestViewController {
+                    navController.popToViewController(controller, animated:true)
+                    break
+                }
+            }
+        }
     }
     
 

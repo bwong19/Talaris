@@ -102,7 +102,7 @@ class SignUpViewController: UIViewController {
     
     @objc func signup() {
         Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { user, error in
-            if error == nil {
+            if user != nil {
                 
                 let userRef = self.ref.child("users").child(user!.user.uid)
                 userRef.child("first-name").setValue(self.firstNameTextField.text!)
@@ -111,7 +111,7 @@ class SignUpViewController: UIViewController {
                 Auth.auth().signIn(withEmail: self.emailTextField.text!,
                                    password: self.passwordTextField.text!)
                 
-                self.navigationController!.pushViewController(WelcomeViewController(), animated: true)
+                self.navigationController!.pushViewController(WelcomeViewController(user: user!.user), animated: true)
             } else {
                 let message = error?.localizedDescription
                 let alert = UIAlertController(title: "Sign up Error", message: message, preferredStyle : .alert)
