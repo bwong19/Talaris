@@ -17,6 +17,7 @@ class TUGViewController: UIViewController {
     var sit2stand = 0.0
     var stand2sit = 0.0
     let timeLabel = UILabel()
+    let image = UIImageView()
     
     let motionManager = CMMotionManager()
     let sampling_rate = 10.0
@@ -25,7 +26,7 @@ class TUGViewController: UIViewController {
     var rotData : [Dictionary<String, Double>] = []      // rotation rate measured in radians/sec
     var magfieldData : [Dictionary<String, Double>] = [] // magnetic field measured in microteslas
     
-    let angleLabel = UILabel()
+//    let angleLabel = UILabel()
     
     let soundCode = 1005
     var hasStoodUp = false
@@ -37,21 +38,32 @@ class TUGViewController: UIViewController {
         
         // timer time label
         self.timeLabel.text = "0.0s"
-        self.timeLabel.font = timeLabel.font.withSize(72)
+//        self.timeLabel.font = timeLabel.font.withSize(72)
+        self.timeLabel.font = UIFont(name: "HelveticaNeue-UltraLight", size: 72)
         self.timeLabel.adjustsFontSizeToFitWidth = true
         self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(self.timeLabel)
         self.timeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.timeLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -self.view.frame.height / 6).isActive = true
+        self.timeLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: self.view.frame.height / 6).isActive = true
         
         // angle label
-        self.angleLabel.text = ""
-        self.angleLabel.font = timeLabel.font.withSize(36)
-        self.angleLabel.adjustsFontSizeToFitWidth = true
-        self.angleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(self.angleLabel)
-        self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
+//        self.angleLabel.text = ""
+//        self.angleLabel.font = timeLabel.font.withSize(36)
+//        self.angleLabel.adjustsFontSizeToFitWidth = true
+//        self.angleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(self.angleLabel)
+//        self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
+        
+        
+        image.image = UIImage(named: "phone_pocket")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        //        image.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
+        view.addSubview(image)
+        image.widthAnchor.constraint(equalToConstant: view.frame.width/2).isActive = true
+        image.heightAnchor.constraint(equalToConstant: view.frame.width/2).isActive = true
+        image.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        image.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20).isActive = true
         
         let synthesizer = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: "Place the phone in your pocket")
@@ -131,7 +143,7 @@ class TUGViewController: UIViewController {
         
         if let pitch = motionManager.deviceMotion?.attitude.pitch {
             
-            self.angleLabel.text = "\(pitch)"
+//            self.angleLabel.text = "\(pitch)"
             
             if ((pitch >= 1.0 || pitch <= -1.0) && hasStoodUp == false) {
                 sit2stand = counter
@@ -145,7 +157,6 @@ class TUGViewController: UIViewController {
                 return
             }
         }
-        
         
         // get accel data
         if let accelerometerData = motionManager.accelerometerData {
@@ -165,6 +176,4 @@ class TUGViewController: UIViewController {
             self.magfieldData.append(magfieldDict)
         }
     }
-    
-    
 }

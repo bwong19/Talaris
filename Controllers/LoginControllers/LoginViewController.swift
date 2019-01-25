@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         
         // app name/logo
         let appLabel = UILabel()
-        appLabel.text = "TALARIS"
+        appLabel.text = "TALARIS HEALTH"
         appLabel.font = appLabel.font.withSize(36)
         appLabel.adjustsFontSizeToFitWidth = true
         appLabel.translatesAutoresizingMaskIntoConstraints = false
