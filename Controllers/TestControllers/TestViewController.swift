@@ -35,8 +35,6 @@ class TestViewController: UIViewController {
         self.view.backgroundColor = .white
         navigationItem.title = "Onboarding"
         
-
-        
         let imageName = tests[current] + ".png"
         testImage.image = UIImage(named: imageName)
         testImage.translatesAutoresizingMaskIntoConstraints = false
