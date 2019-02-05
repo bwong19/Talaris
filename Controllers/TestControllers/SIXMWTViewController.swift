@@ -61,7 +61,7 @@ class SIXMWTViewController: UIViewController {
     
     func startTest() {
         //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
-        
+    
         let synthesizer = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: "Start walking")
         utterance.rate = 0.4
