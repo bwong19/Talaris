@@ -17,7 +17,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     let timeLabel = UILabel()
     var ref : DatabaseReference!
     
-    let testDuration = 10.0 // in seconds
+    let testDuration = 30.0 // in seconds
     
     var motionTimer = Timer()
     
@@ -57,7 +57,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             self.startTest()
         })
         
@@ -82,6 +82,25 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         lm.startUpdatingHeading()
         self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
     }
+
+    func getRotationCount(azimuthData: [Double]) -> Int{
+        var startIndex : Int = 0
+        var turnCount : Int = 0
+        
+        while startIndex < azimuthData.count {
+            let endIndex = min(azimuthData.count - 1, startIndex + Int(3 * self.sampling_rate))
+            
+            let delta = abs(azimuthData[endIndex] - azimuthData[startIndex])
+            if (delta >= 100) {
+                turnCount += 1
+                startIndex = endIndex + 1;
+            } else {
+                startIndex += 1
+            }
+        }
+        
+        return turnCount
+    }
     
     func stopTest() {
         // stop timer
@@ -98,13 +117,12 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         synthesizer.speak(utterance)
         
         self.view.backgroundColor = .white
-        
-        
-        
+
         print(self.azimuthData.count)
+        let turnCount = getRotationCount(azimuthData: self.azimuthData)
         self.ref.child("azimuth_test").setValue(azimuthData)
         
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters.", -1.0)), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d", -1.0, turnCount)), animated: true)
         
     }
     

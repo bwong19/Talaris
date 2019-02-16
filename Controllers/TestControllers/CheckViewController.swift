@@ -33,6 +33,7 @@ class CheckViewController: UIViewController {
         // display results time
         let statusText = UILabel()
         statusText.translatesAutoresizingMaskIntoConstraints = false
+        statusText.adjustsFontSizeToFitWidth = true
         statusText.text = message
         statusText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
         statusText.numberOfLines = 0
