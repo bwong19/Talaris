@@ -9,14 +9,15 @@
 import UIKit
 import AVFoundation
 import CoreLocation
+import FirebaseDatabase
 
 class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     var timer = Timer()
     var counter = 0.0
     let timeLabel = UILabel()
+    var ref : DatabaseReference!
     
-    var startDate = Date()
-    let testDuration = 30.0 // in seconds
+    let testDuration = 10.0 // in seconds
     
     var motionTimer = Timer()
     
@@ -26,11 +27,17 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     
     var lm = CLLocationManager()
     
+    let sampling_rate = 10.0
+    var curAzimuth = -1.0
+    var azimuthData : [Double] = []
+    
     override func viewDidLoad() {
+        self.ref = Database.database().reference()
+        
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationItem.hidesBackButton = true
-
+        
         
         // timer time label
         self.timeLabel.text = "0.0s"
@@ -58,7 +65,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     
     func startTest() {
         //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
-    
+        
         let synthesizer = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: "Start walking")
         utterance.rate = 0.4
@@ -72,11 +79,16 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         
         
         lm.delegate = self
-        
         lm.startUpdatingHeading()
+        self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
     }
     
     func stopTest() {
+        // stop timer
+        self.timer.invalidate()
+        self.motionTimer.invalidate()
+        lm.stopUpdatingHeading()
+        
         //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
         
         let synthesizer = AVSpeechSynthesizer()
@@ -87,19 +99,33 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         
         self.view.backgroundColor = .white
         
-        // stop timer
-        self.timer.invalidate()
+        
+        
+        print(self.azimuthData.count)
+        self.ref.child("azimuth_test").setValue(azimuthData)
         
         self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters.", -1.0)), animated: true)
-    
+        
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         self.angleLabel.text = "\(newHeading.trueHeading)"
+        self.curAzimuth = newHeading.trueHeading
     }
     
     @objc func updateTimer() {
         self.counter += 0.1
         self.timeLabel.text = String(format: "%.0fs", counter)
+    }
+    
+    @objc func getData() {
+        if (self.curAzimuth < 0) {
+            return
+        }
+        
+        self.azimuthData.append(self.curAzimuth)
+        if (self.counter > self.testDuration) {
+            stopTest()
+        }
     }
 }
