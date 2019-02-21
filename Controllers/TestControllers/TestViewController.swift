@@ -159,7 +159,22 @@ class TestViewController: UIViewController {
         if (tests[current] == "tug") {
             self.navigationController!.pushViewController(TUGViewController(), animated: true)
         } else if (tests[current] == "6mwt") {
-            self.navigationController!.pushViewController(SIXMWTViewController(), animated: true)
+            //1. Create the alert controller.
+            let alert = UIAlertController(title: "Six Minute Walk Test", message: "Please provide the distance from your starting position to the turnaround point (in meters)", preferredStyle: .alert)
+            
+            //2. Add the text field. You can configure it however you need.
+            alert.addTextField { (textField) in
+                textField.text = ""
+            }
+            
+            // 3. Grab the value from the text field, and print it when the user clicks OK.
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+                let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
+                self.navigationController!.pushViewController(SIXMWTViewController(turnaroundDistance: Double(textField.text!)!), animated: true)
+            }))
+            
+            // 4. Present the alert.
+            self.present(alert, animated: true, completion: nil)
         } else if (tests[current] == "sway") {
             self.navigationController!.pushViewController(SwayViewController(), animated: true)
         } else {

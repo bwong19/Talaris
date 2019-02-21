@@ -9,12 +9,16 @@
 import UIKit
 import CoreMotion
 import AVFoundation
+import FirebaseDatabase
+
 
 
 class SwayViewController: UIViewController {
     var timer = Timer()
     var counter = 0.0
     let timeLabel = UILabel()
+    var ref : DatabaseReference!
+
     
     let motionManager = CMMotionManager()
     let sampling_rate = 10.0
@@ -28,11 +32,13 @@ class SwayViewController: UIViewController {
     let soundCode = 1005
     
     var swayList = [Double]()
-    var testDuration = 30.0
+    var testDuration = 10.0
     var std = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.ref = Database.database().reference()
+
         self.view.backgroundColor = .white
         self.navigationItem.hidesBackButton = true
 
@@ -101,6 +107,8 @@ class SwayViewController: UIViewController {
         synthesizer.speak(utterance)
         
         self.view.backgroundColor = .white
+        
+        self.ref.child("sway_test").setValue(swayList)
         
         // stop timer
         self.timer.invalidate()
