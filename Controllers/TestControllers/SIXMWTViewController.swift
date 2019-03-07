@@ -17,7 +17,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     let timeLabel = UILabel()
     var ref : DatabaseReference!
     
-    let testDuration = 30.0 // in seconds
+    let testDuration = 360.0 // in seconds
     
     var motionTimer = Timer()
     
@@ -45,6 +45,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         self.ref = Database.database().reference()
+        UIApplication.shared.isIdleTimerDisabled = true
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationItem.hidesBackButton = true
