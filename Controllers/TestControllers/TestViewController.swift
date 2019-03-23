@@ -176,7 +176,7 @@ class TestViewController: UIViewController {
             // 4. Present the alert.
             self.present(alert, animated: true, completion: nil)
         } else if (tests[current] == "sway") {
-            self.navigationController!.pushViewController(SwayViewController(), animated: true)
+            self.navigationController!.pushViewController(MCTSIBViewController(), animated: true)
         } else {
             print("Error")
         }

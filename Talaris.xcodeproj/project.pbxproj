@@ -22,6 +22,7 @@
 		2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C221EE72A00071DE10 /* CustomButton.swift */; };
 		2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */; };
 		2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */; };
+		39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
 		3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */; };
@@ -72,6 +73,7 @@
 		2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGraphsViewController.swift; sourceTree = "<group>"; };
 		2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTSIBViewController.swift; sourceTree = "<group>"; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
 		3948270021EE6B3700EF8A14 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIXMWTViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				394826FE21EE4B9100EF8A14 /* TUGViewController.swift */,
 				3986DFFE21F1167A00A61F1C /* SwayViewController.swift */,
 				3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */,
+				39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */,
 			);
 			path = TestControllers;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
 				2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */,
 				2D5865C021ED3C7B0071DE10 /* WelcomeViewController.swift in Sources */,
+				39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */,
 				394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */,
 				2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
