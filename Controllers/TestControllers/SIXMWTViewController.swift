@@ -17,7 +17,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     let timeLabel = UILabel()
     var ref : DatabaseReference!
     
-    let testDuration = 360.0 // in seconds
+    let testDuration = 30.0 // in seconds
     
     var motionTimer = Timer()
     

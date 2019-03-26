@@ -47,10 +47,10 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
     public init() {
         super.init(nibName: nil, bundle: nil)
         var commandList = [String]()
-        commandList.append("Place the phone at the center of your waist, Stand on a firm surface while keeping your eyes open, Hold the position, test starting in 10 seconds.")
-        commandList.append("Now close your eyes and stay standing on the same firm surface, test starting in 10 seconds.")
-        commandList.append("Now switch to a foam surface. Open your eyes and hold your position. Test starting in 10 seconds.")
-        commandList.append("Finally, close your eyes and stay standing on the same foam surface, test starting in 10 seconds.")
+        commandList.append("Place the phone at the center of your waist, Stand on a firm surface while keeping your eyes open, Hold the position, test starting in 5 seconds.")
+        commandList.append("Now close your eyes and stay standing on the same firm surface, test starting in 5 seconds.")
+        commandList.append("Now switch to a foam surface. Open your eyes and hold your position. Test starting in 5 seconds.")
+        commandList.append("Finally, close your eyes and stay standing on the same foam surface, test starting in 5 seconds.")
         
         self.commands = commandList
     }
@@ -108,7 +108,6 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
         // stop timer
         self.timer.invalidate()
         self.motionTimer.invalidate()
-        //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
         
         let utterance = AVSpeechUtterance(string: "Good work!")
         utterance.rate = 0.4
@@ -137,7 +136,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
             if ((SVM > 1.2 || SVM < 0.8) || self.counter >= 30) {
                 self.motionTimer.invalidate()
                 self.timer.invalidate()
-                print("test done")
+                self.timeLabel.text = "0.0s"
                 self.timelist.append(self.counter)
                 if (self.timelist.count == 4) {
                     self.stopTest()
@@ -158,7 +157,8 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
             return
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { // Change `2.0` to the desired number
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { // Change `2.0` to the desired number
+            AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
             self.view.backgroundColor = .green
             self.counter = 0.0
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
