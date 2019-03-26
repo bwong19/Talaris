@@ -11,11 +11,13 @@ import AVFoundation
 import CoreMotion
 import FirebaseDatabase
 
-class MCTSIBViewController: UIViewController {
+class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
     var timer = Timer()
     var counter = 0.0
     let timeLabel = UILabel()
     var ref : DatabaseReference!
+    let synthesizer = AVSpeechSynthesizer()
+
     let motionManager = CMMotionManager()
     let SVM_thresh = 2.0
     let DSVM_thresh = 6.0
@@ -45,7 +47,7 @@ class MCTSIBViewController: UIViewController {
     public init() {
         super.init(nibName: nil, bundle: nil)
         var commandList = [String]()
-        commandList.append("Place the phone at the center of your waist, Stand on a firm surface while keeping your eyes open, Hold the position, test starting now!")
+        commandList.append("Place the phone at the center of your waist, Stand on a firm surface while keeping your eyes open, Hold the position, test starting in 10 seconds.")
         commandList.append("Now close your eyes and stay standing on the same firm surface, test starting in 10 seconds.")
         commandList.append("Now switch to a foam surface. Open your eyes and hold your position. Test starting in 10 seconds.")
         commandList.append("Finally, close your eyes and stay standing on the same foam surface, test starting in 10 seconds.")
@@ -59,6 +61,7 @@ class MCTSIBViewController: UIViewController {
     
     override func viewDidLoad() {
         self.ref = Database.database().reference()
+        synthesizer.delegate = self
         UIApplication.shared.isIdleTimerDisabled = true
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -94,18 +97,10 @@ class MCTSIBViewController: UIViewController {
     func startTest() {
         //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
         
-        
-        let synthesizer = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: commands[test_num])
         utterance.rate = 0.4
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
-        test_num+=1
-        
-        self.view.backgroundColor = .green
-        self.counter  = 0.0
-        self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
-    
+        self.synthesizer.speak(utterance)
     }
     
     
@@ -115,11 +110,10 @@ class MCTSIBViewController: UIViewController {
         self.motionTimer.invalidate()
         //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
         
-        let synthesizer = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: "Good work!")
         utterance.rate = 0.4
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
+        self.synthesizer.speak(utterance)
         
         self.view.backgroundColor = .white
         print(self.timelist)
@@ -129,40 +123,48 @@ class MCTSIBViewController: UIViewController {
     }
     
     
-//    @objc func updateTimer() {
-//        self.counter += 0.1
-////        self.timeLabel.text = String(format: "%.0fs", counter)
-//    }
+    @objc func updateTimer() {
+        self.counter += 0.1
+        self.timeLabel.text = String(format: "%.1fs", counter)
+    }
     
     @objc func getData() {
-        self.counter += 0.1
+        print(counter)
         if let accelerometerData = motionManager.accelerometerData {
             let SVM = (pow(accelerometerData.acceleration.x,2) + pow(accelerometerData.acceleration.y,2) + pow(accelerometerData.acceleration.z,2)).squareRoot()
             
-            self.timeLabel.text = String(format: "%f", SVM)
+            //self.timeLabel.text = String(format: "%f", SVM)
             if ((SVM > 1.2 || SVM < 0.8) || self.counter >= 30) {
                 self.motionTimer.invalidate()
+                self.timer.invalidate()
                 print("test done")
                 self.timelist.append(self.counter)
                 if (self.timelist.count == 4) {
                     self.stopTest()
                 } else {
-                
-                    let synthesizer = AVSpeechSynthesizer()
                     let utterance = AVSpeechUtterance(string: commands[test_num])
                     utterance.rate = 0.4
                     utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-                    synthesizer.speak(utterance)
-                    test_num+=1
-
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { // Change `2.0` to the desired number
-                        self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
-                        self.counter = 0.0
-                    }
+                    self.synthesizer.speak(utterance)
                 }
                 
             }
             
         }
     }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        if (test_num == 4) {
+            return
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { // Change `2.0` to the desired number
+            self.view.backgroundColor = .green
+            self.counter = 0.0
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+            self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
+        }
+        test_num+=1
+    }
+    
 }

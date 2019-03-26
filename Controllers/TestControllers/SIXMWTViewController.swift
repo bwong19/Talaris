@@ -170,7 +170,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.angleLabel.text = "\(newHeading.trueHeading)"
+        //self.angleLabel.text = "\(newHeading.trueHeading)"
         self.curAzimuth = newHeading.trueHeading
     }
     
