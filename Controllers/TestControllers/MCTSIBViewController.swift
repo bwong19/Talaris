@@ -117,7 +117,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
         self.view.backgroundColor = .white
         print(self.timelist)
         
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your score is %.1lf/120", self.timelist.reduce(0, +))), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your score is %.1lf/60", self.timelist.reduce(0, +))), animated: true)
         
     }
     
@@ -138,7 +138,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
                 self.timer.invalidate()
                 self.timeLabel.text = "0.0s"
                 self.timelist.append(self.counter)
-                if (self.timelist.count == 4) {
+                if (self.timelist.count == 2) {
                     self.stopTest()
                 } else {
                     let utterance = AVSpeechUtterance(string: commands[test_num])
@@ -153,7 +153,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        if (test_num == 4) {
+        if (test_num == 2) {
             return
         }
         
