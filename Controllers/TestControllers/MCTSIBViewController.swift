@@ -47,7 +47,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
     public init() {
         super.init(nibName: nil, bundle: nil)
         var commandList = [String]()
-        commandList.append("Place the phone at the center of your waist, Stand on a firm surface while keeping your eyes open, Hold the position, test starting in 5 seconds.")
+        commandList.append("Place the phone at the center of your waist, Stand while keeping your eyes open, Hold the position, test starting in 5 seconds.")
         commandList.append("Now close your eyes and stay standing on the same firm surface, test starting in 5 seconds.")
         commandList.append("Now switch to a foam surface. Open your eyes and hold your position. Test starting in 5 seconds.")
         commandList.append("Finally, close your eyes and stay standing on the same foam surface, test starting in 5 seconds.")
@@ -153,7 +153,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        if (test_num == 2) {
+        if (test_num == 1) {
             return
         }
         
