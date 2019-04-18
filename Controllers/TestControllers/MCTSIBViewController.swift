@@ -97,7 +97,6 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     func startTest() {
-        self.motionTracker.startRecording()
         //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
         
         let utterance = AVSpeechUtterance(string: commands[test_num])
@@ -164,6 +163,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
             AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
             self.view.backgroundColor = .green
             self.counter = 0.0
+            self.motionTracker.startRecording()
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
             self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
         }
