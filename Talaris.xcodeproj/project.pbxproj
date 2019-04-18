@@ -22,6 +22,7 @@
 		2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C221EE72A00071DE10 /* CustomButton.swift */; };
 		2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */; };
 		2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */; };
+		2DCE2A8522685240003B82FA /* MotionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2A8422685240003B82FA /* MotionTracker.swift */; };
 		39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
@@ -72,6 +73,7 @@
 		2D5865C221EE72A00071DE10 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGraphsViewController.swift; sourceTree = "<group>"; };
 		2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
+		2DCE2A8422685240003B82FA /* MotionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTracker.swift; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTSIBViewController.swift; sourceTree = "<group>"; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		2D5865B321ED03F50071DE10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2DCE2A832268521E003B82FA /* Util */,
 				2D5865C721F65CD00071DE10 /* LoginControllers */,
 				2D5865C621F65CA10071DE10 /* TestControllers */,
 				2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */,
@@ -210,6 +213,14 @@
 				2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */,
 			);
 			path = LoginControllers;
+			sourceTree = "<group>";
+		};
+		2DCE2A832268521E003B82FA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2DCE2A8422685240003B82FA /* MotionTracker.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		413F4DAD2AE8BB2ADE7C743F /* Frameworks */ = {
@@ -487,6 +498,7 @@
 				39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */,
 				394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */,
 				2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */,
+				2DCE2A8522685240003B82FA /* MotionTracker.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

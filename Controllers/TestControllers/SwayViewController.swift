@@ -19,7 +19,6 @@ class SwayViewController: UIViewController {
     let timeLabel = UILabel()
     var ref : DatabaseReference!
 
-    
     let motionManager = CMMotionManager()
     let sampling_rate = 10.0
     var motionTimer = Timer()

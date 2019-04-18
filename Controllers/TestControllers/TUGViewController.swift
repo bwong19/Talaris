@@ -26,6 +26,8 @@ class TUGViewController: UIViewController {
     var rotData : [Dictionary<String, Double>] = []      // rotation rate measured in radians/sec
     var magfieldData : [Dictionary<String, Double>] = [] // magnetic field measured in microteslas
     
+    let motionTracker : MotionTracker = MotionTracker(samplingRate: 10.0)
+    
 //    let angleLabel = UILabel()
     
     let soundCode = 1005
@@ -99,6 +101,7 @@ class TUGViewController: UIViewController {
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         self.counter  = 0.0
         
+        self.motionTracker.startRecording()
         // start collecting data
         self.motionManager.startDeviceMotionUpdates()
         self.motionManager.startAccelerometerUpdates()
@@ -125,6 +128,7 @@ class TUGViewController: UIViewController {
         // stop timer
         self.timer.invalidate()
         
+        self.motionTracker.stopRecording()
         // stop collecting data
         self.motionManager.stopDeviceMotionUpdates()
         self.motionManager.stopAccelerometerUpdates()
@@ -132,7 +136,7 @@ class TUGViewController: UIViewController {
         self.motionManager.stopMagnetometerUpdates()
         self.motionTimer.invalidate()
         
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", counter, sit2stand)), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", counter, sit2stand), motionTracker:self.motionTracker, testType: "TUG"), animated: true)
         
     }
     

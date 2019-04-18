@@ -19,6 +19,8 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     
     let testDuration = 360.0 // in seconds
     
+    let motionTracker : MotionTracker = MotionTracker(samplingRate: 10.0)
+
     var motionTimer = Timer()
     
     let angleLabel = UILabel()
@@ -88,7 +90,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         self.counter  = 0.0
         
-        
+        self.motionTracker.startRecording()
         lm.delegate = self
         lm.startUpdatingHeading()
         self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
@@ -145,6 +147,8 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func stopTest() {
+        self.motionTracker.stopRecording()
+        
         // stop timer
         self.timer.invalidate()
         self.motionTimer.invalidate()
@@ -165,7 +169,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         self.ref.child("azimuth_test").setValue(azimuthData)
         self.ref.child("processed_azimuth_test").setValue(processedAzimuthData)
         
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d", res.1, res.0)), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d", res.1, res.0), motionTracker:self.motionTracker, testType: "6MWT"), animated: true)
         
     }
     

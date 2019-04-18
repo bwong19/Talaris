@@ -11,10 +11,14 @@ import UIKit
 class CheckViewController: UIViewController {
     
     var message: String?
+    var motionTracker : MotionTracker?
+    var testType : String?
     
-    public init(message: String) {
+    public init(message: String, motionTracker : MotionTracker? = nil, testType : String? = nil) {
         super.init(nibName: nil, bundle: nil)
         self.message = message
+        self.motionTracker = motionTracker
+        self.testType = testType
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -93,6 +97,30 @@ class CheckViewController: UIViewController {
     }
     
     @objc func backToHome() {
+        
+        if let motionTracker = self.motionTracker {
+            //1. Create the alert controller.
+            let alert = UIAlertController(title: "Test Completion", message: "Please provide the test name", preferredStyle: .alert)
+            
+            //2. Add the text field. You can configure it however you need.
+            alert.addTextField { (textField) in
+                textField.text = ""
+            }
+            
+            // 3. Grab the value from the text field, and print it when the user clicks OK.
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+                let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
+                motionTracker.saveAndClearData(testName: "\(textField.text ?? "No Name Provided")_\(self.testType!)")
+                self.goToHomeScreen()
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        } else {
+           self.goToHomeScreen()
+        }
+    }
+    
+    func goToHomeScreen() {
         if let navController = self.navigationController {
             for controller in navController.viewControllers {
                 if controller is WelcomeViewController {
@@ -102,7 +130,7 @@ class CheckViewController: UIViewController {
             }
         }
     }
-    
+
     @objc func restart() {
         if let navController = self.navigationController {
             for controller in navController.viewControllers {

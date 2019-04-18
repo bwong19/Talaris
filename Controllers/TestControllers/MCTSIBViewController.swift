@@ -18,6 +18,8 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
     var ref : DatabaseReference!
     let synthesizer = AVSpeechSynthesizer()
 
+    let motionTracker : MotionTracker = MotionTracker(samplingRate: 10.0)
+
     let motionManager = CMMotionManager()
     let SVM_thresh = 2.0
     let DSVM_thresh = 6.0
@@ -95,6 +97,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     func startTest() {
+        self.motionTracker.startRecording()
         //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
         
         let utterance = AVSpeechUtterance(string: commands[test_num])
@@ -103,8 +106,8 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
         self.synthesizer.speak(utterance)
     }
     
-    
     func stopTest() {
+        self.motionTracker.stopRecording()
         // stop timer
         self.timer.invalidate()
         self.motionTimer.invalidate()
@@ -117,7 +120,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
         self.view.backgroundColor = .white
         print(self.timelist)
         
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your score is %.1lf/60", self.timelist.reduce(0, +))), animated: true)
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your score is %.1lf/30", self.timelist.reduce(0, +)), motionTracker:self.motionTracker, testType: "MCTSIB"), animated: true)
         
     }
     
@@ -138,7 +141,7 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
                 self.timer.invalidate()
                 self.timeLabel.text = "0.0s"
                 self.timelist.append(self.counter)
-                if (self.timelist.count == 2) {
+                if (self.timelist.count == 1) {
                     self.stopTest()
                 } else {
                     let utterance = AVSpeechUtterance(string: commands[test_num])
