@@ -33,8 +33,14 @@ class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewContro
         let gaitTrackerStack = createGaitTrackerStack()
         let profileStack = createProfileStack()
         let connectStack = createConnectStack()
+        let settingsStack = createSettingsStack()
+
+        let tabBarList = [gaitTrackerStack, profileStack, connectStack, settingsStack]
         
-        self.viewControllers = [gaitTrackerStack, profileStack, connectStack]
+        self.viewControllers = tabBarList.map {
+            UINavigationController(rootViewController: $0)
+        }
+
         self.title = self.selectedViewController?.tabBarItem.title
     }
     
@@ -51,16 +57,22 @@ class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewContro
     }
     
     fileprivate func createProfileStack() -> UIViewController {
-        let viewController = UIViewController()
+        let viewController = MetricGraphsViewController()
         
         viewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), selectedImage: UIImage.init(named: "profile"))
         return viewController
     }
     
     fileprivate func createConnectStack() -> UIViewController {
-        let viewController = UIViewController()
-        
+        let viewController = OCKConnectViewController(contacts: carePlanData.contacts)
+        viewController.patient = OCKPatient(identifier: "Taha Baig", carePlanStore: carePlanStoreManager.store, name: "Taha Baig", detailInfo: nil, careTeamContacts: nil, tintColor: nil, monogram: "TB", image: nil, categories: nil, userInfo: nil)
         viewController.tabBarItem = UITabBarItem(title: "Connect", image: UIImage(named: "Connect-OFF"), selectedImage: UIImage.init(named: "Connect-ON"))
+        return viewController
+    }
+    
+    fileprivate func createSettingsStack() -> UIViewController {
+        let viewController = SettingsViewController()
+        viewController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "Settings-1"), selectedImage: UIImage.init(named: "Settings-1"))
         return viewController
     }
     

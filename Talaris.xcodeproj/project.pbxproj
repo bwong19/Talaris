@@ -29,6 +29,7 @@
 		2DCE2ABB226DA55A003B82FA /* CarePlanStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2ABA226DA55A003B82FA /* CarePlanStoreManager.swift */; };
 		2DCE2ABD226DB2C8003B82FA /* CarePlanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2ABC226DB2C8003B82FA /* CarePlanData.swift */; };
 		2DCE2ABF226DB507003B82FA /* NSDateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2ABE226DB507003B82FA /* NSDateComponents.swift */; };
+		2DCE2AC6226E07A7003B82FA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */; };
 		39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
@@ -120,6 +121,7 @@
 		2DCE2ABA226DA55A003B82FA /* CarePlanStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePlanStoreManager.swift; sourceTree = "<group>"; };
 		2DCE2ABC226DB2C8003B82FA /* CarePlanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePlanData.swift; sourceTree = "<group>"; };
 		2DCE2ABE226DB507003B82FA /* NSDateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDateComponents.swift; sourceTree = "<group>"; };
+		2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTSIBViewController.swift; sourceTree = "<group>"; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */,
 				2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */,
 				2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */,
+				2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */,
 				2DCE2ABB226DA55A003B82FA /* CarePlanStoreManager.swift in Sources */,
 				2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */,
+				2DCE2AC6226E07A7003B82FA /* SettingsViewController.swift in Sources */,
 				2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */,
 				3986DFFF21F1167A00A61F1C /* SwayViewController.swift in Sources */,
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
@@ -781,7 +785,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -805,7 +809,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

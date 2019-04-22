@@ -9,6 +9,26 @@ enum GaitTest: String {
 class CarePlanData: NSObject {
     let carePlanStore: OCKCarePlanStore
     
+    let contacts = [OCKContact(contactType: .careTeam,
+                               name: "Columbus Ohio",
+                               relation: "Therapist",
+                               tintColor: nil,
+                               phoneNumber: CNPhoneNumber(stringValue: "888-555-5235"),
+                               messageNumber: CNPhoneNumber(stringValue: "888-555-5235"),
+                               emailAddress: "columbus@example.com",
+                               monogram: "CO",
+                               image: UIImage(named: "Contact-ON")),
+                    OCKContact(contactType: .careTeam,
+                               name: "Dr Hershel Greene",
+                               relation: "Physician",
+                               tintColor: nil,
+                               phoneNumber: CNPhoneNumber(stringValue: "888-555-2351"),
+                               messageNumber: CNPhoneNumber(stringValue: "888-555-2351"),
+                               emailAddress: "dr.hershel@example.com",
+                               monogram: "HG",
+                               image: UIImage(named: "Contact-ON"))]
+
+    
     init(carePlanStore: OCKCarePlanStore) {
         self.carePlanStore = carePlanStore
         
@@ -18,7 +38,7 @@ class CarePlanData: NSObject {
                         title: "Timed Up and Go (TUG)",
                         text: "This test measures speed",
                         tintColor: UIColor.green,
-                        resultResettable: true,
+                        resultResettable: false,
                         schedule: CarePlanData.dailyScheduleRepeating(occurencesPerDay: 1), optional: false)
         
         let sixmwtTest = OCKCarePlanActivity
@@ -27,7 +47,7 @@ class CarePlanData: NSObject {
                         title: "Six Minute Walk Test (6MWT)",
                         text: "This test measures endurance",
                         tintColor: UIColor.orange,
-                        resultResettable: true,
+                        resultResettable: false,
                         schedule: CarePlanData.dailyScheduleRepeating(occurencesPerDay: 1), optional: false)
         
         let mctsibTest = OCKCarePlanActivity
@@ -36,7 +56,7 @@ class CarePlanData: NSObject {
                         title: "Sway Test (mCTSIB)",
                         text: "This test measures balance",
                         tintColor: UIColor.orange,
-                        resultResettable: true,
+                        resultResettable: false,
                         schedule: CarePlanData.dailyScheduleRepeating(occurencesPerDay: 1), optional: false)
         
         super.init()
@@ -65,6 +85,6 @@ class CarePlanData: NSObject {
         }
     }
     
-    
+
     
 }
