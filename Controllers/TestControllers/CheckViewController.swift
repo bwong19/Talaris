@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CareKit
 
 class CheckViewController: UIViewController {
     
     var message: String?
     var motionTracker : MotionTracker?
     var testType : String?
+    fileprivate let carePlanStoreManager = CarePlanStoreManager.sharedCarePlanStoreManager
     
     public init(message: String, motionTracker : MotionTracker? = nil, testType : String? = nil) {
         super.init(nibName: nil, bundle: nil)
@@ -97,7 +99,6 @@ class CheckViewController: UIViewController {
     }
     
     @objc func backToHome() {
-        
         if let motionTracker = self.motionTracker {
             //1. Create the alert controller.
             let alert = UIAlertController(title: "Test Completion", message: "Please provide the test name", preferredStyle: .alert)
@@ -111,19 +112,37 @@ class CheckViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let textField = alert!.textFields![0] // Force unwrapping because we know it exists.
                 motionTracker.saveAndClearData(testName: "\(textField.text ?? "No Name Provided")_\(self.testType!)")
-                self.goToHomeScreen()
+                self.updateWithResultsAndReturn()
             }))
             
             self.present(alert, animated: true, completion: nil)
         } else {
-           self.goToHomeScreen()
+            DispatchQueue.main.async {
+                self.goToHomeScreen()
+            }
+        }
+    }
+    
+    func updateWithResultsAndReturn() {
+        let event = CareKitTabsViewController.gaitTrackerViewController?.lastSelectedAssessmentEvent
+        print(event!)
+        let carePlanResult = OCKCarePlanEventResult(valueString: "", unitString: "", userInfo: nil)
+        carePlanStoreManager.store.update(event!, with: carePlanResult, state: .completed) {
+            success, _, error in
+            if !success {
+                print(error?.localizedDescription ?? "error")
+            } else {
+                DispatchQueue.main.async {
+                    self.goToHomeScreen()
+                }
+            }
         }
     }
     
     func goToHomeScreen() {
         if let navController = self.navigationController {
             for controller in navController.viewControllers {
-                if controller is WelcomeViewController {
+                if controller is CareKitTabsViewController {
                     navController.popToViewController(controller, animated:true)
                     break
                 }
@@ -132,14 +151,7 @@ class CheckViewController: UIViewController {
     }
 
     @objc func restart() {
-        if let navController = self.navigationController {
-            for controller in navController.viewControllers {
-                if controller is TestViewController {
-                    navController.popToViewController(controller, animated:true)
-                    break
-                }
-            }
-        }
+        goToHomeScreen()
     }
     
 

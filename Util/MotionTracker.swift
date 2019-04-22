@@ -117,7 +117,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
             "azimuth": self.azimuthData
         ]
         
-        self.ref.child("talaris_internal_validation_data").child("\(testName)_\(self.getDatetime())").setValue(dataDict)
+        self.ref.child("temp_test_data").child("\(testName)_\(self.getDatetime())").setValue(dataDict)
         
         self.accelData.removeAll()
         self.rotData.removeAll()
