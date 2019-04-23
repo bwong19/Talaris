@@ -23,13 +23,13 @@
 		2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */; };
 		2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */; };
 		2DCE2A8522685240003B82FA /* MotionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2A8422685240003B82FA /* MotionTracker.swift */; };
-		2DCE2AB3226DA3F2003B82FA /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE2AB0226DA3CF003B82FA /* CareKit.framework */; };
-		2DCE2AB4226DA3F2003B82FA /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE2AB0226DA3CF003B82FA /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DCE2AB9226DA482003B82FA /* CareKitTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */; };
 		2DCE2ABB226DA55A003B82FA /* CarePlanStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2ABA226DA55A003B82FA /* CarePlanStoreManager.swift */; };
 		2DCE2ABD226DB2C8003B82FA /* CarePlanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2ABC226DB2C8003B82FA /* CarePlanData.swift */; };
 		2DCE2ABF226DB507003B82FA /* NSDateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2ABE226DB507003B82FA /* NSDateComponents.swift */; };
 		2DCE2AC6226E07A7003B82FA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */; };
+		2DCE2AE0226F90A5003B82FA /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE2ADD226F9098003B82FA /* CareKit.framework */; };
+		2DCE2AE1226F90A5003B82FA /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE2ADD226F9098003B82FA /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
@@ -54,23 +54,23 @@
 			remoteGlobalIDString = 2D58658121ECFD1C0071DE10;
 			remoteInfo = Talaris;
 		};
-		2DCE2AAF226DA3CF003B82FA /* PBXContainerItemProxy */ = {
+		2DCE2ADC226F9098003B82FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2DCE2AA9226DA3CF003B82FA /* CareKit.xcodeproj */;
+			containerPortal = 2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8605A5BA1C4F04EC00DD65FF;
 			remoteInfo = CareKit;
 		};
-		2DCE2AB1226DA3CF003B82FA /* PBXContainerItemProxy */ = {
+		2DCE2ADE226F9098003B82FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2DCE2AA9226DA3CF003B82FA /* CareKit.xcodeproj */;
+			containerPortal = 2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8605A5C41C4F04EC00DD65FF;
 			remoteInfo = CareKitTests;
 		};
-		2DCE2AB5226DA3F2003B82FA /* PBXContainerItemProxy */ = {
+		2DCE2AE2226F90A5003B82FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2DCE2AA9226DA3CF003B82FA /* CareKit.xcodeproj */;
+			containerPortal = 2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 8605A5B91C4F04EC00DD65FF;
 			remoteInfo = CareKit;
@@ -84,7 +84,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2DCE2AB4226DA3F2003B82FA /* CareKit.framework in Embed Frameworks */,
+				2DCE2AE1226F90A5003B82FA /* CareKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,12 +116,12 @@
 		2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGraphsViewController.swift; sourceTree = "<group>"; };
 		2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
 		2DCE2A8422685240003B82FA /* MotionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTracker.swift; sourceTree = "<group>"; };
-		2DCE2AA9226DA3CF003B82FA /* CareKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CareKit.xcodeproj; path = "../../../../Downloads/CareKit-stable/CareKit.xcodeproj"; sourceTree = "<group>"; };
 		2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareKitTabsViewController.swift; sourceTree = "<group>"; };
 		2DCE2ABA226DA55A003B82FA /* CarePlanStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePlanStoreManager.swift; sourceTree = "<group>"; };
 		2DCE2ABC226DB2C8003B82FA /* CarePlanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePlanData.swift; sourceTree = "<group>"; };
 		2DCE2ABE226DB507003B82FA /* NSDateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDateComponents.swift; sourceTree = "<group>"; };
 		2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CareKit.xcodeproj; path = "CareKit-stable/CareKit.xcodeproj"; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTSIBViewController.swift; sourceTree = "<group>"; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCE2AB3226DA3F2003B82FA /* CareKit.framework in Frameworks */,
+				2DCE2AE0226F90A5003B82FA /* CareKit.framework in Frameworks */,
 				BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,7 +168,7 @@
 		2D58657921ECFD1C0071DE10 = {
 			isa = PBXGroup;
 			children = (
-				2DCE2AA9226DA3CF003B82FA /* CareKit.xcodeproj */,
+				2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */,
 				2DCE2A832268521E003B82FA /* Util */,
 				2D5865C121EE72860071DE10 /* CustomUI */,
 				2D5865B321ED03F50071DE10 /* Controllers */,
@@ -278,11 +278,11 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		2DCE2AAA226DA3CF003B82FA /* Products */ = {
+		2DCE2AD7226F9098003B82FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2DCE2AB0226DA3CF003B82FA /* CareKit.framework */,
-				2DCE2AB2226DA3CF003B82FA /* CareKitTests.xctest */,
+				2DCE2ADD226F9098003B82FA /* CareKit.framework */,
+				2DCE2ADF226F9098003B82FA /* CareKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,7 +327,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				2DCE2AB6226DA3F2003B82FA /* PBXTargetDependency */,
+				2DCE2AE3226F90A5003B82FA /* PBXTargetDependency */,
 			);
 			name = Talaris;
 			productName = Talaris;
@@ -413,8 +413,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2DCE2AAA226DA3CF003B82FA /* Products */;
-					ProjectRef = 2DCE2AA9226DA3CF003B82FA /* CareKit.xcodeproj */;
+					ProductGroup = 2DCE2AD7226F9098003B82FA /* Products */;
+					ProjectRef = 2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -427,18 +427,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2DCE2AB0226DA3CF003B82FA /* CareKit.framework */ = {
+		2DCE2ADD226F9098003B82FA /* CareKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CareKit.framework;
-			remoteRef = 2DCE2AAF226DA3CF003B82FA /* PBXContainerItemProxy */;
+			remoteRef = 2DCE2ADC226F9098003B82FA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2DCE2AB2226DA3CF003B82FA /* CareKitTests.xctest */ = {
+		2DCE2ADF226F9098003B82FA /* CareKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = CareKitTests.xctest;
-			remoteRef = 2DCE2AB1226DA3CF003B82FA /* PBXContainerItemProxy */;
+			remoteRef = 2DCE2ADE226F9098003B82FA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -626,10 +626,10 @@
 			target = 2D58658121ECFD1C0071DE10 /* Talaris */;
 			targetProxy = 2D5865A221ECFD1D0071DE10 /* PBXContainerItemProxy */;
 		};
-		2DCE2AB6226DA3F2003B82FA /* PBXTargetDependency */ = {
+		2DCE2AE3226F90A5003B82FA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CareKit;
-			targetProxy = 2DCE2AB5226DA3F2003B82FA /* PBXContainerItemProxy */;
+			targetProxy = 2DCE2AE2226F90A5003B82FA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
