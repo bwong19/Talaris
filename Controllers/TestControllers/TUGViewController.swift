@@ -136,7 +136,11 @@ class TUGViewController: UIViewController {
         self.motionManager.stopMagnetometerUpdates()
         self.motionTimer.invalidate()
         
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", counter, sit2stand), motionTracker:self.motionTracker, testType: "TUG"), animated: true)
+        let resultsDict  = ["tug_time" : counter, "sit_to_stand_time" : sit2stand]
+        
+        let cv = CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", counter, sit2stand), resultsDict : resultsDict, motionTracker:self.motionTracker, testType: "TUG")
+        
+        self.navigationController!.pushViewController(cv, animated: true)
         
     }
     

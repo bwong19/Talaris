@@ -13,6 +13,7 @@ import FirebaseDatabase
 
 class MotionTracker : NSObject, CLLocationManagerDelegate {
     let ref : DatabaseReference!
+    let DB_STORE_NAME = "temp_test_data"
 
     var accelData : [Dictionary<String, Double>]         // acceleration measured in G's
     var rotData : [Dictionary<String, Double>]           // rotation rate measured in radians/sec
@@ -106,8 +107,8 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
     }
     
     
-    func saveAndClearData(testName: String) {
-        let dataDict : Dictionary<String, Any> = [
+    func saveAndClearData(testName: String, testResults : Dictionary<String, Any>? = nil) {
+        var dataDict : Dictionary<String, Any> = [
             "sampling_rate": self.samplingRate,
             "acceleration": self.accelData,
             "rotation_rate": self.rotData,
@@ -117,8 +118,16 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
             "azimuth": self.azimuthData
         ]
         
-        self.ref.child("temp_test_data").child("\(testName)_\(self.getDatetime())").setValue(dataDict)
+        if let resultsDict = testResults {
+            resultsDict.forEach { key_val_pair in dataDict[key_val_pair.key] = key_val_pair.value }
+        }
         
+        self.ref.child(DB_STORE_NAME).child("\(testName)_\(self.getDatetime())").setValue(dataDict)
+        
+        self.clearData()
+    }
+    
+    func clearData() {
         self.accelData.removeAll()
         self.rotData.removeAll()
         self.magfieldData.removeAll()

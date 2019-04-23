@@ -169,7 +169,10 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         self.ref.child("azimuth_test").setValue(azimuthData)
         self.ref.child("processed_azimuth_test").setValue(processedAzimuthData)
         
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d", res.1, res.0), motionTracker:self.motionTracker, testType: "6MWT"), animated: true)
+        let resultsDict  : [String : Any] = ["6mwt_distance" : res.1, "turn_count" : res.0] 
+        
+        let cv = CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d", res.1, res.0), resultsDict : resultsDict, motionTracker:self.motionTracker, testType: "6MWT")
+        self.navigationController!.pushViewController(cv, animated: true)
         
     }
     

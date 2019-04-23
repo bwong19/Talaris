@@ -111,7 +111,7 @@ class SignUpViewController: UIViewController {
                 Auth.auth().signIn(withEmail: self.emailTextField.text!,
                                    password: self.passwordTextField.text!)
                 
-                self.navigationController!.pushViewController(CareKitTabsViewController(), animated: true)
+                self.navigationController!.pushViewController(CareKitTabsViewController(user: user!.user), animated: true)
             } else {
                 let message = error?.localizedDescription
                 let alert = UIAlertController(title: "Sign up Error", message: message, preferredStyle : .alert)

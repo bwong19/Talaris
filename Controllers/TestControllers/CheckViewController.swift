@@ -14,11 +14,13 @@ class CheckViewController: UIViewController {
     var message: String?
     var motionTracker : MotionTracker?
     var testType : String?
+    var resultsDict : Dictionary<String, Any>?
     fileprivate let carePlanStoreManager = CarePlanStoreManager.sharedCarePlanStoreManager
     
-    public init(message: String, motionTracker : MotionTracker? = nil, testType : String? = nil) {
+    public init(message: String, resultsDict : Dictionary<String, Any>? = nil, motionTracker : MotionTracker? = nil, testType : String? = nil) {
         super.init(nibName: nil, bundle: nil)
         self.message = message
+        self.resultsDict = resultsDict
         self.motionTracker = motionTracker
         self.testType = testType
     }

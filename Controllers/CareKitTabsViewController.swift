@@ -8,40 +8,51 @@
 
 import UIKit
 import CareKit
+import Firebase
+import FirebaseDatabase
+
 
 class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewControllerDelegate, UITabBarControllerDelegate
  {
     fileprivate let carePlanStoreManager = CarePlanStoreManager.sharedCarePlanStoreManager
     fileprivate let carePlanData: CarePlanData
     static var gaitTrackerViewController : OCKSymptomTrackerViewController? = nil
-
+    var user : User? = nil
+    
     required init?(coder aDecoder: NSCoder) {
         carePlanData = CarePlanData(carePlanStore: carePlanStoreManager.store)
         super.init(coder: aDecoder)
     }
     
-    public init() {
+    public init(user : User) {
         carePlanData = CarePlanData(carePlanStore: carePlanStoreManager.store)
+        self.user = user
         super.init(nibName: nil, bundle: nil)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         self.navigationItem.hidesBackButton = true
 
-        let gaitTrackerStack = createGaitTrackerStack()
-        let profileStack = createProfileStack()
-        let connectStack = createConnectStack()
-        let settingsStack = createSettingsStack()
-
-        let tabBarList = [gaitTrackerStack, profileStack, connectStack, settingsStack]
-        
-        self.viewControllers = tabBarList.map {
-            UINavigationController(rootViewController: $0)
-        }
-
-        self.title = self.selectedViewController?.tabBarItem.title
+        guard let user = self.user else { return }
+        let ref = Database.database().reference().child("users").child(user.uid)
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            let userNameInfo = snapshot.value as! Dictionary<String, String>
+            let gaitTrackerStack = self.createGaitTrackerStack()
+            let profileStack = self.createProfileStack()
+            let connectStack = self.createConnectStack(userInfo: userNameInfo)
+            let settingsStack = self.createSettingsStack()
+            
+            let tabBarList = [gaitTrackerStack, profileStack, connectStack, settingsStack]
+            
+            self.viewControllers = tabBarList.map {
+                UINavigationController(rootViewController: $0)
+            }
+            
+            self.title = self.selectedViewController?.tabBarItem.title
+        })
     }
     
     fileprivate func createGaitTrackerStack() -> UIViewController {
@@ -63,9 +74,15 @@ class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewContro
         return viewController
     }
     
-    fileprivate func createConnectStack() -> UIViewController {
+    fileprivate func createConnectStack(userInfo : Dictionary<String, Any>) -> UIViewController {
         let viewController = OCKConnectViewController(contacts: carePlanData.contacts)
-        viewController.patient = OCKPatient(identifier: "Taha Baig", carePlanStore: carePlanStoreManager.store, name: "Taha Baig", detailInfo: nil, careTeamContacts: nil, tintColor: nil, monogram: "TB", image: nil, categories: nil, userInfo: nil)
+        
+        let firstName : String =  userInfo["first-name"] as! String
+        let lastName : String =  userInfo["last-name"] as! String
+        let fullName = "\(firstName) \(lastName)"
+        let monogram = "\(firstName.prefix(1))\(lastName.prefix(1))"
+        
+        viewController.patient = OCKPatient(identifier: fullName, carePlanStore: carePlanStoreManager.store, name: fullName, detailInfo: nil, careTeamContacts: nil, tintColor: nil, monogram: monogram, image: nil, categories: nil, userInfo: nil)
         viewController.tabBarItem = UITabBarItem(title: "Connect", image: UIImage(named: "Connect-OFF"), selectedImage: UIImage.init(named: "Connect-ON"))
         return viewController
     }

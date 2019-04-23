@@ -17,7 +17,7 @@ class CheckAuthViewController: UIViewController {
         
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
-                self.navigationController!.pushViewController(CareKitTabsViewController(), animated: false)
+                self.navigationController!.pushViewController(CareKitTabsViewController(user:user!), animated: false)
             } else {
                 self.navigationController!.pushViewController(LoginViewController(), animated: false)
             }
