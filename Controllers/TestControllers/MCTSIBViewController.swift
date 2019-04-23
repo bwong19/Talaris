@@ -119,7 +119,10 @@ class MCTSIBViewController: UIViewController, AVSpeechSynthesizerDelegate {
         self.view.backgroundColor = .white
         print(self.timelist)
         
-        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your score is %.1lf/30", self.timelist.reduce(0, +)), motionTracker:self.motionTracker, testType: "MCTSIB"), animated: true)
+        let score = self.timelist.reduce(0, +)
+        let resultsDict  : [String : Any] = ["score" : score, "max_score" : 30]
+
+        self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your score is %.1lf/30", score), resultsDict: resultsDict, motionTracker:self.motionTracker, testType: "MCTSIB"), animated: true)
         
     }
     
