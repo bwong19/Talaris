@@ -38,7 +38,7 @@ class CarePlanData: NSObject {
                         title: "Timed Up and Go (TUG)",
                         text: "This test measures speed",
                         tintColor: UIColor.green,
-                        resultResettable: false,
+                        resultResettable: true,
                         schedule: CarePlanData.dailyScheduleRepeating(occurencesPerDay: 1), optional: false)
         
         let sixmwtTest = OCKCarePlanActivity
@@ -47,7 +47,7 @@ class CarePlanData: NSObject {
                         title: "Six Minute Walk Test (6MWT)",
                         text: "This test measures endurance",
                         tintColor: UIColor.orange,
-                        resultResettable: false,
+                        resultResettable: true,
                         schedule: CarePlanData.dailyScheduleRepeating(occurencesPerDay: 1), optional: false)
         
         let mctsibTest = OCKCarePlanActivity
@@ -56,7 +56,7 @@ class CarePlanData: NSObject {
                         title: "Sway Test (mCTSIB)",
                         text: "This test measures balance",
                         tintColor: UIColor.orange,
-                        resultResettable: false,
+                        resultResettable: true,
                         schedule: CarePlanData.dailyScheduleRepeating(occurencesPerDay: 1), optional: false)
         
         super.init()

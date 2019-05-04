@@ -30,6 +30,7 @@
 		2DCE2AC6226E07A7003B82FA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */; };
 		2DCE2AE0226F90A5003B82FA /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE2ADD226F9098003B82FA /* CareKit.framework */; };
 		2DCE2AE1226F90A5003B82FA /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE2ADD226F9098003B82FA /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2DCE2AF0227E262C003B82FA /* TestInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2AEF227E262C003B82FA /* TestInProgressView.swift */; };
 		39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
@@ -122,6 +123,7 @@
 		2DCE2ABE226DB507003B82FA /* NSDateComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDateComponents.swift; sourceTree = "<group>"; };
 		2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CareKit.xcodeproj; path = "CareKit-stable/CareKit.xcodeproj"; sourceTree = "<group>"; };
+		2DCE2AEF227E262C003B82FA /* TestInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInProgressView.swift; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTSIBViewController.swift; sourceTree = "<group>"; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				2D5865C221EE72A00071DE10 /* CustomButton.swift */,
+				2DCE2AEF227E262C003B82FA /* TestInProgressView.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -494,6 +498,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -581,6 +586,7 @@
 				2DCE2ABB226DA55A003B82FA /* CarePlanStoreManager.swift in Sources */,
 				2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */,
 				2DCE2AC6226E07A7003B82FA /* SettingsViewController.swift in Sources */,
+				2DCE2AF0227E262C003B82FA /* TestInProgressView.swift in Sources */,
 				2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */,
 				3986DFFF21F1167A00A61F1C /* SwayViewController.swift in Sources */,
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,

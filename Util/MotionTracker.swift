@@ -115,7 +115,8 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
             "magnetic_field": self.magfieldData,
             "attitude_euler": self.attitudeData,
             "attitude_quaternion": self.quatData,
-            "azimuth": self.azimuthData
+            "azimuth": self.azimuthData,
+            "correctedAzimuth": SIXMWTViewController.processAzimuthData(azimuthData: self.azimuthData)
         ]
         
         if let resultsDict = testResults {

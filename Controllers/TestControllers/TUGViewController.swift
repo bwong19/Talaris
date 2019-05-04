@@ -10,14 +10,11 @@ import UIKit
 import CoreMotion
 import AVFoundation
 
-
 class TUGViewController: UIViewController {
     var timer = Timer()
     var counter = 0.0
     var sit2stand = 0.0
     var stand2sit = 0.0
-    let timeLabel = UILabel()
-    let image = UIImageView()
     
     let motionManager = CMMotionManager()
     let sampling_rate = 10.0
@@ -28,46 +25,20 @@ class TUGViewController: UIViewController {
     
     let motionTracker : MotionTracker = MotionTracker(samplingRate: 10.0)
     
-//    let angleLabel = UILabel()
-    
     let soundCode = 1005
     var hasStoodUp = false
     var walking = true
     
+    var testInProgressView : TestInProgressView!
+    
+    override func loadView() {
+        testInProgressView = TestInProgressView(includeDataLabel: false)
+        view = testInProgressView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         self.navigationItem.hidesBackButton = true
-
-        
-        // timer time label
-        self.timeLabel.text = "0.0s"
-//        self.timeLabel.font = timeLabel.font.withSize(72)
-        self.timeLabel.font = UIFont(name: "HelveticaNeue-UltraLight", size: 72)
-        self.timeLabel.adjustsFontSizeToFitWidth = true
-        self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(self.timeLabel)
-        self.timeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.timeLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: self.view.frame.height / 6).isActive = true
-        
-        // angle label
-//        self.angleLabel.text = ""
-//        self.angleLabel.font = timeLabel.font.withSize(36)
-//        self.angleLabel.adjustsFontSizeToFitWidth = true
-//        self.angleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(self.angleLabel)
-//        self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
-        
-        
-        image.image = UIImage(named: "phone_pocket")
-        image.translatesAutoresizingMaskIntoConstraints = false
-        //        image.backgroundColor = UIColor(red:182/255, green:223/255, blue:1, alpha:1.0)
-        view.addSubview(image)
-        image.widthAnchor.constraint(equalToConstant: view.frame.width/2).isActive = true
-        image.heightAnchor.constraint(equalToConstant: view.frame.width/2).isActive = true
-        image.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-        image.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20).isActive = true
         
         let synthesizer = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: "Place the phone in your pocket")
@@ -94,9 +65,8 @@ class TUGViewController: UIViewController {
         utterance.rate = 0.4
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         synthesizer.speak(utterance)
+        self.testInProgressView.activityIndicatorView.startAnimating()
         
-        
-        self.view.backgroundColor = .green
         // start timer
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         self.counter  = 0.0
@@ -146,14 +116,14 @@ class TUGViewController: UIViewController {
     
     @objc func updateTimer() {
         self.counter += 0.1
-        self.timeLabel.text = String(format: "%.1fs", counter)
+        self.testInProgressView.timeLabel.text = String(format: "%.1fs", counter)
     }
     
     @objc func getData() {
         
         if let pitch = motionManager.deviceMotion?.attitude.pitch {
             
-//            self.angleLabel.text = "\(pitch)"
+//            self.dataLabel.text = "\(pitch)"
             
             if ((pitch >= 1.0 || pitch <= -1.0) && hasStoodUp == false) {
                 sit2stand = counter
@@ -162,7 +132,7 @@ class TUGViewController: UIViewController {
             }
             
             
-            if (pitch >= -0.5 && pitch <= 0.5 && hasStoodUp) {
+            if (pitch >= -0.4 && pitch <= 0.4 && hasStoodUp) {
                 stopTest()
                 return
             }
@@ -186,4 +156,5 @@ class TUGViewController: UIViewController {
             self.magfieldData.append(magfieldDict)
         }
     }
+    
 }

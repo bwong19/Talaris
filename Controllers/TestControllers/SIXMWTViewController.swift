@@ -14,7 +14,6 @@ import FirebaseDatabase
 class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     var timer = Timer()
     var counter = 0.0
-    let timeLabel = UILabel()
     var ref : DatabaseReference!
     
     let testDuration = 360.0 // in seconds
@@ -23,8 +22,6 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
 
     var motionTimer = Timer()
     
-    let angleLabel = UILabel()
-    
     let soundCode = 1005
     
     var lm = CLLocationManager()
@@ -32,8 +29,10 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     let sampling_rate = 10.0
     var curAzimuth = -1.0
     var azimuthData : [Double] = []
-    let threshold = 100.0
+    static let threshold = 100.0
     var turnaroundDistace : Double
+    
+    var testInProgressView : TestInProgressView!
     
     public init(turnaroundDistance: Double) {
         self.turnaroundDistace = turnaroundDistance
@@ -45,30 +44,19 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         super.init(coder: aDecoder)
     }
     
+    override func loadView() {
+        testInProgressView = TestInProgressView(includeDataLabel: false)
+        view = testInProgressView
+    }
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         self.ref = Database.database().reference()
         UIApplication.shared.isIdleTimerDisabled = true
-        super.viewDidLoad()
+        
         self.view.backgroundColor = .white
         self.navigationItem.hidesBackButton = true
-        
-        // timer time label
-        self.timeLabel.text = "0.0s"
-        self.timeLabel.font = timeLabel.font.withSize(72)
-        self.timeLabel.adjustsFontSizeToFitWidth = true
-        self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(self.timeLabel)
-        self.timeLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.timeLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -self.view.frame.height / 6).isActive = true
-        
-        // angle label
-        self.angleLabel.text = ""
-        self.angleLabel.font = timeLabel.font.withSize(36)
-        self.angleLabel.adjustsFontSizeToFitWidth = true
-        self.angleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(self.angleLabel)
-        self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             self.startTest()
@@ -78,6 +66,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     
     func startTest() {
         //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+        self.testInProgressView.activityIndicatorView.startAnimating()
         
         let synthesizer = AVSpeechSynthesizer()
         let utterance = AVSpeechUtterance(string: "Start walking")
@@ -85,7 +74,6 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         synthesizer.speak(utterance)
         
-        self.view.backgroundColor = .green
         // start timer
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
         self.counter  = 0.0
@@ -96,7 +84,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         self.motionTimer = Timer.scheduledTimer(timeInterval: 1 / self.sampling_rate, target: self, selector: #selector(self.getData), userInfo: nil, repeats: true)
     }
     
-    func processAzimuthData(azimuthData: [Double]) -> [Double] {
+    static func processAzimuthData(azimuthData: [Double]) -> [Double] {
         var processedData = azimuthData
         for i in 0..<(azimuthData.count - 1) {
             let diff = abs(processedData[i] - processedData[i + 1])
@@ -130,7 +118,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
             let endIndex = min(azimuthData.count - 1, startIndex + Int(3 * self.sampling_rate))
             
             let delta = abs(azimuthData[endIndex] - azimuthData[startIndex])
-            if (delta >= 100) {
+            if (delta >= 150) {
                 turnCount += 1
                 startIndex = endIndex + 1
                 lastTurnIndex = startIndex
@@ -164,7 +152,7 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
         
         self.view.backgroundColor = .white
 
-        let processedAzimuthData = self.processAzimuthData(azimuthData: self.azimuthData)
+        let processedAzimuthData = SIXMWTViewController.processAzimuthData(azimuthData: self.azimuthData)
         let res = getRotationCount(azimuthData: processedAzimuthData)
         self.ref.child("azimuth_test").setValue(azimuthData)
         self.ref.child("processed_azimuth_test").setValue(processedAzimuthData)
@@ -177,13 +165,12 @@ class SIXMWTViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        //self.angleLabel.text = "\(newHeading.trueHeading)"
         self.curAzimuth = newHeading.trueHeading
     }
     
     @objc func updateTimer() {
         self.counter += 0.1
-        self.timeLabel.text = String(format: "%.0fs", counter)
+        self.testInProgressView.timeLabel.text = String(format: "%.1fs", counter)
     }
     
     @objc func getData() {
