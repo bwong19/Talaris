@@ -17,8 +17,6 @@
 		2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865B421ED04330071DE10 /* LoginViewController.swift */; };
 		2D5865B721ED089E0071DE10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */; };
 		2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865B921ED2B480071DE10 /* SignUpViewController.swift */; };
-		2D5865BE21ED3C620071DE10 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865BD21ED3C620071DE10 /* TestViewController.swift */; };
-		2D5865C021ED3C7B0071DE10 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */; };
 		2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C221EE72A00071DE10 /* CustomButton.swift */; };
 		2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */; };
 		2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */; };
@@ -31,11 +29,12 @@
 		2DCE2AE0226F90A5003B82FA /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE2ADD226F9098003B82FA /* CareKit.framework */; };
 		2DCE2AE1226F90A5003B82FA /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCE2ADD226F9098003B82FA /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DCE2AF0227E262C003B82FA /* TestInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2AEF227E262C003B82FA /* TestInProgressView.swift */; };
+		2DFDB3272284E47000363C57 /* PhoneVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFDB3262284E47000363C57 /* PhoneVoice.swift */; };
+		2DFDB32B2284EAD500363C57 /* GaitTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFDB32A2284EAD500363C57 /* GaitTestViewController.swift */; };
 		39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */; };
 		394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394826FE21EE4B9100EF8A14 /* TUGViewController.swift */; };
 		3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3948270021EE6B3700EF8A14 /* CheckViewController.swift */; };
 		3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */; };
-		3986DFFF21F1167A00A61F1C /* SwayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFE21F1167A00A61F1C /* SwayViewController.swift */; };
 		8258B885026E068700594270 /* Pods_TalarisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */; };
 		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
@@ -111,8 +110,6 @@
 		2D5865B621ED089E0071DE10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D5865B821ED17BB0071DE10 /* Talaris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Talaris.entitlements; sourceTree = "<group>"; };
 		2D5865B921ED2B480071DE10 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		2D5865BD21ED3C620071DE10 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		2D5865C221EE72A00071DE10 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGraphsViewController.swift; sourceTree = "<group>"; };
 		2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
@@ -124,12 +121,13 @@
 		2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CareKit.xcodeproj; path = "CareKit-stable/CareKit.xcodeproj"; sourceTree = "<group>"; };
 		2DCE2AEF227E262C003B82FA /* TestInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInProgressView.swift; sourceTree = "<group>"; };
+		2DFDB3262284E47000363C57 /* PhoneVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVoice.swift; sourceTree = "<group>"; };
+		2DFDB32A2284EAD500363C57 /* GaitTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaitTestViewController.swift; sourceTree = "<group>"; };
 		353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTSIBViewController.swift; sourceTree = "<group>"; };
 		394826FE21EE4B9100EF8A14 /* TUGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUGViewController.swift; sourceTree = "<group>"; };
 		3948270021EE6B3700EF8A14 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIXMWTViewController.swift; sourceTree = "<group>"; };
-		3986DFFE21F1167A00A61F1C /* SwayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwayViewController.swift; sourceTree = "<group>"; };
 		498A44F65E08C6A38E13E3D7 /* Pods-TalarisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisUITests/Pods-TalarisUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		51D8D05E3BD985FFE212A6D3 /* Pods-TalarisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisTests/Pods-TalarisTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				2DCE2AD6226F9098003B82FA /* CareKit.xcodeproj */,
+				2DCE2AFE22846F5A003B82FA /* CarePlan */,
 				2DCE2A832268521E003B82FA /* Util */,
 				2D5865C121EE72860071DE10 /* CustomUI */,
 				2D5865B321ED03F50071DE10 /* Controllers */,
@@ -228,12 +227,9 @@
 		2D5865B321ED03F50071DE10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2DFDB32522847B5200363C57 /* CareKitTabsControllers */,
 				2D5865C721F65CD00071DE10 /* LoginControllers */,
-				2D5865C621F65CA10071DE10 /* TestControllers */,
-				2D5865BF21ED3C7A0071DE10 /* WelcomeViewController.swift */,
-				2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */,
-				2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */,
-				2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */,
+				2D5865C621F65CA10071DE10 /* GaitTestControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -247,17 +243,16 @@
 			path = CustomUI;
 			sourceTree = "<group>";
 		};
-		2D5865C621F65CA10071DE10 /* TestControllers */ = {
+		2D5865C621F65CA10071DE10 /* GaitTestControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2D5865BD21ED3C620071DE10 /* TestViewController.swift */,
 				3948270021EE6B3700EF8A14 /* CheckViewController.swift */,
 				394826FE21EE4B9100EF8A14 /* TUGViewController.swift */,
-				3986DFFE21F1167A00A61F1C /* SwayViewController.swift */,
 				3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */,
 				39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */,
+				2DFDB32A2284EAD500363C57 /* GaitTestViewController.swift */,
 			);
-			path = TestControllers;
+			path = GaitTestControllers;
 			sourceTree = "<group>";
 		};
 		2D5865C721F65CD00071DE10 /* LoginControllers */ = {
@@ -274,9 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				2DCE2A8422685240003B82FA /* MotionTracker.swift */,
-				2DCE2ABA226DA55A003B82FA /* CarePlanStoreManager.swift */,
-				2DCE2ABC226DB2C8003B82FA /* CarePlanData.swift */,
 				2DCE2ABE226DB507003B82FA /* NSDateComponents.swift */,
+				2DFDB3262284E47000363C57 /* PhoneVoice.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -288,6 +282,25 @@
 				2DCE2ADF226F9098003B82FA /* CareKitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2DCE2AFE22846F5A003B82FA /* CarePlan */ = {
+			isa = PBXGroup;
+			children = (
+				2DCE2ABA226DA55A003B82FA /* CarePlanStoreManager.swift */,
+				2DCE2ABC226DB2C8003B82FA /* CarePlanData.swift */,
+			);
+			path = CarePlan;
+			sourceTree = "<group>";
+		};
+		2DFDB32522847B5200363C57 /* CareKitTabsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */,
+				2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */,
+				2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */,
+			);
+			path = CareKitTabsControllers;
 			sourceTree = "<group>";
 		};
 		413F4DAD2AE8BB2ADE7C743F /* Frameworks */ = {
@@ -580,23 +593,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D5865BE21ED3C620071DE10 /* TestViewController.swift in Sources */,
 				3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */,
 				3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */,
 				2DCE2ABB226DA55A003B82FA /* CarePlanStoreManager.swift in Sources */,
 				2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */,
 				2DCE2AC6226E07A7003B82FA /* SettingsViewController.swift in Sources */,
+				2DFDB3272284E47000363C57 /* PhoneVoice.swift in Sources */,
 				2DCE2AF0227E262C003B82FA /* TestInProgressView.swift in Sources */,
 				2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */,
-				3986DFFF21F1167A00A61F1C /* SwayViewController.swift in Sources */,
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
 				2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */,
 				2DCE2ABD226DB2C8003B82FA /* CarePlanData.swift in Sources */,
-				2D5865C021ED3C7B0071DE10 /* WelcomeViewController.swift in Sources */,
 				39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */,
 				394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */,
 				2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */,
 				2DCE2A8522685240003B82FA /* MotionTracker.swift in Sources */,
+				2DFDB32B2284EAD500363C57 /* GaitTestViewController.swift in Sources */,
 				2DCE2AB9226DA482003B82FA /* CareKitTabsViewController.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
 				2DCE2ABF226DB507003B82FA /* NSDateComponents.swift in Sources */,
@@ -784,14 +796,14 @@
 				CODE_SIGN_ENTITLEMENTS = Talaris/Talaris.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FB67CJSS59;
+				DEVELOPMENT_TEAM = 7W2989TXA5;
 				INFOPLIST_FILE = Talaris/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -808,14 +820,14 @@
 				CODE_SIGN_ENTITLEMENTS = Talaris/Talaris.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FB67CJSS59;
+				DEVELOPMENT_TEAM = 7W2989TXA5;
 				INFOPLIST_FILE = Talaris/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

@@ -1,6 +1,6 @@
 import CareKit
 
-enum GaitTest: String {
+enum GaitTestType: String {
     case tug = "Timed Up and Go"
     case sixmwt = "Six Minute Walk Test"
     case mctsib = "Sway Test"
@@ -33,7 +33,7 @@ class CarePlanData: NSObject {
         self.carePlanStore = carePlanStore
         
         let tugTest = OCKCarePlanActivity
-            .assessment(withIdentifier: GaitTest.tug.rawValue,
+            .assessment(withIdentifier: GaitTestType.tug.rawValue,
                         groupIdentifier: nil,
                         title: "Timed Up and Go (TUG)",
                         text: "This test measures speed",
@@ -42,7 +42,7 @@ class CarePlanData: NSObject {
                         schedule: CarePlanData.dailyScheduleRepeating(occurencesPerDay: 1), optional: false)
         
         let sixmwtTest = OCKCarePlanActivity
-            .assessment(withIdentifier: GaitTest.sixmwt.rawValue,
+            .assessment(withIdentifier: GaitTestType.sixmwt.rawValue,
                         groupIdentifier: nil,
                         title: "Six Minute Walk Test (6MWT)",
                         text: "This test measures endurance",
@@ -51,7 +51,7 @@ class CarePlanData: NSObject {
                         schedule: CarePlanData.dailyScheduleRepeating(occurencesPerDay: 1), optional: false)
         
         let mctsibTest = OCKCarePlanActivity
-            .assessment(withIdentifier: GaitTest.mctsib.rawValue,
+            .assessment(withIdentifier: GaitTestType.mctsib.rawValue,
                         groupIdentifier: nil,
                         title: "Sway Test (mCTSIB)",
                         text: "This test measures balance",

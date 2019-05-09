@@ -9,17 +9,30 @@
 import UIKit
 import Firebase
 
+// Allows users to login if they haven't logged in before or if they have just logged out
+// Skipped over if user is already logged in
 class LoginViewController: UIViewController {
-    let emailTextField = UITextField()
-    let passwordTextField = UITextField()
+    private let emailTextField: UITextField
+    private let passwordTextField: UITextField
+    
+    init() {
+        emailTextField = UITextField()
+        passwordTextField = UITextField()
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) is not supported")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)
         
         // central stackview
         let loginStackView = UIStackView()
@@ -27,11 +40,11 @@ class LoginViewController: UIViewController {
         loginStackView.axis = .vertical
         loginStackView.spacing = 10
         loginStackView.distribution = .fillEqually
-        self.view.addSubview(loginStackView)
-        loginStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-        loginStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
-        loginStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
-        loginStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
+        view.addSubview(loginStackView)
+        loginStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        loginStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        loginStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        loginStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         
         // app name/logo
         let appLabel = UILabel()
@@ -54,7 +67,7 @@ class LoginViewController: UIViewController {
         emailTextField.layer.cornerRadius = 5.0
         emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
         loginStackView.addArrangedSubview(emailTextField)
-        emailTextField.heightAnchor.constraint(equalToConstant: 0.05 * self.view.frame.height).isActive = true
+        emailTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
         
         // password input
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +80,7 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.cornerRadius = 5.0
         passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
         loginStackView.addArrangedSubview(passwordTextField)
-        passwordTextField.heightAnchor.constraint(equalToConstant: 0.05 * self.view.frame.height).isActive = true
+        passwordTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
         
         // login button
         let loginButton = CustomButton()
@@ -90,9 +103,8 @@ class LoginViewController: UIViewController {
         loginStackView.addArrangedSubview(signupButton)
     }
     
-    @objc func login() {
-        Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { user, error in
-            
+    @objc private func login() {
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { user, error in
             if user != nil {
                 self.navigationController!.pushViewController(CareKitTabsViewController(user: user!.user), animated: true)
             } else {
@@ -105,7 +117,7 @@ class LoginViewController: UIViewController {
         }
     }
 
-    @objc func signup() {
+    @objc private func signup() {
         self.navigationController!.pushViewController(SignUpViewController(), animated: true)
     }
     
@@ -119,14 +131,5 @@ class LoginViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

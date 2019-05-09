@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+// Determines if user is already logged in or not, if yes then navigates user to home screen of app, otherwise to login screen
 class CheckAuthViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -22,20 +23,6 @@ class CheckAuthViewController: UIViewController {
                 self.navigationController!.pushViewController(LoginViewController(), animated: false)
             }
         }
-        
-        
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

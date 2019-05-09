@@ -10,22 +10,39 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+// Allows users to create a new account and login
 class SignUpViewController: UIViewController {
-    var ref : DatabaseReference!
-    let emailTextField = UITextField()
-    let passwordTextField = UITextField()
-    let firstNameTextField = UITextField()
-    let lastNameTextField = UITextField()
-
+    private let ref: DatabaseReference
+    
+    private let emailTextField: UITextField
+    private let passwordTextField: UITextField
+    private let firstNameTextField: UITextField
+    private let lastNameTextField: UITextField
+    
+    init() {
+        ref = Database.database().reference()
+        
+        emailTextField = UITextField()
+        passwordTextField = UITextField()
+        firstNameTextField = UITextField()
+        lastNameTextField = UITextField()
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) is not supported")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
-        self.navigationItem.title = "Sign Up"
-        self.ref = Database.database().reference()
+        
+        view.backgroundColor = .white
+        navigationItem.title = "Sign Up"
 
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)
         
         // central stackview
         let signupStackView = UIStackView()
@@ -33,11 +50,11 @@ class SignUpViewController: UIViewController {
         signupStackView.axis = .vertical
         signupStackView.spacing = 10
         signupStackView.distribution = .fillEqually
-        self.view.addSubview(signupStackView)
-        signupStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
-        signupStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
-        signupStackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
-        signupStackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
+        view.addSubview(signupStackView)
+        signupStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        signupStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        signupStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        signupStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         
         // email input
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +67,7 @@ class SignUpViewController: UIViewController {
         emailTextField.layer.cornerRadius = 5.0
         emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
         signupStackView.addArrangedSubview(emailTextField)
-        emailTextField.heightAnchor.constraint(equalToConstant: 0.05 * self.view.frame.height).isActive = true
+        emailTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
         
         // password input
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +80,7 @@ class SignUpViewController: UIViewController {
         passwordTextField.layer.cornerRadius = 5.0
         passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
         signupStackView.addArrangedSubview(passwordTextField)
-        passwordTextField.heightAnchor.constraint(equalToConstant: 0.05 * self.view.frame.height).isActive = true
+        passwordTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
         
         // first name input
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +92,7 @@ class SignUpViewController: UIViewController {
         firstNameTextField.layer.cornerRadius = 5.0
         firstNameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
         signupStackView.addArrangedSubview(firstNameTextField)
-        firstNameTextField.heightAnchor.constraint(equalToConstant: 0.05 * self.view.frame.height).isActive = true
+        firstNameTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
         
         // last name input
         lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +104,7 @@ class SignUpViewController: UIViewController {
         lastNameTextField.layer.cornerRadius = 5.0
         lastNameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
         signupStackView.addArrangedSubview(lastNameTextField)
-        lastNameTextField.heightAnchor.constraint(equalToConstant: 0.05 * self.view.frame.height).isActive = true
+        lastNameTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
         
         // signup button
         let signupButton = CustomButton()
@@ -100,10 +117,9 @@ class SignUpViewController: UIViewController {
         signupStackView.addArrangedSubview(signupButton)
     }
     
-    @objc func signup() {
-        Auth.auth().createUser(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { user, error in
+    @objc private func signup() {
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { user, error in
             if user != nil {
-                
                 let userRef = self.ref.child("users").child(user!.user.uid)
                 userRef.child("first-name").setValue(self.firstNameTextField.text!)
                 userRef.child("last-name").setValue(self.lastNameTextField.text!)
@@ -121,16 +137,6 @@ class SignUpViewController: UIViewController {
             }
         }
     }
-        
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
