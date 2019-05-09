@@ -19,7 +19,6 @@ class SwayViewController: UIViewController {
     let timeLabel = UILabel()
     var ref : DatabaseReference!
 
-    
     let motionManager = CMMotionManager()
     let sampling_rate = 10.0
     var motionTimer = Timer()
@@ -27,7 +26,7 @@ class SwayViewController: UIViewController {
     var rotData : [Dictionary<String, Double>] = []      // rotation rate measured in radians/sec
     var magfieldData : [Dictionary<String, Double>] = [] // magnetic field measured in microteslas
     
-    let angleLabel = UILabel()
+    let dataLabel = UILabel()
     
     let soundCode = 1005
     
@@ -53,13 +52,13 @@ class SwayViewController: UIViewController {
         self.timeLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -self.view.frame.height / 6).isActive = true
         
         // angle label
-        self.angleLabel.text = ""
-        self.angleLabel.font = timeLabel.font.withSize(36)
-        self.angleLabel.adjustsFontSizeToFitWidth = true
-        self.angleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(self.angleLabel)
-        self.angleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.angleLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
+        self.dataLabel.text = ""
+        self.dataLabel.font = timeLabel.font.withSize(36)
+        self.dataLabel.adjustsFontSizeToFitWidth = true
+        self.dataLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(self.dataLabel)
+        self.dataLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.dataLabel.topAnchor.constraint(equalTo: self.timeLabel.bottomAnchor, constant: 20).isActive = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
             self.startTest()
@@ -151,7 +150,7 @@ class SwayViewController: UIViewController {
         if let yaw = motionManager.deviceMotion?.attitude.yaw, let pitch = motionManager.deviceMotion?.attitude.pitch {
             
             let VM = pow((pow(yaw, 2) + pow(pitch,2)), 0.5)
-            self.angleLabel.text = "\(VM)"
+            self.dataLabel.text = "\(VM)"
             swayList.append(VM)
             if (self.counter >= self.testDuration) {
                 swayList = normalize_list(list: swayList)

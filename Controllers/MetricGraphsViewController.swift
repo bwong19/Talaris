@@ -20,7 +20,7 @@ class MetricGraphsViewController: UIViewController {
         metricsSegmentControl.translatesAutoresizingMaskIntoConstraints = false
         metricsSegmentControl.selectedSegmentIndex = 0
         self.view.addSubview(metricsSegmentControl)
-        metricsSegmentControl.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        metricsSegmentControl.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 75).isActive = true
         metricsSegmentControl.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
         metricsSegmentControl.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
         
@@ -31,7 +31,7 @@ class MetricGraphsViewController: UIViewController {
             dataPoints.append(ChartDataEntry(x: Double(i), y: Double(i) * Double(i) * Double(i)))
         }
         
-        let line1 = LineChartDataSet(values: dataPoints, label: "y = x^2")
+        let line1 = LineChartDataSet(values: dataPoints, label: "y = x^3")
         line1.colors = [.blue]
         
         let data = LineChartData(dataSet: line1)
