@@ -16,6 +16,7 @@ import FirebaseDatabase
 class MotionTracker : NSObject, CLLocationManagerDelegate {
     private let ref: DatabaseReference!
     private let DB_STORE_NAME = "temp_test_data"
+    private static let AZIMUTH_PROCESSING_THRESHOLD = 100.0
 
     let samplingRate: Double
 
@@ -30,6 +31,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
     var rotData: [Dictionary<String, Double>]           // rotation rate measured in radians/sec
     var magfieldData: [Dictionary<String, Double>]      // magnetic field measured in microteslas
     var azimuthData: [Double]                           // compass heading in degrees
+    var processedAzimuthData: [Double]
     var curAzimuth: Double
     
     //definining callback methods to get realtime motion updates
@@ -51,6 +53,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
         rotData = []
         magfieldData = []
         attitudeData = []
+        processedAzimuthData = []
         curAzimuth = -1.0
         
         super.init()
@@ -115,6 +118,8 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingHeading()
         
         motionTimer.invalidate()
+        
+        processedAzimuthData = MotionTracker.processAzimuthData(azimuthData: azimuthData)
     }
     
     
@@ -127,7 +132,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
             "attitude_euler": attitudeData,
             "attitude_quaternion": quatData,
             "azimuth": azimuthData,
-            "correctedAzimuth": SIXMWTViewController.processAzimuthData(azimuthData: azimuthData)
+            "correctedAzimuth": processedAzimuthData
         ]
         
         if let resultsDict = testResults {
@@ -146,6 +151,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
         attitudeData.removeAll()
         quatData.removeAll()
         azimuthData.removeAll()
+        processedAzimuthData.removeAll()
         curAzimuth = -1.0
     }
     
@@ -166,6 +172,29 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
         return String(format: "%04d-%02d-%02d-%02d:%02d:%02d", year, month, day, hour, minute, seconds)
     }
     
+    private static func processAzimuthData(azimuthData: [Double]) -> [Double] {
+        var processedData = azimuthData
+        for i in 0..<(azimuthData.count - 1) {
+            let diff = abs(processedData[i] - processedData[i + 1])
+            if (diff >= AZIMUTH_PROCESSING_THRESHOLD) {
+                var j = i + 1
+                if (processedData[i] > processedData[j]) {
+                    while (j < azimuthData.count && abs(processedData[i] - processedData[j]) >= AZIMUTH_PROCESSING_THRESHOLD) {
+                        processedData[j] = processedData[j] + diff
+                        j += 1
+                    }
+                } else {
+                    while (j < azimuthData.count && abs(processedData[i] - processedData[j]) >= AZIMUTH_PROCESSING_THRESHOLD) {
+                        processedData[j] = processedData[j] - diff
+                        j += 1
+                    }
+                }
+            }
+        }
+        
+        return processedData
+    }
+
     func handleAccelerationUpdate(_ callback: @escaping (CMAccelerometerData) -> ()) {
         processAccelUpdate = callback
     }

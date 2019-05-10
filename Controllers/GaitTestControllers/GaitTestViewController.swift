@@ -49,7 +49,7 @@ class GaitTestViewController: UIViewController {
     }
     
     @objc func updateTimer() {
-        counter += 0.1
+        counter += TIME_INTERVAL
         testInProgressView.timeLabel.text = String(format: "%.1fs", counter)
     }
     
