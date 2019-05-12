@@ -11,10 +11,10 @@ import CoreMotion
 import CoreLocation
 import FirebaseDatabase
 
-//MotionTracker object, records all acceleration, gyroscopic, orientation, heading, etc. data in the background
-//provides callback functions to access recorded data in real time
+// MotionTracker object, records all acceleration, gyroscopic, orientation, heading, etc. data in the background
+// provides callback functions to access recorded data in real time
 class MotionTracker : NSObject, CLLocationManagerDelegate {
-    private let ref: DatabaseReference!
+    private let ref: DatabaseReference
     private let DB_STORE_NAME = "temp_test_data"
     private static let AZIMUTH_PROCESSING_THRESHOLD = 100.0
 
@@ -24,17 +24,17 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
     private let locationManager: CLLocationManager
     private var motionTimer: Timer
     
-    //motion data storage
+    // motion data storage
     var attitudeData: [Dictionary<String, Double>]      // roll, pitch, and yaw in rads
     var quatData: [Dictionary<String, Double>]          // quaternion vector data
     var accelData: [Dictionary<String, Double>]         // acceleration measured in G's
     var rotData: [Dictionary<String, Double>]           // rotation rate measured in radians/sec
     var magfieldData: [Dictionary<String, Double>]      // magnetic field measured in microteslas
     var azimuthData: [Double]                           // compass heading in degrees
-    var processedAzimuthData: [Double]
+    var processedAzimuthData: [Double]                  // processed azimuth (smoothed data i.e. removes spikes from 0 to 360 degree jumps)
     var curAzimuth: Double
     
-    //definining callback methods to get realtime motion updates
+    // definining callback methods to get realtime motion updates
     private var processAttitudeUpdate: ((CMAttitude) -> ())?
     private var processAccelUpdate: ((CMAccelerometerData) -> ())?
     
@@ -123,7 +123,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
     }
     
     
-    func saveAndClearData(testName: String, testResults : Dictionary<String, Any>? = nil) {
+    func saveAndClearData(testName: String, testResults: Dictionary<String, Any>? = nil) {
         var dataDict : Dictionary<String, Any> = [
             "sampling_rate": samplingRate,
             "acceleration": accelData,
@@ -172,6 +172,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
         return String(format: "%04d-%02d-%02d-%02d:%02d:%02d", year, month, day, hour, minute, seconds)
     }
     
+    // smooths azimuth data i.e. removes spikes from 0 to 360 degree jumps
     private static func processAzimuthData(azimuthData: [Double]) -> [Double] {
         var processedData = azimuthData
         for i in 0..<(azimuthData.count - 1) {
@@ -195,12 +196,12 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
         return processedData
     }
 
-    func handleAccelerationUpdate(_ callback: @escaping (CMAccelerometerData) -> ()) {
-        processAccelUpdate = callback
-    }
-    
     func handleAttitudeUpdate(_ callback: @escaping (CMAttitude) -> ()) {
         processAttitudeUpdate = callback
+    }
+    
+    func handleAccelerationUpdate(_ callback: @escaping (CMAccelerometerData) -> ()) {
+        processAccelUpdate = callback
     }
     
 }

@@ -7,8 +7,9 @@ enum GaitTestType: String {
 }
 
 class CarePlanData: NSObject {
-    let carePlanStore: OCKCarePlanStore
+    private let carePlanStore: OCKCarePlanStore
     
+    // dummy data
     let contacts = [OCKContact(contactType: .careTeam,
                                name: "Columbus Ohio",
                                relation: "Therapist",

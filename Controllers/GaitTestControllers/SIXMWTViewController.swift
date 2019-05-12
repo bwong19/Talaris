@@ -16,7 +16,7 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate {
     private let SAMPLING_RATE = 10.0
     private let ROTATION_DETECTION_THRESHOLD = 150.0
 
-    private var turnaroundDistace : Double!
+    private var turnaroundDistace : Double
     
     init(turnaroundDistance: Double) {
         self.turnaroundDistace = turnaroundDistance

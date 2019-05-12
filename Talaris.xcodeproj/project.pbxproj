@@ -296,8 +296,8 @@
 		2DFDB32522847B5200363C57 /* CareKitTabsControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */,
 				2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */,
+				2DCE2AC5226E07A7003B82FA /* SettingsViewController.swift */,
 				2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */,
 			);
 			path = CareKitTabsControllers;

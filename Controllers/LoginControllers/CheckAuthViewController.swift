@@ -14,7 +14,7 @@ class CheckAuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {

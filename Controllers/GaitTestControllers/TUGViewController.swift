@@ -16,11 +16,11 @@ class TUGViewController: GaitTestViewController {
     private let STANDING_THRESHOLD = 1.0
     private let SITTING_THRESHOLD = 0.4
 
-    private var sit2stand: Double!
-    private var stand2sit: Double!
+    private var sit2stand: Double
+    private var stand2sit: Double
     
-    private var hasStoodUp: Bool!
-    private var walking: Bool!
+    private var hasStoodUp: Bool
+    private var walking: Bool
     
     init() {
         sit2stand = 0.0

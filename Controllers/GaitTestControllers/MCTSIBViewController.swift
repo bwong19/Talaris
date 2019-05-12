@@ -14,21 +14,21 @@ import FirebaseDatabase
 //Performs a single 30 second version of MCTSIB test
 //TODO: If it is decided to make a version involving 4 MCTSIB tests, build a wrapper around this that creates it 4 times with new command for each
 class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
-    private let synthesizer = AVSpeechSynthesizer()
-    private let soundCode = 1005
-
     private static let DEFAULT_COMMAND = "Place the phone at the center of your waist, Stand while keeping your eyes open, Hold the position, test starting in 5 seconds."
     private let SAMPLING_RATE = 10.0
-    
     private let SVM_THRESH = 2.0
     private let SVM_DELTA = 0.15
     private let TEST_DURATION = 30.0 // in seconds
+    
+    private let synthesizer = AVSpeechSynthesizer()
+    private let soundCode = 1005
 
-    private var finalTime: Double!
-    private var command: String!
+    private var finalTime: Double
+    private var command: String
     
     public init(command: String = DEFAULT_COMMAND) {
         self.command = command
+        finalTime = 0.0
         super.init(samplingRate: SAMPLING_RATE, includeDataLabel: false)
     }
     
@@ -75,7 +75,7 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
         
         PhoneVoice.speak(speech: "Good work!")
         
-        let score = finalTime!
+        let score = finalTime
         let resultsDict  : [String : Any] = ["score" : score, "max_score" : 30]
 
         self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your score is %.1lf/30", score), resultsDict: resultsDict, motionTracker:self.motionTracker, testType: "MCTSIB"), animated: true)        

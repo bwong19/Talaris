@@ -9,21 +9,24 @@
 import UIKit
 import Charts
 
+// Graph of results from gait tests over time, currently only with dummy data
 class MetricGraphsViewController: UIViewController {
 
     let metricsSegmentControl = UISegmentedControl(items: ["Speed", "Endurance", "Balance"])
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         
+        // segment control from switching between results of three tests
         metricsSegmentControl.translatesAutoresizingMaskIntoConstraints = false
         metricsSegmentControl.selectedSegmentIndex = 0
-        self.view.addSubview(metricsSegmentControl)
-        metricsSegmentControl.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 75).isActive = true
-        metricsSegmentControl.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
-        metricsSegmentControl.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
+        view.addSubview(metricsSegmentControl)
+        metricsSegmentControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 75).isActive = true
+        metricsSegmentControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        metricsSegmentControl.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         
+        // graph creation
         let lc = LineChartView()
         lc.translatesAutoresizingMaskIntoConstraints = false
         var dataPoints = [ChartDataEntry]()
@@ -39,22 +42,10 @@ class MetricGraphsViewController: UIViewController {
         lc.data = data
         lc.chartDescription?.text = "Test Chart"
 
-        self.view.addSubview(lc)
+        view.addSubview(lc)
         lc.topAnchor.constraint(equalTo: metricsSegmentControl.bottomAnchor, constant: 10).isActive = true
         lc.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         lc.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 10).isActive = true
         lc.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -10).isActive = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

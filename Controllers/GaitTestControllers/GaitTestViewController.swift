@@ -11,10 +11,10 @@ import UIKit
 // general purpose superclass that individual gait tests can inherit from, essentially similar to an abstract class
 class GaitTestViewController: UIViewController {
     let motionTracker: MotionTracker
-    let testInProgressView : TestInProgressView
+    let testInProgressView: TestInProgressView
     
     let TIME_INTERVAL = 0.1
-    var timer : Timer!
+    var timer: Timer!
     var counter: Double!
     
     init(samplingRate: Double, includeDataLabel: Bool = false) {

@@ -15,10 +15,11 @@ class TestInProgressView : UIView {
     let activityIndicatorView : NVActivityIndicatorView
     
     //optional data label provided for use in debugging e.g. displaying current azimuth angle as test is being performed
-    var includeDataLabel : Bool = false
+    var includeDataLabel : Bool
     var dataLabel : UILabel?
     
     init(includeDataLabel: Bool = false) {
+        self.includeDataLabel = includeDataLabel
         timeLabel = UILabel()
         activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 250, height: 250), type: .ballScaleRippleMultiple, color: UIColor(red:0.54, green:0.84, blue:0.98, alpha:1.0))
         

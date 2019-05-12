@@ -8,6 +8,7 @@
 
 import AVFoundation
 
+// convenience wrapper class to simply creation of voice commands/speech via iPhone internal speech synthesizer
 class PhoneVoice {
     private static let synthesizer = AVSpeechSynthesizer()
     
