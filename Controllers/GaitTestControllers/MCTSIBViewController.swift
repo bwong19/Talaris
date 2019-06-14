@@ -14,7 +14,7 @@ import FirebaseDatabase
 //Performs a single 30 second version of MCTSIB test
 //TODO: If it is decided to make a version involving 4 MCTSIB tests, build a wrapper around this that creates it 4 times with new command for each
 class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
-    private static let DEFAULT_COMMAND = "Place the phone at the center of your waist, Stand while keeping your eyes open, Hold the position, test starting in 5 seconds."
+    private static let DEFAULT_COMMAND = "Please secure your phone to your abdomen using the provided phone clip. If you would like to hear the instructions again, please press REPEAT. Otherwise, once the phone is secured, please stand still for at least 5 seconds."
     private let SAMPLING_RATE = 10.0
     private let SVM_THRESH = 2.0
     private let SVM_DELTA = 0.15
