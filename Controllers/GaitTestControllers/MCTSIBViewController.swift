@@ -14,7 +14,7 @@ import FirebaseDatabase
 //Performs a single 30 second version of MCTSIB test
 //TODO: If it is decided to make a version involving 4 MCTSIB tests, build a wrapper around this that creates it 4 times with new command for each
 class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
-    private static let DEFAULT_COMMAND = "Please secure your phone to your abdomen using the provided phone clip. If you would like to hear the instructions again, please press REPEAT. Otherwise, once the phone is secured, please stand still for at least 5 seconds."
+    private static let DEFAULT_COMMAND = "Place the phone at the center of your waist, Stand while keeping your eyes open, Hold the position, test starting in 5 seconds."
     private let SAMPLING_RATE = 10.0
     private let SVM_THRESH = 2.0
     private let SVM_DELTA = 0.15
@@ -57,9 +57,24 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
         
         navigationItem.hidesBackButton = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        PhoneVoice.speak(speech: "The mCTSIB is a test used to measure balance. Before you begin, please make sure you are standing comfortably on a hard surface. You will be asked to stand still for 30 seconds on a hard surface first with your eyes open, then with your eyes closed. When you are ready, please press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button.")
+        
+        // TODO: next/repeat button here
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(30)) {
+            PhoneVoice.speak(speech: "Please secure your phone to your abdomen using the provided phone clip. If you would like to hear the instructions again, please press REPEAT. Otherwise, once the phone is secured, please stand still for at least 5 seconds.") // TODO: "and clicked the NEXT button?
+        }
+        // TODO: next/repeat button here
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(60)) {
+            PhoneVoice.speak(speech: "On the words BEGIN WALKING, start walking.")
+        }
+        // TODO: next and repeat button
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(80)) {
+            PhoneVoice.speak(speech: "Ready?")
             self.startTest()
-        })
+        }
         
     }
     

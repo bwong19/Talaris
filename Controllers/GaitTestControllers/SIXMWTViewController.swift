@@ -32,25 +32,30 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate {
         
         UIApplication.shared.isIdleTimerDisabled = true
         self.navigationItem.hidesBackButton = true
-        PhoneVoice.speak(speech: "The Six Minute Walk Test is a gait assessment meant to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, if needed. After you have set up the two cones, please enter the distance between them and press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button.")
+        PhoneVoice.speak(speech: "The Six Minute Walk Test")
         
+        PhoneVoice.speak(speech: "Woah")
         
-        // TODO: next/repeat button here
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(35)) {
-            PhoneVoice.speak(speech: "Remember that the objective is to walk AS FAR AS POSSIBLE for 6 minutes, but do not run or jog. You will soon be instructed to start. Please position yourself at your starting cone, and secure your phone at your waist using the provided phone clip. If you want to repeat the instructions, please press the REPEAT button. Otherwise, once you have secured the phone to your waist, please stand still for at least 5 seconds.") // TODO: "and clicked the NEXT button?
-        }
-        // TODO: next/repeat button here
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(70)) {
-            PhoneVoice.speak(speech: "On the words BEGIN WALKING, start walking.")
-        }
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(80)) {
-            PhoneVoice.speak(speech: "Ready?")
-            self.startTest()
-        }
+        self.startTest()
+//        
+//        PhoneVoice.speak(speech: "The Six Minute Walk Test is a gait assessment meant to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, if needed. After you have set up the two cones, please enter the distance between them and press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button.")
+//        
+//        // TODO: next/repeat button here
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(35)) {
+//            PhoneVoice.speak(speech: "Remember that the objective is to walk AS FAR AS POSSIBLE for 6 minutes, but do not run or jog. You will soon be instructed to start. Please position yourself at your starting cone, and secure your phone at your waist using the provided phone clip. If you want to repeat the instructions, please press the REPEAT button. Otherwise, once you have secured the phone to your waist, please stand still for at least 5 seconds.") // TODO: "and clicked the NEXT button?
+//        }
+//        // TODO: next/repeat button here
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(70)) {
+//            PhoneVoice.speak(speech: "On the words BEGIN WALKING, start walking.")
+//        }
+//        
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(80)) {
+//            PhoneVoice.speak(speech: "Ready?")
+//            self.startTest()
+//        }
         
     }
     
