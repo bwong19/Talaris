@@ -27,15 +27,14 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     private let soundCode = 1005
     private var numUtterances = 0
     private var totalUtterances = 0
-    
-    private var speakTime: Double;
+    private var testStarted: Bool
     
     init() {
         sit2stand = 0.0
         stand2sit = 0.0
-        speakTime = 0.0
         hasStoodUp = false
         walking = false
+        testStarted = false
         
         super.init(samplingRate: SAMPLING_RATE, includeDataLabel: false)
     }
@@ -70,22 +69,20 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     }
     
     override func startTest() {
-        super.startTest()
         synthesizer.speak(getUtterance("Please sit down. Then, please secure your phone to your waist using the provided phone clip. Once the phone is secured, please sit still for at least 5 seconds. Please press “REPEAT” to repeat the instructions"))
         
         synthesizer.speak(getUtterance("On the words BEGIN WALKING, you will stand up, walk to the 3-meter mark, turn around, walk back towards the chair. and sit down. Walk at your regular pace."))
         
-        speakTime = self.counter
-        
         synthesizer.speak(getUtterance("start walking"))
+        
     }
     
     override func stopTest() {
         super.stopTest()
         synthesizer.speak(getUtterance("Good Work!"))
         
-        let resultsDict  = ["tug_time" : counter-speakTime, "sit_to_stand_time" : sit2stand]
-        let cv = CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", counter-speakTime, sit2stand), resultsDict : resultsDict as Dictionary<String, Any>, motionTracker:self.motionTracker, testType: "TUG")
+        let resultsDict  = ["tug_time" : counter, "sit_to_stand_time" : sit2stand]
+        let cv = CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds", counter, sit2stand), resultsDict : resultsDict as Dictionary<String, Any>, motionTracker:self.motionTracker, testType: "TUG")
         self.navigationController!.pushViewController(cv, animated: true)
     }
     
@@ -94,20 +91,16 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         utterance.rate = 0.4
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.postUtteranceDelay = 1
-        totalUtterances += 1
+        numUtterances += 1
         return utterance
     }
     
-    
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        numUtterances += 1
-        if (numUtterances == totalUtterances) {
+        if (numUtterances == 3 && !testStarted) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                PhoneVoice.speak(speech: "Begin")
-                AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
                 super.startTest()
+                self.testStarted = true
             }
         }
     }
-
 }
