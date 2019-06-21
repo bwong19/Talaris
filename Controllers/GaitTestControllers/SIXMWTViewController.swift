@@ -11,10 +11,16 @@ import AVFoundation
 import CoreLocation
 import FirebaseDatabase
 
-class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate {
-    private let TEST_DURATION = 60.0 // in seconds
+class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate {
+    private let TEST_DURATION = 360.0 // in seconds
     private let SAMPLING_RATE = 10.0
     private let ROTATION_DETECTION_THRESHOLD = 150.0
+    
+    private let synthesizer = AVSpeechSynthesizer()
+    private let didFinish = false
+    private let soundCode = 1005
+    private var numUtterances = 0
+    private var totalUtterances = 0
 
     private var turnaroundDistace : Double
     
@@ -30,34 +36,22 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        synthesizer.delegate = self
         UIApplication.shared.isIdleTimerDisabled = true
         self.navigationItem.hidesBackButton = true
         
-        PhoneVoice.speak(speech: "The Six Minute Walk Test is a gait assessment meant to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, if needed. After you have set up the two cones, please enter the distance between them and press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button.")
-        
-        // TODO: next/repeat button here
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(35)) {
-            PhoneVoice.speak(speech: "Remember that the objective is to walk AS FAR AS POSSIBLE for 6 minutes, but do not run or jog. You will soon be instructed to start. Please position yourself at your starting cone, and secure your phone at your waist using the provided phone clip. If you want to repeat the instructions, please press the REPEAT button. Otherwise, once you have secured the phone to your waist, please stand still for at least 5 seconds.") // TODO: "and clicked the NEXT button?
-        }
-        // TODO: next/repeat button here
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(70)) {
-            PhoneVoice.speak(speech: "On the words BEGIN WALKING, start walking.")
-        }
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(80)) {
-            PhoneVoice.speak(speech: "Ready?")
-            self.startTest()
-        }
-        
+        startTest()
     }
     
     override func startTest() {
-        super.startTest()
-        PhoneVoice.speak(speech: "Begin walking.")
-    }
+        synthesizer.speak(getUtterance("The Six Minute Walk Test is a gait assessment meant to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, if needed. After you have set up the two cones, please enter the distance between them and press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button."))
+        
+        synthesizer.speak(getUtterance("Remember that the objective is to walk AS FAR AS POSSIBLE for 6 minutes, but do not run or jog. You will soon be instructed to start. Please position yourself at your starting cone, and secure your phone at your waist using the provided phone clip. If you want to repeat the instructions, please press the REPEAT button. Otherwise, once you have secured the phone to your waist, please stand still for at least 5 seconds.")) // TODO: "and clicked the NEXT button?
+    
+        synthesizer.speak(getUtterance("On the words BEGIN WALKING, start walking."))
+        
+        synthesizer.speak(getUtterance("Ready?"))
+}
 
     override func stopTest() {
         super.stopTest()
@@ -71,23 +65,24 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate {
     }
 
     @objc override func updateTimer() {
-        super.updateTimer()
-        if (counter > TEST_DURATION) {
-            stopTest()
-        }
-        switch (counter) {
-        case 600.0:
+        // Rounds counter to the nearest second based on TIME_INTERVAL
+        switch (Int(10 * counter + 0.5)) {
+        case 600:
             PhoneVoice.speak(speech: "You are doing well. You have 5 minutes to go.")
-        case 1200.0:
+        case 1200:
             PhoneVoice.speak(speech: "Keep up the good work. You have 4 minutes to go.")
-        case 1800.0:
+        case 1800:
             PhoneVoice.speak(speech: "You are doing well. You are halfway done.")
-        case 2400.0:
+        case 2400:
             PhoneVoice.speak(speech: "Keep up the good work. You have only 2 minutes left.")
-        case 3000.0:
+        case 3000:
             PhoneVoice.speak(speech: "You are doing well. You have only 1 minute to go.")
         default:
             break
+        }
+        super.updateTimer()
+        if (counter > TEST_DURATION) {
+            stopTest()
         }
     }
     
@@ -118,4 +113,24 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate {
         return (turnCount, distance)
     }
     
+    func getUtterance(_ speech: String) -> AVSpeechUtterance {
+        let utterance = AVSpeechUtterance(string: speech)
+        utterance.rate = 0.4
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.postUtteranceDelay = 1
+        totalUtterances += 1
+        return utterance
+    }
+    
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        numUtterances += 1
+        if (numUtterances == totalUtterances) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                PhoneVoice.speak(speech: "Begin Walking")
+                AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+                super.startTest()
+            }
+        }
+    }
 }
