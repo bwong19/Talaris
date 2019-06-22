@@ -97,7 +97,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         if (numUtterances == 3 && !testStarted) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
                 super.startTest()
                 self.testStarted = true
             }
