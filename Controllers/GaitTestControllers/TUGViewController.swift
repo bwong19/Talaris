@@ -28,6 +28,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     private var numUtterances = 0
     private var totalUtterances = 0
     private var testStarted: Bool
+    private var testStopped: Bool
     
     init() {
         sit2stand = 0.0
@@ -35,6 +36,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         hasStoodUp = false
         walking = false
         testStarted = false
+        testStopped = false
         
         super.init(samplingRate: SAMPLING_RATE, includeDataLabel: false)
     }
@@ -52,7 +54,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
             }
             
             
-            if (attitude.pitch >= -self.SITTING_THRESHOLD && attitude.pitch <= self.SITTING_THRESHOLD && self.hasStoodUp) {
+            if (attitude.pitch >= -self.SITTING_THRESHOLD && attitude.pitch <= self.SITTING_THRESHOLD && self.hasStoodUp && !self.testStopped) {
                 self.stopTest()
             }
         }
@@ -78,6 +80,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     }
     
     override func stopTest() {
+        self.testStopped = true
         super.stopTest()
         synthesizer.speak(getUtterance("Good Work!"))
         
@@ -96,7 +99,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        if (numUtterances == 3 && !testStarted) {
+        if (numUtterances == 3 && !self.testStarted) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
                 super.startTest()
                 self.testStarted = true
