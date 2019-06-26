@@ -52,6 +52,10 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
                 self.hasStoodUp = true
                 self.walking = true
             }
+            /*
+             if ((attitude.pitch <= self.STANDING_THRESHOLD || attitude.pitch >= -self.STANDING_THRESHOLD) && self.walking = true) {
+                self.stand2sit = self.counter
+             */
             
             
             if (attitude.pitch >= -self.SITTING_THRESHOLD && attitude.pitch <= self.SITTING_THRESHOLD && self.hasStoodUp && !self.testStopped) {
@@ -75,7 +79,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         
         synthesizer.speak(getUtterance("On the words BEGIN WALKING, you will stand up, walk to the 3-meter mark, turn around, walk back towards the chair. and sit down. Walk at your regular pace."))
         
-        synthesizer.speak(getUtterance("start walking"))
+        //synthesizer.speak(getUtterance("Ready?"))
         
     }
     
@@ -94,14 +98,17 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         utterance.rate = 0.4
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.postUtteranceDelay = 1
-        numUtterances += 1
+        totalUtterances += 1
         return utterance
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        if (numUtterances == 3 && !self.testStarted) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+        numUtterances += 1
+        if (numUtterances == totalUtterances && !self.testStarted) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 super.startTest()
+                //AudioServicesPlaySystemSound(SystemSoundID(self.soundCode))
+                PhoneVoice.speak(speech: "start walking")
                 self.testStarted = true
             }
         }
