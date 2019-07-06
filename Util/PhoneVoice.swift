@@ -16,6 +16,7 @@ class PhoneVoice {
         let utterance = AVSpeechUtterance(string: speech)
         utterance.rate = 0.4
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.postUtteranceDelay = 0.05
         synthesizer.speak(utterance)
     }
     
