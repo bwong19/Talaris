@@ -132,18 +132,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func trial() {
-        /* // Will be used for anonymous signin
-         // https://firebase.google.com/docs/auth/ios/anonymous-auth
-        Auth.auth().signInAnonymously() { (user, error) in
-            self.navigationController!.pushViewController(CareKitTabsViewController(user: user!.user), animated: true)
-        }
-        */
-        let alert = UIAlertController(title: "Placeholder", message: "This is a placeholder for anonymous user signin. Click \"Continue\" to proceed to the TUG test.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Back", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { action in
-            self.navigationController!.pushViewController(TUGViewController(), animated: true)
-        }))
-        self.present(alert, animated: true)
+        self.navigationController!.pushViewController(ClinicalTrialTestViewController(), animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
