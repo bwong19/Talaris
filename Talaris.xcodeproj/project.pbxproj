@@ -37,6 +37,10 @@
 		3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */; };
 		8258B885026E068700594270 /* Pods_TalarisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */; };
 		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		CDBD727F22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD727D22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift */; };
+		CDBD728022D861EE00CD3BAF /* SubjectInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD727E22D861EE00CD3BAF /* SubjectInfoViewController.swift */; };
+		CDBD728922D8632A00CD3BAF /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDBD728722D8632A00CD3BAF /* Ubuntu-Regular.ttf */; };
+		CDBD728A22D8632A00CD3BAF /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDBD728822D8632A00CD3BAF /* Ubuntu-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +137,10 @@
 		5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalarisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		925D76A058D0FD92BD836D8B /* Pods-TalarisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisTests/Pods-TalarisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A94893F81361EF7E02715911 /* Pods-Talaris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talaris.release.xcconfig"; path = "Pods/Target Support Files/Pods-Talaris/Pods-Talaris.release.xcconfig"; sourceTree = "<group>"; };
+		CDBD727D22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClinicalTrialTestViewController.swift; sourceTree = "<group>"; };
+		CDBD727E22D861EE00CD3BAF /* SubjectInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectInfoViewController.swift; sourceTree = "<group>"; };
+		CDBD728722D8632A00CD3BAF /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		CDBD728822D8632A00CD3BAF /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		D72930D0C7D370786A534C9B /* Pods-Talaris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talaris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Talaris/Pods-Talaris.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +203,7 @@
 		2D58658421ECFD1C0071DE10 /* Talaris */ = {
 			isa = PBXGroup;
 			children = (
+				CDBD728622D8631800CD3BAF /* fonts */,
 				2D5865B821ED17BB0071DE10 /* Talaris.entitlements */,
 				2D58658521ECFD1C0071DE10 /* AppDelegate.swift */,
 				2D58658921ECFD1C0071DE10 /* Main.storyboard */,
@@ -227,6 +236,7 @@
 		2D5865B321ED03F50071DE10 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CDBD727C22D861D000CD3BAF /* ClinicalTrialControllers */,
 				2DFDB32522847B5200363C57 /* CareKitTabsControllers */,
 				2D5865C721F65CD00071DE10 /* LoginControllers */,
 				2D5865C621F65CA10071DE10 /* GaitTestControllers */,
@@ -311,6 +321,24 @@
 				353E4444F009536CCEB77AAE /* Pods_TalarisUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDBD727C22D861D000CD3BAF /* ClinicalTrialControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CDBD727D22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift */,
+				CDBD727E22D861EE00CD3BAF /* SubjectInfoViewController.swift */,
+			);
+			path = ClinicalTrialControllers;
+			sourceTree = "<group>";
+		};
+		CDBD728622D8631800CD3BAF /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CDBD728822D8632A00CD3BAF /* Ubuntu-Bold.ttf */,
+				CDBD728722D8632A00CD3BAF /* Ubuntu-Regular.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		F4C9058A629643B556DD7E53 /* Pods */ = {
@@ -466,7 +494,9 @@
 			files = (
 				2D58659021ECFD1D0071DE10 /* LaunchScreen.storyboard in Resources */,
 				2D5865B721ED089E0071DE10 /* GoogleService-Info.plist in Resources */,
+				CDBD728A22D8632A00CD3BAF /* Ubuntu-Bold.ttf in Resources */,
 				2D58658D21ECFD1D0071DE10 /* Assets.xcassets in Resources */,
+				CDBD728922D8632A00CD3BAF /* Ubuntu-Regular.ttf in Resources */,
 				2D58658B21ECFD1C0071DE10 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,6 +629,7 @@
 				2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */,
 				2DCE2AC6226E07A7003B82FA /* SettingsViewController.swift in Sources */,
 				2DFDB3272284E47000363C57 /* PhoneVoice.swift in Sources */,
+				CDBD727F22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift in Sources */,
 				2DCE2AF0227E262C003B82FA /* TestInProgressView.swift in Sources */,
 				2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */,
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
@@ -609,6 +640,7 @@
 				2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */,
 				2DCE2A8522685240003B82FA /* MotionTracker.swift in Sources */,
 				2DFDB32B2284EAD500363C57 /* GaitTestViewController.swift in Sources */,
+				CDBD728022D861EE00CD3BAF /* SubjectInfoViewController.swift in Sources */,
 				2DCE2AB9226DA482003B82FA /* CareKitTabsViewController.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
 				2DCE2ABF226DB507003B82FA /* NSDateComponents.swift in Sources */,
