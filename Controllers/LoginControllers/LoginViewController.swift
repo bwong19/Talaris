@@ -132,7 +132,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func trial() {
-        self.navigationController!.pushViewController(ClinicalTrialTestViewController(), animated: true)
+        self.navigationController!.pushViewController(SubjectInfoViewController(), animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
