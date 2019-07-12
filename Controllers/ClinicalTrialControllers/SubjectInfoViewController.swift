@@ -53,10 +53,21 @@ class SubjectInfoViewController: UIViewController {
         infoStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
         infoStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         
+        // label
+        let appLabel = UILabel()
+        appLabel.text = "Enter subject information below"
+        appLabel.font = UIFont(name: "Ubuntu-Regular", size: 16)
+        appLabel.textColor = UIColor(white: 0.36, alpha: 1)
+        appLabel.adjustsFontSizeToFitWidth = true
+        appLabel.translatesAutoresizingMaskIntoConstraints = false
+        appLabel.textAlignment = .center
+        infoStackView.addArrangedSubview(appLabel)
+        
         // first name input
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         firstNameTextField.adjustsFontSizeToFitWidth = true
         firstNameTextField.placeholder = "First Name"
+        firstNameTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
         firstNameTextField.textAlignment = .left
         firstNameTextField.layer.borderColor = UIColor.gray.cgColor
         firstNameTextField.layer.borderWidth = 1.0
@@ -69,6 +80,7 @@ class SubjectInfoViewController: UIViewController {
         lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
         lastNameTextField.adjustsFontSizeToFitWidth = true
         lastNameTextField.placeholder = "Last Name"
+        lastNameTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
         lastNameTextField.textAlignment = .left
         lastNameTextField.layer.borderColor = UIColor.gray.cgColor
         lastNameTextField.layer.borderWidth = 1.0
@@ -82,8 +94,8 @@ class SubjectInfoViewController: UIViewController {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.addTarget(self, action: #selector(nextScreen), for: .touchUpInside)
         nextButton.setTitle("Next", for: .normal)
-        nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        nextButton.backgroundColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
+        nextButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
+        nextButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         nextButton.layer.cornerRadius = 10
         infoStackView.addArrangedSubview(nextButton)
     }
