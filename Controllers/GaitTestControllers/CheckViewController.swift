@@ -149,6 +149,12 @@ class CheckViewController: UIViewController {
                     navController.popToViewController(controller, animated:true)
                     break
                 }
+                else if controller is ClinicalTrialTestViewController {
+                    let clinicalController = controller as! ClinicalTrialTestViewController
+                    clinicalController.incrementTestCounter(testType: testType!)
+                    navController.popToViewController(clinicalController, animated:true)
+                    break
+                }
             }
         }
     }

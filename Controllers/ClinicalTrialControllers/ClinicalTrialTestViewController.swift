@@ -12,6 +12,10 @@ import UIKit
 // skips user login
 class ClinicalTrialTestViewController: UIViewController {
     
+    private var sixmwtCounter = 0
+    private var tugCounter = 0
+    private var mctsibCounter = 0
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -45,7 +49,7 @@ class ClinicalTrialTestViewController: UIViewController {
         let sixmwtButton = CustomButton()
         sixmwtButton.translatesAutoresizingMaskIntoConstraints = false
         sixmwtButton.addTarget(self, action: #selector(sixmwt), for: .touchUpInside)
-        sixmwtButton.setTitle("6MWT", for: .normal)
+        sixmwtButton.setTitle(String(format: "6MWT: %d/3", sixmwtCounter), for: .normal)
         sixmwtButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
         sixmwtButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         sixmwtButton.layer.cornerRadius = 14
@@ -55,7 +59,7 @@ class ClinicalTrialTestViewController: UIViewController {
         let tugButton = CustomButton()
         tugButton.translatesAutoresizingMaskIntoConstraints = false
         tugButton.addTarget(self, action: #selector(tug), for: .touchUpInside)
-        tugButton.setTitle("TUG Test", for: .normal)
+        tugButton.setTitle(String(format: "TUG Test: %d/3", tugCounter), for: .normal)
         tugButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
         tugButton.backgroundColor = UIColor(red: 120/255, green: 214/255, blue: 255/255, alpha: 1)
         tugButton.layer.cornerRadius = 14
@@ -65,7 +69,75 @@ class ClinicalTrialTestViewController: UIViewController {
         let mctsibButton = CustomButton()
         mctsibButton.translatesAutoresizingMaskIntoConstraints = false
         mctsibButton.addTarget(self, action: #selector(mctsib), for: .touchUpInside)
-        mctsibButton.setTitle("mCTSIB", for: .normal)
+        mctsibButton.setTitle(String(format: "mCTSIB: %d/1", mctsibCounter), for: .normal)
+        mctsibButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        mctsibButton.backgroundColor = UIColor(red: 1/255, green: 48/255, blue: 63/255, alpha: 1)
+        mctsibButton.layer.cornerRadius = 14
+        trialStackView.addArrangedSubview(mctsibButton)
+    }
+    
+    func incrementTestCounter(testType: String) {
+        switch (testType) {
+        case "6MWT":
+            self.sixmwtCounter += 1;
+            break;
+        case "TUG":
+            self.tugCounter += 1;
+            break;
+        case "MCTSIB":
+            self.mctsibCounter += 1;
+            break;
+        default:
+            break;
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        view.backgroundColor = .white
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
+        // central stackview
+        let trialStackView = UIStackView()
+        trialStackView.translatesAutoresizingMaskIntoConstraints = false
+        trialStackView.axis = .vertical
+        trialStackView.spacing = 8
+        trialStackView.distribution = .fillEqually
+        view.addSubview(trialStackView)
+        trialStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 72).isActive = true
+        trialStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
+        trialStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        trialStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
+        
+        // 6MWT button
+        let sixmwtButton = CustomButton()
+        sixmwtButton.translatesAutoresizingMaskIntoConstraints = false
+        sixmwtButton.addTarget(self, action: #selector(sixmwt), for: .touchUpInside)
+        sixmwtButton.setTitle(String(format: "6MWT: %d/3", sixmwtCounter), for: .normal)
+        sixmwtButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        sixmwtButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
+        sixmwtButton.layer.cornerRadius = 14
+        trialStackView.addArrangedSubview(sixmwtButton)
+        
+        // TUG Test button
+        let tugButton = CustomButton()
+        tugButton.translatesAutoresizingMaskIntoConstraints = false
+        tugButton.addTarget(self, action: #selector(tug), for: .touchUpInside)
+        tugButton.setTitle(String(format: "TUG Test: %d/3", tugCounter), for: .normal)
+        tugButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        tugButton.backgroundColor = UIColor(red: 120/255, green: 214/255, blue: 255/255, alpha: 1)
+        tugButton.layer.cornerRadius = 14
+        trialStackView.addArrangedSubview(tugButton)
+        
+        // mCTSIB button
+        let mctsibButton = CustomButton()
+        mctsibButton.translatesAutoresizingMaskIntoConstraints = false
+        mctsibButton.addTarget(self, action: #selector(mctsib), for: .touchUpInside)
+        mctsibButton.setTitle(String(format: "mCTSIB: %d/1", mctsibCounter), for: .normal)
         mctsibButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
         mctsibButton.backgroundColor = UIColor(red: 1/255, green: 48/255, blue: 63/255, alpha: 1)
         mctsibButton.layer.cornerRadius = 14
@@ -96,15 +168,5 @@ class ClinicalTrialTestViewController: UIViewController {
     @objc private func mctsib() {
         self.navigationController!.pushViewController(MCTSIBViewController(), animated: true)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
