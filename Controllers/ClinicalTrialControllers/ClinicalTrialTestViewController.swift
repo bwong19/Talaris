@@ -41,7 +41,7 @@ class ClinicalTrialTestViewController: UIViewController {
         trialStackView.distribution = .fillEqually
         view.addSubview(trialStackView)
         trialStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 72).isActive = true
-        trialStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
+        trialStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -72).isActive = true
         trialStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
         trialStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
         
@@ -50,7 +50,7 @@ class ClinicalTrialTestViewController: UIViewController {
         sixmwtButton.translatesAutoresizingMaskIntoConstraints = false
         sixmwtButton.addTarget(self, action: #selector(sixmwt), for: .touchUpInside)
         sixmwtButton.setTitle(String(format: "6MWT: %d/3", sixmwtCounter), for: .normal)
-        sixmwtButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        sixmwtButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         sixmwtButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         sixmwtButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(sixmwtButton)
@@ -60,7 +60,7 @@ class ClinicalTrialTestViewController: UIViewController {
         tugButton.translatesAutoresizingMaskIntoConstraints = false
         tugButton.addTarget(self, action: #selector(tug), for: .touchUpInside)
         tugButton.setTitle(String(format: "TUG Test: %d/3", tugCounter), for: .normal)
-        tugButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        tugButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         tugButton.backgroundColor = UIColor(red: 120/255, green: 214/255, blue: 255/255, alpha: 1)
         tugButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(tugButton)
@@ -70,10 +70,24 @@ class ClinicalTrialTestViewController: UIViewController {
         mctsibButton.translatesAutoresizingMaskIntoConstraints = false
         mctsibButton.addTarget(self, action: #selector(mctsib), for: .touchUpInside)
         mctsibButton.setTitle(String(format: "mCTSIB: %d/1", mctsibCounter), for: .normal)
-        mctsibButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        mctsibButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         mctsibButton.backgroundColor = UIColor(red: 1/255, green: 48/255, blue: 63/255, alpha: 1)
         mctsibButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(mctsibButton)
+        
+        // finish button
+        let finishButton = CustomButton()
+        finishButton.translatesAutoresizingMaskIntoConstraints = false
+        finishButton.addTarget(self, action: #selector(finish), for: .touchUpInside)
+        finishButton.setTitle("Finish", for: .normal)
+        finishButton.titleLabel?.font = UIFont(name: "Ubuntu-Regular", size: 24)
+        finishButton.backgroundColor = UIColor(red:1.00, green:0.53, blue:0.26, alpha:1.0)
+        finishButton.layer.cornerRadius = 14
+        view.addSubview(finishButton)
+        finishButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -64).isActive = true
+        finishButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
+        finishButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        finishButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
     }
     
     func incrementTestCounter(testType: String) {
@@ -92,8 +106,15 @@ class ClinicalTrialTestViewController: UIViewController {
         }
     }
     
+    func isCompleted() -> Bool {
+        if sixmwtCounter == 3 && tugCounter == 3 && mctsibCounter == 1 {
+            return true
+        }
+        return false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
+        super.viewWillAppear(true)
         
         view.backgroundColor = .white
         
@@ -109,7 +130,7 @@ class ClinicalTrialTestViewController: UIViewController {
         trialStackView.distribution = .fillEqually
         view.addSubview(trialStackView)
         trialStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 72).isActive = true
-        trialStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
+        trialStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -72).isActive = true
         trialStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
         trialStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
         
@@ -118,7 +139,7 @@ class ClinicalTrialTestViewController: UIViewController {
         sixmwtButton.translatesAutoresizingMaskIntoConstraints = false
         sixmwtButton.addTarget(self, action: #selector(sixmwt), for: .touchUpInside)
         sixmwtButton.setTitle(String(format: "6MWT: %d/3", sixmwtCounter), for: .normal)
-        sixmwtButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        sixmwtButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         sixmwtButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         sixmwtButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(sixmwtButton)
@@ -128,7 +149,7 @@ class ClinicalTrialTestViewController: UIViewController {
         tugButton.translatesAutoresizingMaskIntoConstraints = false
         tugButton.addTarget(self, action: #selector(tug), for: .touchUpInside)
         tugButton.setTitle(String(format: "TUG Test: %d/3", tugCounter), for: .normal)
-        tugButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        tugButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         tugButton.backgroundColor = UIColor(red: 120/255, green: 214/255, blue: 255/255, alpha: 1)
         tugButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(tugButton)
@@ -138,10 +159,24 @@ class ClinicalTrialTestViewController: UIViewController {
         mctsibButton.translatesAutoresizingMaskIntoConstraints = false
         mctsibButton.addTarget(self, action: #selector(mctsib), for: .touchUpInside)
         mctsibButton.setTitle(String(format: "mCTSIB: %d/1", mctsibCounter), for: .normal)
-        mctsibButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 30)
+        mctsibButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         mctsibButton.backgroundColor = UIColor(red: 1/255, green: 48/255, blue: 63/255, alpha: 1)
         mctsibButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(mctsibButton)
+        
+        // finish button
+        let finishButton = CustomButton()
+        finishButton.translatesAutoresizingMaskIntoConstraints = false
+        finishButton.addTarget(self, action: #selector(finish), for: .touchUpInside)
+        finishButton.setTitle("Finish", for: .normal)
+        finishButton.titleLabel?.font = UIFont(name: "Ubuntu-Regular", size: 24)
+        finishButton.backgroundColor = UIColor(red:1.00, green:0.53, blue:0.26, alpha:1.0)
+        finishButton.layer.cornerRadius = 14
+        view.addSubview(finishButton)
+        finishButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -64).isActive = true
+        finishButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
+        finishButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        finishButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
     }
     
     @objc private func sixmwt() {
@@ -169,4 +204,7 @@ class ClinicalTrialTestViewController: UIViewController {
         self.navigationController!.pushViewController(MCTSIBViewController(), animated: true)
     }
     
+    @objc private func finish() {
+        self.navigationController!.pushViewController(CompletedViewController(), animated: true)
+    }
 }

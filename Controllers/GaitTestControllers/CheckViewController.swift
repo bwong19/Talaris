@@ -77,7 +77,7 @@ class CheckViewController: UIViewController {
         yesButton.setTitle("Yes", for: .normal)
         yesButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         yesButton.backgroundColor = UIColor(red:1.00, green:0.53, blue:0.26, alpha:1.0)
-        yesButton.layer.cornerRadius = 10
+        yesButton.layer.cornerRadius = 14
         yesNoStackView.addArrangedSubview(yesButton)
         
         // no button
@@ -87,7 +87,7 @@ class CheckViewController: UIViewController {
         noButton.setTitle("No", for: .normal)
         noButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         noButton.backgroundColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
-        noButton.layer.cornerRadius = 10
+        noButton.layer.cornerRadius = 14
         yesNoStackView.addArrangedSubview(noButton)
         
         let questionText = UILabel()
@@ -152,8 +152,13 @@ class CheckViewController: UIViewController {
                 else if controller is ClinicalTrialTestViewController {
                     let clinicalController = controller as! ClinicalTrialTestViewController
                     clinicalController.incrementTestCounter(testType: testType!)
-                    navController.popToViewController(clinicalController, animated:true)
-                    break
+                    if clinicalController.isCompleted() {
+                        navController.pushViewController(CompletedViewController(), animated:true)
+                        break
+                    } else {
+                        navController.popToViewController(clinicalController, animated:true)
+                        break
+                    }
                 }
             }
         }
