@@ -15,14 +15,12 @@ import FirebaseDatabase
 class SubjectInfoViewController: UIViewController {
     private let ref: DatabaseReference
     
-    private let firstNameTextField: UITextField
-    private let lastNameTextField: UITextField
+    private let subjectIDTextField: UITextField
     
     init() {
         ref = Database.database().reference()
         
-        firstNameTextField = UITextField()
-        lastNameTextField = UITextField()
+        subjectIDTextField = UITextField()
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -63,31 +61,18 @@ class SubjectInfoViewController: UIViewController {
         appLabel.textAlignment = .center
         infoStackView.addArrangedSubview(appLabel)
         
-        // first name input
-        firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        firstNameTextField.adjustsFontSizeToFitWidth = true
-        firstNameTextField.placeholder = "First Name"
-        firstNameTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
-        firstNameTextField.textAlignment = .left
-        firstNameTextField.layer.borderColor = UIColor.gray.cgColor
-        firstNameTextField.layer.borderWidth = 1.0
-        firstNameTextField.layer.cornerRadius = 5.0
-        firstNameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-        infoStackView.addArrangedSubview(firstNameTextField)
-        firstNameTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
-        
-        // last name input
-        lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        lastNameTextField.adjustsFontSizeToFitWidth = true
-        lastNameTextField.placeholder = "Last Name"
-        lastNameTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
-        lastNameTextField.textAlignment = .left
-        lastNameTextField.layer.borderColor = UIColor.gray.cgColor
-        lastNameTextField.layer.borderWidth = 1.0
-        lastNameTextField.layer.cornerRadius = 5.0
-        lastNameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-        infoStackView.addArrangedSubview(lastNameTextField)
-        lastNameTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
+        // subject input
+        subjectIDTextField.translatesAutoresizingMaskIntoConstraints = false
+        subjectIDTextField.adjustsFontSizeToFitWidth = true
+        subjectIDTextField.placeholder = "Subject ID"
+        subjectIDTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
+        subjectIDTextField.textAlignment = .left
+        subjectIDTextField.layer.borderColor = UIColor.gray.cgColor
+        subjectIDTextField.layer.borderWidth = 1.0
+        subjectIDTextField.layer.cornerRadius = 5.0
+        subjectIDTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+        infoStackView.addArrangedSubview(subjectIDTextField)
+        subjectIDTextField.heightAnchor.constraint(equalToConstant: 0.05 * view.frame.height).isActive = true
         
         // next button
         let nextButton = CustomButton()
@@ -105,7 +90,7 @@ class SubjectInfoViewController: UIViewController {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { user, error in
             if user != nil {
                 let userRef = self.ref.child("users").child(user!.user.uid)
-                userRef.child("first-name").setValue(self.firstNameTextField.text!)
+                userRef.child("first-name").setValue(self.subjectIDTextField.text!)
                 userRef.child("last-name").setValue(self.lastNameTextField.text!)
                 
                 Auth.auth().signIn(withEmail: self.emailTextField.text!,
