@@ -201,7 +201,23 @@ class ClinicalTrialTestViewController: UIViewController {
     }
     
     @objc private func mctsib() {
-        self.navigationController!.pushViewController(MCTSIBViewController(), animated: true)
+        let alert = UIAlertController(title: "MCTSIB", message: "Please select a pose", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Eyes open, firm surface", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            self.navigationController!.pushViewController(MCTSIBViewController(testNumber: 0), animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Eyes closed, firm surface", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            self.navigationController!.pushViewController(MCTSIBViewController(testNumber: 1), animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Eyes open, soft surface", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            self.navigationController!.pushViewController(MCTSIBViewController(testNumber: 2), animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Eyes closed, soft surface", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            self.navigationController!.pushViewController(MCTSIBViewController(testNumber: 3), animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc private func finish() {
