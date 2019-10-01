@@ -86,26 +86,6 @@ class SubjectInfoViewController: UIViewController {
     }
     
     @objc private func nextScreen() {
-        /*
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { user, error in
-            if user != nil {
-                let userRef = self.ref.child("users").child(user!.user.uid)
-                userRef.child("first-name").setValue(self.subjectIDTextField.text!)
-                userRef.child("last-name").setValue(self.lastNameTextField.text!)
-                
-                Auth.auth().signIn(withEmail: self.emailTextField.text!,
-                                   password: self.passwordTextField.text!)
-                
-                self.navigationController!.pushViewController(CareKitTabsViewController(user: user!.user), animated: true)
-            } else {
-                let message = error?.localizedDescription
-                let alert = UIAlertController(title: "Sign up Error", message: message, preferredStyle : .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: "Default action"), style: .default, handler: { _ in
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-        */
         self.navigationController!.pushViewController(ClinicalTrialTestViewController(), animated: true)
     }
 }
