@@ -18,7 +18,7 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
     private let SAMPLING_RATE = 10.0
     private let SVM_THRESH = 2.0
     private let SVM_DELTA = 0.15
-    private let TEST_DURATION = 10.0 // in seconds
+    private let TEST_DURATION = 30.0 // in seconds
     
     private let synthesizer = AVSpeechSynthesizer()
     private let didFinish = false
@@ -47,9 +47,9 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
             
             self.normalizedPathLength.append(SVMAcceleration)
             DispatchQueue.main.async {
-                self.testInProgressView.dataLabel?.text = "hi"
+                self.testInProgressView.dataLabel?.text = "\(SVMAcceleration)"
             }
-            if (self.counter >= 30) {
+            if (self.counter >= self.TEST_DURATION) {
                 self.stopTest()
             }
         }
