@@ -55,7 +55,7 @@ class ClinicalTrialTestViewController: UIViewController {
         let sixmwtButton = CustomButton()
         sixmwtButton.translatesAutoresizingMaskIntoConstraints = false
         sixmwtButton.addTarget(self, action: #selector(sixmwt), for: .touchUpInside)
-        sixmwtButton.setTitle("6MWT", for: .normal)
+        sixmwtButton.setTitle("2MWT", for: .normal)
         sixmwtButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         sixmwtButton.backgroundColor = UIColor(red: 120/255, green: 214/255, blue: 255/255, alpha: 1)
         sixmwtButton.layer.cornerRadius = 14

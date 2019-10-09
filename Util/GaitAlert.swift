@@ -16,7 +16,7 @@ class GaitAlert {
     }
     
     class func sixmwtAlert(in vc: UIViewController, mode: AppMode){
-        let alert = UIAlertController(title: "Six Minute Walk Test", message: "Please provide the distance from your starting position to the turnaround point (in meters).", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Two Minute Walk Test", message: "Please provide the distance from your starting position to the turnaround point (in meters).", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
             textField.text = ""

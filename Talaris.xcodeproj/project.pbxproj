@@ -20,6 +20,7 @@
 		2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C221EE72A00071DE10 /* CustomButton.swift */; };
 		2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */; };
 		2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */; };
+		2DAE2D70234D5BD800D9A20D /* AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE2D6F234D5BD800D9A20D /* AppMode.swift */; };
 		2DCE2A8522685240003B82FA /* MotionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2A8422685240003B82FA /* MotionTracker.swift */; };
 		2DCE2AB9226DA482003B82FA /* CareKitTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */; };
 		2DCE2ABB226DA55A003B82FA /* CarePlanStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2ABA226DA55A003B82FA /* CarePlanStoreManager.swift */; };
@@ -121,6 +122,7 @@
 		2D5865C221EE72A00071DE10 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGraphsViewController.swift; sourceTree = "<group>"; };
 		2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
+		2DAE2D6F234D5BD800D9A20D /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
 		2DCE2A8422685240003B82FA /* MotionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTracker.swift; sourceTree = "<group>"; };
 		2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareKitTabsViewController.swift; sourceTree = "<group>"; };
 		2DCE2ABA226DA55A003B82FA /* CarePlanStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarePlanStoreManager.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				2DFDB3262284E47000363C57 /* PhoneVoice.swift */,
 				CD150B3D2336810900D3CDBB /* GaitTestUtil.swift */,
 				CD7F05202343F94E0056BE50 /* GaitAlert.swift */,
+				2DAE2D6F234D5BD800D9A20D /* AppMode.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				2DCE2AC6226E07A7003B82FA /* SettingsViewController.swift in Sources */,
 				2DFDB3272284E47000363C57 /* PhoneVoice.swift in Sources */,
 				CDBD727F22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift in Sources */,
+				2DAE2D70234D5BD800D9A20D /* AppMode.swift in Sources */,
 				2DCE2AF0227E262C003B82FA /* TestInProgressView.swift in Sources */,
 				2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */,
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
