@@ -20,9 +20,3 @@ enum MCTSIBTestType: Int {
     case EyesOpenSoftSurface = 2
     case EyesClosedSoftSurface = 3
 }
-
-
-enum AppMode: Int {
-    case CareKit = 0
-    case Clinical = 1
-}
