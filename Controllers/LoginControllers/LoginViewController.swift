@@ -101,6 +101,16 @@ class LoginViewController: UIViewController {
         signupButton.backgroundColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
         signupButton.layer.cornerRadius = 10
         loginStackView.addArrangedSubview(signupButton)
+        
+        // trial button
+        let trialButton = CustomButton()
+        trialButton.translatesAutoresizingMaskIntoConstraints = false
+        trialButton.addTarget(self, action: #selector(trial), for: .touchUpInside)
+        trialButton.setTitle("Clinical Trial", for: .normal)
+        trialButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        trialButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
+        trialButton.layer.cornerRadius = 10
+        loginStackView.addArrangedSubview(trialButton)
     }
     
     @objc private func login() {
@@ -119,6 +129,10 @@ class LoginViewController: UIViewController {
 
     @objc private func signup() {
         self.navigationController!.pushViewController(SignUpViewController(), animated: true)
+    }
+    
+    @objc private func trial() {
+        self.navigationController!.pushViewController(SubjectInfoViewController(), animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

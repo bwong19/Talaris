@@ -12,7 +12,7 @@ import CoreLocation
 import FirebaseDatabase
 
 class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate {
-    private let TEST_DURATION = 360.0 // in seconds
+    private let TEST_DURATION = 120.0 // in seconds
     private let SAMPLING_RATE = 10.0
     private let ROTATION_DETECTION_THRESHOLD = 150.0
     
@@ -23,8 +23,10 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     private var totalUtterances = 0
 
     private var turnaroundDistace : Double
+    private var mode: AppMode
     
-    init(turnaroundDistance: Double) {
+    init(turnaroundDistance: Double = 30, appMode: AppMode) {
+        mode = appMode
         self.turnaroundDistace = turnaroundDistance
         super.init(samplingRate: SAMPLING_RATE, includeDataLabel: false)
     }
@@ -44,12 +46,13 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     }
     
     override func startTest() {
-        synthesizer.speak(getUtterance("The Six Minute Walk Test is a gait assessment meant to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, if needed. After you have set up the two cones, please enter the distance between them and press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button."))
+        if (mode == AppMode.CareKit) {
+            synthesizer.speak(getUtterance("The Six Minute Walk Test is a gait assessment meant to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, if needed. After you have set up the two cones, please enter the distance between them and press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button."))
+            
+            synthesizer.speak(getUtterance("Remember that the objective is to walk AS FAR AS POSSIBLE for 6 minutes, but do not run or jog. You will soon be instructed to start. Please position yourself at your starting cone, and secure your phone at your waist using the provided phone clip. If you want to repeat the instructions, please press the REPEAT button. Otherwise, once you have secured the phone to your waist, please stand still for at least 5 seconds.")) // TODO: "and clicked the NEXT button?
         
-        synthesizer.speak(getUtterance("Remember that the objective is to walk AS FAR AS POSSIBLE for 6 minutes, but do not run or jog. You will soon be instructed to start. Please position yourself at your starting cone, and secure your phone at your waist using the provided phone clip. If you want to repeat the instructions, please press the REPEAT button. Otherwise, once you have secured the phone to your waist, please stand still for at least 5 seconds.")) // TODO: "and clicked the NEXT button?
-    
-        synthesizer.speak(getUtterance("On the words BEGIN WALKING, start walking."))
-        
+            synthesizer.speak(getUtterance("On the words BEGIN WALKING, start walking."))
+        }
         synthesizer.speak(getUtterance("Ready?"))
 }
 
@@ -59,9 +62,13 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         
         let results = getRotationCountAndDistance(azimuthData: motionTracker.processedAzimuthData)
         let resultsDict  : [String : Any] = ["distance" : results.1, "turn_count" : results.0]
-        let cv = CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d", results.1, results.0), resultsDict : resultsDict, motionTracker:self.motionTracker, testType: "6MWT")
-        self.navigationController!.pushViewController(cv, animated: true)
-        
+        if (mode == AppMode.CareKit) {
+            let cv = CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d.", results.1, results.0), resultsDict : resultsDict, motionTracker:self.motionTracker, testType: "6MWT")
+            self.navigationController!.pushViewController(cv, animated: true)
+        } else if (mode == AppMode.Clinical) {
+            let cv = ClinicalCheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d.", results.1, results.0), resultsDict : resultsDict, motionTracker:self.motionTracker, testType: "6MWT")
+            self.navigationController!.pushViewController(cv, animated: true)
+        }
     }
 
     @objc override func updateTimer() {
@@ -127,7 +134,6 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         numUtterances += 1
         if (numUtterances == totalUtterances) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                PhoneVoice.speak(speech: "Begin Walking")
                 AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
                 super.startTest()
             }

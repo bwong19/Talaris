@@ -98,22 +98,11 @@ class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewContro
     func symptomTrackerViewController(_ viewController: OCKSymptomTrackerViewController, didSelectRowWithAssessmentEvent assessmentEvent: OCKCarePlanEvent) {
         switch assessmentEvent.activity.identifier {
             case "Timed Up and Go":
-                navigationController!.pushViewController(TUGViewController(), animated: true)
+                GaitAlert.tugAlert(in: self, mode: AppMode.CareKit)
             case "Six Minute Walk Test":
-                let alert = UIAlertController(title: "Six Minute Walk Test", message: "Please provide the distance from your starting position to the turnaround point (in meters)", preferredStyle: .alert)
-                
-                alert.addTextField { (textField) in
-                    textField.text = ""
-                }
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-                    let textField = alert!.textFields![0]
-                    self.navigationController!.pushViewController(SIXMWTViewController(turnaroundDistance: Double(textField.text!)!), animated: true)
-                }))
-                
-                self.present(alert, animated: true, completion: nil)
+                GaitAlert.sixmwtAlert(in: self, mode: AppMode.CareKit)
             case "Sway Test":
-                navigationController!.pushViewController(MCTSIBViewController(), animated: true)
+                GaitAlert.mctsibAlert(in: self, mode: AppMode.CareKit)
             default:
                 print("error")
         }
