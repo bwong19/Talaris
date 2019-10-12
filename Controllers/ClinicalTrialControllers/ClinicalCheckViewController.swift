@@ -114,14 +114,13 @@ class ClinicalCheckViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let textField = alert!.textFields![0]
                 motionTracker.saveAndClearData(testName: "\(textField.text ?? "No Name Provided")_\(self.testType!)", testResults: self.resultsDict)
-                // TODO: add update results and return
             }))
              
             self.present(alert, animated: true, completion: nil)
-        } else {
-            DispatchQueue.main.async {
-                self.goToHomeScreen()
-            }
+        }
+        
+        DispatchQueue.main.async {
+            self.goToHomeScreen()
         }
     }
      
