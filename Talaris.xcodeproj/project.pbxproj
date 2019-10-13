@@ -20,6 +20,9 @@
 		2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C221EE72A00071DE10 /* CustomButton.swift */; };
 		2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */; };
 		2D5865C921FBBACF0071DE10 /* CheckAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */; };
+		2D7A02502352DB8700B6D671 /* GaitAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A024E2352DB8700B6D671 /* GaitAlert.swift */; };
+		2D7A02512352DB8700B6D671 /* GaitTestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A024F2352DB8700B6D671 /* GaitTestUtil.swift */; };
+		2D7A02532352DBC600B6D671 /* GaitTestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A02522352DBC600B6D671 /* GaitTestDelegate.swift */; };
 		2DAE2D70234D5BD800D9A20D /* AppMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE2D6F234D5BD800D9A20D /* AppMode.swift */; };
 		2DCE2A8522685240003B82FA /* MotionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2A8422685240003B82FA /* MotionTracker.swift */; };
 		2DCE2AB9226DA482003B82FA /* CareKitTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */; };
@@ -39,9 +42,7 @@
 		8258B885026E068700594270 /* Pods_TalarisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9E1D4F34E05CC647944E14 /* Pods_TalarisTests.framework */; };
 		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CD150B3C23367F8300D3CDBB /* ClinicalCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD150B3B23367F8300D3CDBB /* ClinicalCheckViewController.swift */; };
-		CD150B3E2336810900D3CDBB /* GaitTestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD150B3D2336810900D3CDBB /* GaitTestUtil.swift */; };
 		CD1C40EF22DECCC700F2B3A7 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C40EE22DECCC700F2B3A7 /* CompletedViewController.swift */; };
-		CD7F05212343F94E0056BE50 /* GaitAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F05202343F94E0056BE50 /* GaitAlert.swift */; };
 		CDBD727F22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD727D22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift */; };
 		CDBD728022D861EE00CD3BAF /* SubjectInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD727E22D861EE00CD3BAF /* SubjectInfoViewController.swift */; };
 		CDBD728922D8632A00CD3BAF /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDBD728722D8632A00CD3BAF /* Ubuntu-Regular.ttf */; };
@@ -122,6 +123,9 @@
 		2D5865C221EE72A00071DE10 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2D5865C421F6582F0071DE10 /* MetricGraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGraphsViewController.swift; sourceTree = "<group>"; };
 		2D5865C821FBBACF0071DE10 /* CheckAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthViewController.swift; sourceTree = "<group>"; };
+		2D7A024E2352DB8700B6D671 /* GaitAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GaitAlert.swift; sourceTree = "<group>"; };
+		2D7A024F2352DB8700B6D671 /* GaitTestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GaitTestUtil.swift; sourceTree = "<group>"; };
+		2D7A02522352DBC600B6D671 /* GaitTestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaitTestDelegate.swift; sourceTree = "<group>"; };
 		2DAE2D6F234D5BD800D9A20D /* AppMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMode.swift; sourceTree = "<group>"; };
 		2DCE2A8422685240003B82FA /* MotionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTracker.swift; sourceTree = "<group>"; };
 		2DCE2AB8226DA482003B82FA /* CareKitTabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareKitTabsViewController.swift; sourceTree = "<group>"; };
@@ -144,9 +148,7 @@
 		925D76A058D0FD92BD836D8B /* Pods-TalarisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalarisTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TalarisTests/Pods-TalarisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A94893F81361EF7E02715911 /* Pods-Talaris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talaris.release.xcconfig"; path = "Pods/Target Support Files/Pods-Talaris/Pods-Talaris.release.xcconfig"; sourceTree = "<group>"; };
 		CD150B3B23367F8300D3CDBB /* ClinicalCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalCheckViewController.swift; sourceTree = "<group>"; };
-		CD150B3D2336810900D3CDBB /* GaitTestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaitTestUtil.swift; sourceTree = "<group>"; };
 		CD1C40EE22DECCC700F2B3A7 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
-		CD7F05202343F94E0056BE50 /* GaitAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaitAlert.swift; sourceTree = "<group>"; };
 		CDBD727D22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClinicalTrialTestViewController.swift; sourceTree = "<group>"; };
 		CDBD727E22D861EE00CD3BAF /* SubjectInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectInfoViewController.swift; sourceTree = "<group>"; };
 		CDBD728722D8632A00CD3BAF /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
@@ -285,14 +287,23 @@
 			path = LoginControllers;
 			sourceTree = "<group>";
 		};
+		2D7A024D2352DB8700B6D671 /* GaitTestUtil */ = {
+			isa = PBXGroup;
+			children = (
+				2D7A024E2352DB8700B6D671 /* GaitAlert.swift */,
+				2D7A024F2352DB8700B6D671 /* GaitTestUtil.swift */,
+				2D7A02522352DBC600B6D671 /* GaitTestDelegate.swift */,
+			);
+			path = GaitTestUtil;
+			sourceTree = "<group>";
+		};
 		2DCE2A832268521E003B82FA /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2D7A024D2352DB8700B6D671 /* GaitTestUtil */,
 				2DCE2A8422685240003B82FA /* MotionTracker.swift */,
 				2DCE2ABE226DB507003B82FA /* NSDateComponents.swift */,
 				2DFDB3262284E47000363C57 /* PhoneVoice.swift */,
-				CD150B3D2336810900D3CDBB /* GaitTestUtil.swift */,
-				CD7F05202343F94E0056BE50 /* GaitAlert.swift */,
 				2DAE2D6F234D5BD800D9A20D /* AppMode.swift */,
 			);
 			path = Util;
@@ -638,6 +649,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D7A02512352DB8700B6D671 /* GaitTestUtil.swift in Sources */,
 				3948270121EE6B3700EF8A14 /* CheckViewController.swift in Sources */,
 				3986DFFB21EF91DD00A61F1C /* SIXMWTViewController.swift in Sources */,
 				2DCE2ABB226DA55A003B82FA /* CarePlanStoreManager.swift in Sources */,
@@ -650,18 +662,18 @@
 				2DCE2AF0227E262C003B82FA /* TestInProgressView.swift in Sources */,
 				2D5865C321EE72A00071DE10 /* CustomButton.swift in Sources */,
 				2D5865BA21ED2B480071DE10 /* SignUpViewController.swift in Sources */,
+				2D7A02502352DB8700B6D671 /* GaitAlert.swift in Sources */,
 				2D5865B521ED04330071DE10 /* LoginViewController.swift in Sources */,
 				2DCE2ABD226DB2C8003B82FA /* CarePlanData.swift in Sources */,
 				39435F3C2245C5FD00977C8E /* MCTSIBViewController.swift in Sources */,
-				CD7F05212343F94E0056BE50 /* GaitAlert.swift in Sources */,
 				394826FF21EE4B9100EF8A14 /* TUGViewController.swift in Sources */,
 				2D5865C521F6582F0071DE10 /* MetricGraphsViewController.swift in Sources */,
 				2DCE2A8522685240003B82FA /* MotionTracker.swift in Sources */,
+				2D7A02532352DBC600B6D671 /* GaitTestDelegate.swift in Sources */,
 				2DFDB32B2284EAD500363C57 /* GaitTestViewController.swift in Sources */,
 				CDBD728022D861EE00CD3BAF /* SubjectInfoViewController.swift in Sources */,
 				2DCE2AB9226DA482003B82FA /* CareKitTabsViewController.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
-				CD150B3E2336810900D3CDBB /* GaitTestUtil.swift in Sources */,
 				CD1C40EF22DECCC700F2B3A7 /* CompletedViewController.swift in Sources */,
 				2DCE2ABF226DB507003B82FA /* NSDateComponents.swift in Sources */,
 			);

@@ -11,23 +11,17 @@ import UIKit
 class ClinicalCheckViewController: UIViewController {
 
     private let message: String
-    private let resultsDict: Dictionary<String, Any>?
-    private let motionTracker: MotionTracker?
-    private let testType: String?
-     
-    init(message: String) {
-        self.message = message
-        resultsDict = nil
-        motionTracker = nil
-        testType = nil
-        super.init(nibName: nil, bundle: nil)
-    }
-     
-    init(message: String, resultsDict: Dictionary<String, Any>, motionTracker: MotionTracker, testType: String) {
+    private let resultsDict: Dictionary<String, Any>
+    private let motionTracker: MotionTracker
+    private let gaitTestType: GaitTestType
+    private let subjectID: String
+    
+    init(message: String, resultsDict: Dictionary<String, Any>, motionTracker: MotionTracker, gaitTestType: GaitTestType, subjectID: String) {
         self.message = message
         self.resultsDict = resultsDict
         self.motionTracker = motionTracker
-        self.testType = testType
+        self.gaitTestType = gaitTestType
+        self.subjectID = subjectID
         super.init(nibName: nil, bundle: nil)
     }
      
@@ -104,24 +98,28 @@ class ClinicalCheckViewController: UIViewController {
     }
      
     @objc private func handleSuccesfulTest() {
-        if let motionTracker = motionTracker {
-            let alert = UIAlertController(title: "Test Completion", message: "Please provide the test name", preferredStyle: .alert)
-             
-            alert.addTextField { (textField) in
-                textField.text = ""
-            }
-             
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-                let textField = alert!.textFields![0]
-                motionTracker.saveAndClearData(testName: "\(textField.text ?? "No Name Provided")_\(self.testType!)", testMode: AppMode.Clinical, testResults: self.resultsDict)
-            }))
-             
-            self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Test Completion", message: "Please provide the test name", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.text = ""
         }
         
-        DispatchQueue.main.async {
-            self.goToHomeScreen()
-        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0]
+            let textFieldText = (textField.text != nil && textField.text != "") ? textField.text! + "_" : ""
+            let fileSuffix = "SubjectId-\(self.subjectID)_\(self.gaitTestType)"
+            self.motionTracker.saveAndClearData(
+                testName: "\(textFieldText)\(fileSuffix)",
+                testMode: AppMode.Clinical,
+                testResults: self.resultsDict
+            )
+            
+            DispatchQueue.main.async {
+                self.goToHomeScreen()
+            }
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
      
     @objc private func goToHomeScreen() {

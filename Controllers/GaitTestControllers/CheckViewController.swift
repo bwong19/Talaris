@@ -16,21 +16,21 @@ class CheckViewController: UIViewController {
     private let message: String
     private let resultsDict: Dictionary<String, Any>?
     private let motionTracker: MotionTracker?
-    private let testType: String?
+    private let gaitTestType: GaitTestType?
     
     init(message: String) {
         self.message = message
         resultsDict = nil
         motionTracker = nil
-        testType = nil
+        gaitTestType = nil
         super.init(nibName: nil, bundle: nil)
     }
     
-    init(message: String, resultsDict: Dictionary<String, Any>, motionTracker: MotionTracker, testType: String) {
+    init(message: String, resultsDict: Dictionary<String, Any>, motionTracker: MotionTracker, gaitTestType: GaitTestType) {
         self.message = message
         self.resultsDict = resultsDict
         self.motionTracker = motionTracker
-        self.testType = testType
+        self.gaitTestType = gaitTestType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -115,7 +115,7 @@ class CheckViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let textField = alert!.textFields![0]
-                motionTracker.saveAndClearData(testName: "\(textField.text ?? "No Name Provided")_\(self.testType!)", testMode: AppMode.CareKit, testResults: self.resultsDict)
+                motionTracker.saveAndClearData(testName: "\(textField.text ?? "No Name Provided")_\(self.gaitTestType!)", testMode: AppMode.CareKit, testResults: self.resultsDict)
                 self.updateWithResultsAndReturn()
             }))
             

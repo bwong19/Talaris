@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum TestType: Int {
-    case SixMWT = 0
-    case MCTSIB = 1
-    case TUG = 2
+enum GaitTestType: String {
+    case SixMWT = "6MWT"
+    case MCTSIB = "MCTSIB"
+    case TUG = "TUG"
 }
 
 enum MCTSIBTestType: Int {

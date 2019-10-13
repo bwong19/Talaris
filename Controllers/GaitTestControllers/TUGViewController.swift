@@ -29,10 +29,8 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     private var totalUtterances = 0
     private var testStarted: Bool
     private var testStopped: Bool
-    private var mode: AppMode
     
-    init(appMode: AppMode) {
-        mode = appMode
+    init(appMode: AppMode, delegate: GaitTestDelegate? = nil) {
         sit2stand = 0.0
         stand2sit = 0.0
         hasStoodUp = false
@@ -40,7 +38,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         testStarted = false
         testStopped = false
         
-        super.init(samplingRate: SAMPLING_RATE, includeDataLabel: false)
+        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: false)
     }
     
     required init?(coder: NSCoder) {
@@ -91,14 +89,18 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         super.stopTest()
         synthesizer.speak(getUtterance("Good Work!"))
         
-        let resultsDict  = ["tug_time" : counter, "sit_to_stand_time" : sit2stand]
-        if (mode == AppMode.CareKit) {
-            let cv = CheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds.", counter, sit2stand), resultsDict : resultsDict as Dictionary<String, Any>, motionTracker:self.motionTracker, testType: "TUG")
-            self.navigationController!.pushViewController(cv, animated: true)
-        } else if (mode == AppMode.Clinical) {
-            let cv = ClinicalCheckViewController(message: String(format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds.", counter, sit2stand), resultsDict : resultsDict as Dictionary<String, Any>, motionTracker:self.motionTracker, testType: "TUG")
-            self.navigationController!.pushViewController(cv, animated: true)
-        }
+        let resultsDict: [String: Any] = ["tug_time": counter, "sit_to_stand_time": sit2stand]
+        
+        delegate?.onGaitTestComplete(
+            resultsDict: resultsDict,
+            resultsMessage: String(
+                format: "Your TUG time was %.1lf seconds. Your sit-to-stand duration is %.1lf seconds.",
+                counter,
+                sit2stand
+            ),
+            gaitTestType: GaitTestType.TUG,
+            motionTracker: motionTracker
+        )
     }
     
     func getUtterance(_ speech: String) -> AVSpeechUtterance {

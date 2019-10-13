@@ -25,7 +25,6 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
     private var numUtterances = 0
     private var totalUtterances = 0
     
-    private var mode: AppMode
     private var finalTime: Double
     private var normalizedPathLength: [Double]
     private var testNumber: MCTSIBTestType
@@ -37,6 +36,7 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
         "On the word BEGIN, you will stand as still as possible for 30 seconds. Stand with your arms across your chest and your hands touching your opposite shoulders, feet together with ankle bones touching, and hold for 30 seconds. If you lose your balance before the 30 seconds end, please make note of when you lost your balance.",
         "On the word BEGIN, you will stand as still as possible for 30 seconds. Stand with your arms across your chest and your hands touching your opposite shoulders, feet together with ankle bones touching, and hold for 30 seconds. If you lose your balance before the 30 seconds end, please make note of when you lost your balance."
     ]
+    
     private let endScripts = [
         "You have now completed the first part of this assessment.",
         "You have now completed the second part of this assessment.",
@@ -44,12 +44,11 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
         "You have now completed the fourth part of this assessment."
     ]
     
-    public init(testNumber: MCTSIBTestType, appMode: AppMode) {
+    public init(testNumber: MCTSIBTestType, appMode: AppMode, delegate: GaitTestDelegate? = nil) {
         self.testNumber = testNumber
-        mode = appMode
         finalTime = 0.0
         normalizedPathLength = []
-        super.init(samplingRate: SAMPLING_RATE, includeDataLabel: false)
+        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -103,13 +102,14 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
             score += abs(normalizedPathLength[x+1] - normalizedPathLength[x])
         }
         
-        let resultsDict  : [String : Any] = ["score" : score, "max_score" : 30]
-
-        if (mode == AppMode.CareKit) {
-            self.navigationController!.pushViewController(CheckViewController(message: String(format: "Your score is %.1lf/30.", score), resultsDict: resultsDict, motionTracker:self.motionTracker, testType: "MCTSIB"), animated: true)
-        } else if (mode == AppMode.Clinical) {
-            self.navigationController!.pushViewController(ClinicalCheckViewController(message: String(format: "Your score is %.1lf/30.", score), resultsDict: resultsDict, motionTracker:self.motionTracker, testType: "MCTSIB"), animated: true)
-        }
+        let resultsDict: [String: Any] = ["score": score, "max_score" : 30]
+        
+        delegate?.onGaitTestComplete(
+            resultsDict: resultsDict,
+            resultsMessage: String(format: "Your score is %.1lf/30.", score),
+            gaitTestType: GaitTestType.MCTSIB,
+            motionTracker: motionTracker
+        )
     }
     
     func getUtterance(_ speech: String) -> AVSpeechUtterance {

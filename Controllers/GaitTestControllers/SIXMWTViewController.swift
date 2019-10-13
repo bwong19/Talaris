@@ -12,7 +12,7 @@ import CoreLocation
 import FirebaseDatabase
 
 class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate {
-    private let TEST_DURATION = 120.0 // in seconds
+    private let TEST_DURATION = 12.0 // in seconds
     private let SAMPLING_RATE = 10.0
     private let ROTATION_DETECTION_THRESHOLD = 150.0
     
@@ -23,12 +23,10 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     private var totalUtterances = 0
 
     private var turnaroundDistace : Double
-    private var mode: AppMode
     
-    init(turnaroundDistance: Double = 30, appMode: AppMode) {
-        mode = appMode
+    init(turnaroundDistance: Double = 30, appMode: AppMode, delegate: GaitTestDelegate? = nil) {
         self.turnaroundDistace = turnaroundDistance
-        super.init(samplingRate: SAMPLING_RATE, includeDataLabel: false)
+        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,14 +59,14 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         PhoneVoice.speak(speech: "Stop walking.")
         
         let results = getRotationCountAndDistance(azimuthData: motionTracker.processedAzimuthData)
-        let resultsDict  : [String : Any] = ["distance" : results.1, "turn_count" : results.0]
-        if (mode == AppMode.CareKit) {
-            let cv = CheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d.", results.1, results.0), resultsDict : resultsDict, motionTracker:self.motionTracker, testType: "6MWT")
-            self.navigationController!.pushViewController(cv, animated: true)
-        } else if (mode == AppMode.Clinical) {
-            let cv = ClinicalCheckViewController(message: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d.", results.1, results.0), resultsDict : resultsDict, motionTracker:self.motionTracker, testType: "6MWT")
-            self.navigationController!.pushViewController(cv, animated: true)
-        }
+        let resultsDict: [String: Any] = ["distance" : results.1, "turn_count" : results.0]
+        
+        delegate?.onGaitTestComplete(
+            resultsDict: resultsDict,
+            resultsMessage: String(format: "Your 6MWT distance was %.1lf meters. Turn Count was %d.", results.1, results.0),
+            gaitTestType: GaitTestType.SixMWT,
+            motionTracker: motionTracker
+        )
     }
 
     @objc override func updateTimer() {

@@ -86,6 +86,8 @@ class SubjectInfoViewController: UIViewController {
     }
     
     @objc private func nextScreen() {
-        self.navigationController!.pushViewController(ClinicalTrialTestViewController(), animated: true)
+        self.navigationController!.pushViewController(
+            ClinicalTrialTestViewController(subjectID: subjectIDTextField.text!), animated: true
+        )
     }
 }

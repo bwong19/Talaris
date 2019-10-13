@@ -17,10 +17,15 @@ class GaitTestViewController: UIViewController {
     var timer: Timer!
     var counter: Double!
     
-    init(samplingRate: Double, includeDataLabel: Bool = false) {
+    let mode: AppMode
+    weak var delegate: GaitTestDelegate?
+    
+    init(samplingRate: Double, appMode: AppMode = AppMode.CareKit, delegate: GaitTestDelegate?, includeDataLabel: Bool = false) {
         motionTracker = MotionTracker(samplingRate: samplingRate)
         testInProgressView = TestInProgressView(includeDataLabel: includeDataLabel)
         counter = 0.0
+        mode = appMode
+        self.delegate = delegate
         
         super.init(nibName: nil, bundle: nil)
         setupMotionTracker()
@@ -52,5 +57,4 @@ class GaitTestViewController: UIViewController {
         counter += TIME_INTERVAL
         testInProgressView.timeLabel.text = String(format: "%.1fs", counter)
     }
-    
 }

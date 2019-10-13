@@ -12,7 +12,7 @@ import Firebase
 import FirebaseDatabase
 
 
-class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewControllerDelegate, UITabBarControllerDelegate
+class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewControllerDelegate, UITabBarControllerDelegate, GaitTestDelegate
  {
     private let carePlanStoreManager = CarePlanStoreManager.sharedCarePlanStoreManager
     private let carePlanData: CarePlanData
@@ -97,19 +97,31 @@ class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewContro
     
     func symptomTrackerViewController(_ viewController: OCKSymptomTrackerViewController, didSelectRowWithAssessmentEvent assessmentEvent: OCKCarePlanEvent) {
         switch assessmentEvent.activity.identifier {
-            case "Timed Up and Go":
-                GaitAlert.tugAlert(in: self, mode: AppMode.CareKit)
-            case "Six Minute Walk Test":
-                GaitAlert.sixmwtAlert(in: self, mode: AppMode.CareKit)
-            case "Sway Test":
-                GaitAlert.mctsibAlert(in: self, mode: AppMode.CareKit)
+            case GaitTestType.TUG.rawValue:
+                GaitAlert.tugAlert(in: self, mode: AppMode.CareKit, delegate: self)
+            case GaitTestType.SixMWT.rawValue:
+                GaitAlert.sixmwtAlert(in: self, mode: AppMode.CareKit, delegate: self)
+            case GaitTestType.MCTSIB.rawValue:
+                GaitAlert.mctsibAlert(in: self, mode: AppMode.CareKit, delegate: self)
             default:
-                print("error")
+                print(assessmentEvent.activity.identifier)
+                print("error: could not find assesment")
         }
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         title = item.title
     }
-
+    
+    func onGaitTestComplete(resultsDict: Dictionary<String, Any>, resultsMessage: String, gaitTestType: GaitTestType, motionTracker: MotionTracker) {
+        self.navigationController!.pushViewController(
+            CheckViewController(
+                message: resultsMessage,
+                resultsDict: resultsDict,
+                motionTracker: motionTracker,
+                gaitTestType: gaitTestType
+            ),
+            animated: true
+        )
+    }
 }
