@@ -115,7 +115,7 @@ class CheckViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let textField = alert!.textFields![0]
-                motionTracker.saveAndClearData(testName: "\(textField.text ?? "No Name Provided")_\(self.testType!)", testResults: self.resultsDict)
+                motionTracker.saveAndClearData(testName: "\(textField.text ?? "No Name Provided")_\(self.testType!)", testMode: AppMode.CareKit, testResults: self.resultsDict)
                 self.updateWithResultsAndReturn()
             }))
             

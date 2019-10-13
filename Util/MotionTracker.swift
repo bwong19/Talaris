@@ -123,8 +123,8 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
     }
     
     
-    func saveAndClearData(testName: String, testResults: Dictionary<String, Any>? = nil) {
-        var dataDict : Dictionary<String, Any> = [
+    func saveAndClearData(testName: String, testMode: AppMode, testResults: Dictionary<String, Any>? = nil) {
+        var motionData : Dictionary<String, Any> = [
             "sampling_rate": samplingRate,
             "acceleration": accelData,
             "rotation_rate": rotData,
@@ -136,10 +136,15 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
         ]
         
         if let resultsDict = testResults {
-            resultsDict.forEach { key_val_pair in dataDict[key_val_pair.key] = key_val_pair.value }
+            resultsDict.forEach { key_val_pair in motionData[key_val_pair.key] = key_val_pair.value }
         }
         
-        ref.child(DB_STORE_NAME).child("\(testName)_\(getDatetime())").setValue(dataDict)
+        let motionDataStorageName = "\(testName)_\(getDatetime())"
+        if (testMode == AppMode.Clinical) {
+            saveDataToDocuments(fileName: motionDataStorageName, motionData: motionData)
+        } else if (testMode == AppMode.CareKit) {
+            ref.child(DB_STORE_NAME).child(motionDataStorageName).setValue(motionData)
+        }
         
         clearData()
     }
@@ -157,6 +162,52 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         curAzimuth = newHeading.trueHeading
+    }
+    
+    private func saveDataToDocuments(fileName: String, motionData : Dictionary<String, Any>) {
+        guard let motionDataJson = convertTestDataToJSON(motionData) else {
+            return
+        }
+        
+        guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return
+        }
+
+        var fileURL = dir.appendingPathComponent("\(fileName).json")
+        
+        // create empty file
+        do {
+            try "".write(to: fileURL, atomically: false, encoding: .utf8)
+        } catch {
+            return
+        }
+        
+        // set file to NOT be backed up to iCloud (only want local device storage)
+        do {
+            var resourceValues = URLResourceValues()
+            resourceValues.isExcludedFromBackup = true
+            try fileURL.setResourceValues(resourceValues)
+        } catch {
+            return
+        }
+        
+        do {
+            try motionDataJson.write(to: fileURL, atomically: false, encoding: .utf8)
+        } catch {
+            return
+        }
+    }
+    
+    private func convertTestDataToJSON(_ motionData : Dictionary<String, Any>) -> String? {
+        var motionDataJson: String? = nil
+        do {
+            let motionDataJsonData = try JSONSerialization.data(withJSONObject: motionData, options: .prettyPrinted)
+            motionDataJson = String(data: motionDataJsonData, encoding: .utf8)!
+        } catch {
+            return nil
+        }
+        
+        return motionDataJson
     }
     
     private func getDatetime() -> String {

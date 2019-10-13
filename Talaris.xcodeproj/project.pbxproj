@@ -848,14 +848,14 @@
 				CODE_SIGN_ENTITLEMENTS = Talaris/Talaris.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 294RAWMA84;
+				DEVELOPMENT_TEAM = FB67CJSS59;
 				INFOPLIST_FILE = Talaris/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris483903298;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris1001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -872,14 +872,14 @@
 				CODE_SIGN_ENTITLEMENTS = Talaris/Talaris.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 294RAWMA84;
+				DEVELOPMENT_TEAM = FB67CJSS59;
 				INFOPLIST_FILE = Talaris/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris483903298;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talaris.Talaris1001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
