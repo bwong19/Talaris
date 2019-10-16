@@ -19,6 +19,7 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     private let synthesizer = AVSpeechSynthesizer()
     private let didFinish = false
     private let soundCode = 1005
+    private let endSoundCode = 1022
     private var numUtterances = 0
     private var totalUtterances = 0
 
@@ -58,7 +59,14 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
 
     override func stopTest() {
         super.stopTest()
-        PhoneVoice.speak(speech: "Stop walking.")
+        
+        AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
+        
+        if (mode == AppMode.CareKit) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.synthesizer.speak(self.getUtterance("Stop walking."))
+            }
+        }
         
         let results = getRotationCountAndDistance(azimuthData: motionTracker.processedAzimuthData)
         let resultsDict  : [String : Any] = ["distance" : results.1, "turn_count" : results.0]
@@ -134,7 +142,7 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         numUtterances += 1
         if (numUtterances == totalUtterances) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+                AudioServicesPlaySystemSound(SystemSoundID(self.soundCode))
                 super.startTest()
             }
         }

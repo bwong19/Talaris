@@ -25,6 +25,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     private let synthesizer = AVSpeechSynthesizer()
     private let didFinish = false
     private let soundCode = 1005
+    private let endSoundCode = 1022
     private var numUtterances = 0
     private var totalUtterances = 0
     private var testStarted: Bool
@@ -54,6 +55,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
                 self.hasStoodUp = true
                 self.walking = true
             }
+            // TODO: yeet this outta here please
             /*
              if ((attitude.pitch <= self.STANDING_THRESHOLD || attitude.pitch >= -self.STANDING_THRESHOLD) && self.walking = true) {
                 self.stand2sit = self.counter
@@ -89,7 +91,14 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     override func stopTest() {
         self.testStopped = true
         super.stopTest()
-        synthesizer.speak(getUtterance("Good Work!"))
+        
+        AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
+        
+        if (mode == AppMode.CareKit) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.synthesizer.speak(self.getUtterance("Good Work!"))
+            }
+        }
         
         let resultsDict  = ["tug_time" : counter, "sit_to_stand_time" : sit2stand]
         if (mode == AppMode.CareKit) {
