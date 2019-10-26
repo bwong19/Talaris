@@ -24,7 +24,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     
     private let synthesizer = AVSpeechSynthesizer()
     private let didFinish = false
-    private let soundCode = 1005
+    private let soundCode = 1070
     private let endSoundCode = 1022
     private var numUtterances = 0
     private var totalUtterances = 0
