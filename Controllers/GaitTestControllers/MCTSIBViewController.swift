@@ -21,7 +21,8 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
     
     private let synthesizer = AVSpeechSynthesizer()
     private let didFinish = false
-    private let soundCode = 1005
+    private let soundCode = 1254
+    private let endSoundCode = 1022
     private var numUtterances = 0
     private var totalUtterances = 0
     
@@ -95,18 +96,28 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
     override func stopTest() {
         super.stopTest()
         
-        PhoneVoice.speak(speech: endScripts[testNumber.rawValue] + "If the test was completed properly, please press YES. If not, please press REDO. If you wish to exit this assessment without saving any data, please press CANCEL.")
+        AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
+        
+        if (mode == AppMode.CareKit) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.synthesizer.speak(self.getUtterance("Good Work!"))
+            }
+        }
+        
+        if (mode == AppMode.CareKit) {
+            PhoneVoice.speak(speech: endScripts[testNumber.rawValue] + "If the test was completed properly, please press YES. If not, please press REDO. If you wish to exit this assessment without saving any data, please press CANCEL.")
+        }
         
         var score = 0.0
         for x in 0..<normalizedPathLength.count-1 {
             score += abs(normalizedPathLength[x+1] - normalizedPathLength[x])
         }
         
-        let resultsDict: [String: Any] = ["score": score, "max_score" : 30]
+        let resultsDict: [String: Any] = ["score": score]
         
         delegate?.onGaitTestComplete(
             resultsDict: resultsDict,
-            resultsMessage: String(format: "Your score is %.1lf/30.", score),
+            resultsMessage: String(format: "Your mCTSIB score is %.1lf.", score),
             gaitTestType: GaitTestType.MCTSIB,
             motionTracker: motionTracker
         )
@@ -126,7 +137,7 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
         numUtterances += 1
         if (numUtterances == totalUtterances) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                AudioServicesPlaySystemSound(SystemSoundID(self.soundCode));
+                AudioServicesPlaySystemSound(SystemSoundID(self.soundCode))
                 super.startTest()
             }
         }

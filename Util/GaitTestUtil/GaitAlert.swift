@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// sets up alerts for each type of gait test
 class GaitAlert {
     
     class func tugAlert(in vc: UIViewController, mode: AppMode, delegate: GaitTestDelegate? = nil) {
