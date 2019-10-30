@@ -12,7 +12,7 @@ import CoreLocation
 import FirebaseDatabase
 
 class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate {
-    private let TEST_DURATION = 12.0 // in seconds
+    private let TEST_DURATION = 120.0 // in seconds
     private let SAMPLING_RATE = 10.0
     private let ROTATION_DETECTION_THRESHOLD = 150.0
     
@@ -71,7 +71,7 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         
         delegate?.onGaitTestComplete(
             resultsDict: resultsDict,
-            resultsMessage: String(format: "Your 6MWT distance is %.1lf meters. Turn Count is %d.", results.1, results.0),
+            resultsMessage: String(format: "Your 2MWT distance is %.1lf meters. Turn Count is %d.", results.1, results.0),
             gaitTestType: GaitTestType.SixMWT,
             motionTracker: motionTracker
         )

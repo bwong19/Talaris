@@ -50,7 +50,7 @@ class ClinicalTrialTestViewController: UIViewController, GaitTestDelegate {
         tugButton.addTarget(self, action: #selector(tug), for: .touchUpInside)
         tugButton.setTitle("TUG Test", for: .normal)
         tugButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
-        tugButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
+        tugButton.backgroundColor = UIColor(red: 1/255, green: 48/255, blue: 63/255, alpha: 1)
         tugButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(tugButton)
         
@@ -60,7 +60,7 @@ class ClinicalTrialTestViewController: UIViewController, GaitTestDelegate {
         sixmwtButton.addTarget(self, action: #selector(sixmwt), for: .touchUpInside)
         sixmwtButton.setTitle("2MWT", for: .normal)
         sixmwtButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
-        sixmwtButton.backgroundColor = UIColor(red: 120/255, green: 214/255, blue: 255/255, alpha: 1)
+        sixmwtButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         sixmwtButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(sixmwtButton)
         
@@ -70,7 +70,7 @@ class ClinicalTrialTestViewController: UIViewController, GaitTestDelegate {
         mctsibButton.addTarget(self, action: #selector(mctsib), for: .touchUpInside)
         mctsibButton.setTitle("mCTSIB", for: .normal)
         mctsibButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
-        mctsibButton.backgroundColor = UIColor(red: 1/255, green: 48/255, blue: 63/255, alpha: 1)
+        mctsibButton.backgroundColor = UIColor(red: 120/255, green: 214/255, blue: 255/255, alpha: 1)
         mctsibButton.layer.cornerRadius = 14
         trialStackView.addArrangedSubview(mctsibButton)
         

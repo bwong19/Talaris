@@ -52,7 +52,7 @@ class CheckViewController: UIViewController {
         statusText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
         statusText.numberOfLines = 0
         statusText.textAlignment = .center
-        statusText.font = UIFont.systemFont(ofSize: 24)
+        statusText.font = UIFont(name: "Ubuntu-Regular", size: 24)
         view.addSubview(statusText)
         statusText.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         statusText.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
@@ -75,8 +75,8 @@ class CheckViewController: UIViewController {
         yesButton.translatesAutoresizingMaskIntoConstraints = false
         yesButton.addTarget(self, action: #selector(handleSuccesfulTest), for: .touchUpInside)
         yesButton.setTitle("Yes", for: .normal)
-        yesButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        yesButton.backgroundColor = UIColor(red:1.00, green:0.53, blue:0.26, alpha:1.0)
+        yesButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
+        yesButton.backgroundColor = UIColor(red: 1/255, green: 48/255, blue: 63/255, alpha: 1)
         yesButton.layer.cornerRadius = 14
         yesNoStackView.addArrangedSubview(yesButton)
         
@@ -85,8 +85,8 @@ class CheckViewController: UIViewController {
         noButton.translatesAutoresizingMaskIntoConstraints = false
         noButton.addTarget(self, action: #selector(goToHomeScreen), for: .touchUpInside)
         noButton.setTitle("No", for: .normal)
-        noButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        noButton.backgroundColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
+        noButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
+        noButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         noButton.layer.cornerRadius = 14
         yesNoStackView.addArrangedSubview(noButton)
         
@@ -95,7 +95,7 @@ class CheckViewController: UIViewController {
         questionText.adjustsFontSizeToFitWidth = true
         questionText.text = "Was the test completed properly?"
         questionText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
-        questionText.font = UIFont.systemFont(ofSize: 24)
+        questionText.font = UIFont(name: "Ubuntu-Regular", size: 24)
         questionText.numberOfLines = 0
         questionText.textAlignment = .center
         view.addSubview(questionText)

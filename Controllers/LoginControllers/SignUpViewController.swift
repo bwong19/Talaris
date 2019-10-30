@@ -61,6 +61,7 @@ class SignUpViewController: UIViewController {
         emailTextField.adjustsFontSizeToFitWidth = true
         emailTextField.keyboardType = .emailAddress
         emailTextField.placeholder = "Email"
+        emailTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
         emailTextField.textAlignment = .left
         emailTextField.layer.borderColor = UIColor.gray.cgColor
         emailTextField.layer.borderWidth = 1.0
@@ -74,6 +75,7 @@ class SignUpViewController: UIViewController {
         passwordTextField.adjustsFontSizeToFitWidth = true
         passwordTextField.isSecureTextEntry = true
         passwordTextField.placeholder = "Password"
+        passwordTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
         passwordTextField.textAlignment = .left
         passwordTextField.layer.borderColor = UIColor.gray.cgColor
         passwordTextField.layer.borderWidth = 1.0
@@ -86,6 +88,7 @@ class SignUpViewController: UIViewController {
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         firstNameTextField.adjustsFontSizeToFitWidth = true
         firstNameTextField.placeholder = "First Name"
+        firstNameTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
         firstNameTextField.textAlignment = .left
         firstNameTextField.layer.borderColor = UIColor.gray.cgColor
         firstNameTextField.layer.borderWidth = 1.0
@@ -98,6 +101,7 @@ class SignUpViewController: UIViewController {
         lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
         lastNameTextField.adjustsFontSizeToFitWidth = true
         lastNameTextField.placeholder = "Last Name"
+        lastNameTextField.font = UIFont(name: "Ubuntu-Regular", size: 16)
         lastNameTextField.textAlignment = .left
         lastNameTextField.layer.borderColor = UIColor.gray.cgColor
         lastNameTextField.layer.borderWidth = 1.0
@@ -111,7 +115,7 @@ class SignUpViewController: UIViewController {
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         signupButton.addTarget(self, action: #selector(signup), for: .touchUpInside)
         signupButton.setTitle("Sign Up", for: .normal)
-        signupButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        signupButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
         signupButton.backgroundColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
         signupButton.layer.cornerRadius = 10
         signupStackView.addArrangedSubview(signupButton)

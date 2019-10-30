@@ -43,19 +43,19 @@ class SubjectInfoViewController: UIViewController {
         let infoStackView = UIStackView()
         infoStackView.translatesAutoresizingMaskIntoConstraints = false
         infoStackView.axis = .vertical
-        infoStackView.spacing = 10
+        infoStackView.spacing = 8
         infoStackView.distribution = .fillEqually
         view.addSubview(infoStackView)
         infoStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        infoStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        infoStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        infoStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        infoStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -36).isActive = true
+        infoStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        infoStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
         
         // label
         let appLabel = UILabel()
         appLabel.text = "Enter subject information below"
-        appLabel.font = UIFont(name: "Ubuntu-Regular", size: 16)
-        appLabel.textColor = UIColor(white: 0.36, alpha: 1)
+        appLabel.font = UIFont(name: "Ubuntu-Regular", size: 32)
+        appLabel.textColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         appLabel.adjustsFontSizeToFitWidth = true
         appLabel.translatesAutoresizingMaskIntoConstraints = false
         appLabel.textAlignment = .center
@@ -81,8 +81,12 @@ class SubjectInfoViewController: UIViewController {
         nextButton.setTitle("Next", for: .normal)
         nextButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
         nextButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
-        nextButton.layer.cornerRadius = 10
-        infoStackView.addArrangedSubview(nextButton)
+        nextButton.layer.cornerRadius = 14
+        view.addSubview(nextButton)
+        nextButton.topAnchor.constraint(equalTo: infoStackView.bottomAnchor, constant: 8).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        nextButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
     }
     
     @objc private func nextScreen() {
