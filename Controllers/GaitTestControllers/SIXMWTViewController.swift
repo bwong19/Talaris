@@ -18,7 +18,7 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     
     private let synthesizer = AVSpeechSynthesizer()
     private let didFinish = false
-    private let soundCode = 1070
+    private let soundCode = 1254
     private let endSoundCode = 1022
     private var numUtterances = 0
     private var totalUtterances = 0
