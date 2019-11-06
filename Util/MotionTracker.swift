@@ -16,7 +16,7 @@ import FirebaseDatabase
 class MotionTracker : NSObject, CLLocationManagerDelegate {
     private let ref: DatabaseReference
     private let DB_STORE_NAME = "temp_test_data"
-    private static let AZIMUTH_PROCESSING_THRESHOLD = 100.0
+    static let AZIMUTH_PROCESSING_THRESHOLD = 100.0
 
     let samplingRate: Double
 
@@ -37,6 +37,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
     // definining callback methods to get realtime motion updates
     private var processAttitudeUpdate: ((CMAttitude) -> ())?
     private var processAccelUpdate: ((CMAccelerometerData) -> ())?
+    private var processAzimuthUpdate: ((Double) -> ())?
     
     init(samplingRate: Double = 10.0) {
         ref = Database.database().reference()
@@ -106,6 +107,7 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
         }
         
         // get curAzimuth
+        processAzimuthUpdate?(curAzimuth)
         azimuthData.append(curAzimuth)
     }
     
@@ -253,6 +255,10 @@ class MotionTracker : NSObject, CLLocationManagerDelegate {
     
     func handleAccelerationUpdate(_ callback: @escaping (CMAccelerometerData) -> ()) {
         processAccelUpdate = callback
+    }
+    
+    func handleAzimuthUpdate(_ callback: @escaping (Double) -> ()) {
+        processAzimuthUpdate = callback
     }
     
 }
