@@ -10,7 +10,7 @@ import UIKit
 
 // class for clinical trials only
 // skips user login
-class ClinicalTrialTestViewController: UIViewController, GaitTestDelegate {
+class ClinicalTrialTestViewController: UIViewController {
     
     private let subjectID: String
     
@@ -90,31 +90,18 @@ class ClinicalTrialTestViewController: UIViewController, GaitTestDelegate {
     }
     
     @objc private func tug() {
-        GaitAlert.tugAlert(in: self, mode: AppMode.Clinical, delegate: self)
+        self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.TUG, subjectID: self.subjectID), animated: true)
     }
     
     @objc private func sixmwt() {
-        GaitAlert.sixmwtAlert(in: self, mode: AppMode.Clinical, delegate: self)
+        self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.SixMWT, subjectID: self.subjectID), animated: true)
     }
     
     @objc private func mctsib() {
-        GaitAlert.mctsibAlert(in: self, mode: AppMode.Clinical, delegate: self)
+        self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.MCTSIB, subjectID: self.subjectID), animated: true)
     }
     
     @objc private func finish() {
         self.navigationController!.pushViewController(CompletedViewController(), animated: true)
-    }
-    
-    func onGaitTestComplete(resultsDict: Dictionary<String, Any>, resultsMessage: String, gaitTestType: GaitTestType, motionTracker: MotionTracker) {
-        self.navigationController!.pushViewController(
-            ClinicalCheckViewController(
-                message: resultsMessage,
-                resultsDict: resultsDict,
-                motionTracker: motionTracker,
-                gaitTestType: gaitTestType,
-                subjectID: subjectID
-            ),
-            animated: true
-        )
     }
 }

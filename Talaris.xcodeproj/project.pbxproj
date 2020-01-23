@@ -43,6 +43,7 @@
 		BFB8B32399EEC16CE2E240CB /* Pods_Talaris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0405A296993B7C8197422B90 /* Pods_Talaris.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CD150B3C23367F8300D3CDBB /* ClinicalCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD150B3B23367F8300D3CDBB /* ClinicalCheckViewController.swift */; };
 		CD1C40EF22DECCC700F2B3A7 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C40EE22DECCC700F2B3A7 /* CompletedViewController.swift */; };
+		CD950D6523D978C200F9853D /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD950D6423D978C200F9853D /* InstructionViewController.swift */; };
 		CDBD727F22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD727D22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift */; };
 		CDBD728022D861EE00CD3BAF /* SubjectInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD727E22D861EE00CD3BAF /* SubjectInfoViewController.swift */; };
 		CDBD728922D8632A00CD3BAF /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDBD728722D8632A00CD3BAF /* Ubuntu-Regular.ttf */; };
@@ -149,6 +150,7 @@
 		A94893F81361EF7E02715911 /* Pods-Talaris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Talaris.release.xcconfig"; path = "Pods/Target Support Files/Pods-Talaris/Pods-Talaris.release.xcconfig"; sourceTree = "<group>"; };
 		CD150B3B23367F8300D3CDBB /* ClinicalCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalCheckViewController.swift; sourceTree = "<group>"; };
 		CD1C40EE22DECCC700F2B3A7 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
+		CD950D6423D978C200F9853D /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		CDBD727D22D861EE00CD3BAF /* ClinicalTrialTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClinicalTrialTestViewController.swift; sourceTree = "<group>"; };
 		CDBD727E22D861EE00CD3BAF /* SubjectInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectInfoViewController.swift; sourceTree = "<group>"; };
 		CDBD728722D8632A00CD3BAF /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				3986DFFA21EF91DD00A61F1C /* SIXMWTViewController.swift */,
 				39435F3B2245C5FD00977C8E /* MCTSIBViewController.swift */,
 				2DFDB32A2284EAD500363C57 /* GaitTestViewController.swift */,
+				CD950D6423D978C200F9853D /* InstructionViewController.swift */,
 			);
 			path = GaitTestControllers;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				2D7A02532352DBC600B6D671 /* GaitTestDelegate.swift in Sources */,
 				2DFDB32B2284EAD500363C57 /* GaitTestViewController.swift in Sources */,
 				CDBD728022D861EE00CD3BAF /* SubjectInfoViewController.swift in Sources */,
+				CD950D6523D978C200F9853D /* InstructionViewController.swift in Sources */,
 				2DCE2AB9226DA482003B82FA /* CareKitTabsViewController.swift in Sources */,
 				2D58658621ECFD1C0071DE10 /* AppDelegate.swift in Sources */,
 				CD1C40EF22DECCC700F2B3A7 /* CompletedViewController.swift in Sources */,
@@ -862,7 +866,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FB67CJSS59;
 				INFOPLIST_FILE = Talaris/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -886,7 +890,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FB67CJSS59;
 				INFOPLIST_FILE = Talaris/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
