@@ -76,7 +76,7 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
         synthesizer.delegate = self
         UIApplication.shared.isIdleTimerDisabled = true
         
-        navigationItem.hidesBackButton = false
+        self.navigationItem.hidesBackButton = true
         
         startTest()
     }

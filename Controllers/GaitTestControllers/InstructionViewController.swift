@@ -32,7 +32,7 @@ class InstructionViewController: UIViewController, GaitTestDelegate {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        navigationItem.hidesBackButton = false
+        navigationItem.hidesBackButton = true
         
         // display instructions
         let instructionText = UILabel()
@@ -68,20 +68,20 @@ class InstructionViewController: UIViewController, GaitTestDelegate {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.addTarget(self, action: #selector(nextScreen), for: .touchUpInside)
         nextButton.setTitle("Next", for: .normal)
-        nextButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
+        nextButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
         nextButton.backgroundColor = UIColor(red:1.00, green:0.53, blue:0.26, alpha:1.0)
         nextButton.layer.cornerRadius = 10
         instructionStackView.addArrangedSubview(nextButton)
         
-        // repeat page
-        let repeatButton = CustomButton()
-        repeatButton.translatesAutoresizingMaskIntoConstraints = false
-        repeatButton.addTarget(self, action: #selector(repeatInstruction), for: .touchUpInside)
-        repeatButton.setTitle("Repeat", for: .normal)
-        repeatButton.titleLabel?.font = UIFont(name: "Ubuntu-Regular", size: 32)
-        repeatButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
-        repeatButton.layer.cornerRadius = 10
-        instructionStackView.addArrangedSubview(repeatButton)
+        // back page
+        let backButton = CustomButton()
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.addTarget(self, action: #selector(backPage), for: .touchUpInside)
+        backButton.setTitle("Back", for: .normal)
+        backButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
+        backButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
+        backButton.layer.cornerRadius = 10
+        instructionStackView.addArrangedSubview(backButton)
     }
     
     @objc private func nextScreen() {
@@ -97,7 +97,8 @@ class InstructionViewController: UIViewController, GaitTestDelegate {
         }
     }
     
-    @objc private func repeatInstruction() {
+    @objc private func backPage() {
+        self.navigationController!.popViewController(animated: true)
     }
     
     func onGaitTestComplete(resultsDict: Dictionary<String, Any>, resultsMessage: String, gaitTestType: GaitTestType, motionTracker: MotionTracker) {
