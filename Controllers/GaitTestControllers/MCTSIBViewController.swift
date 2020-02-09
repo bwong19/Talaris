@@ -100,7 +100,7 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
         
         if (mode == AppMode.CareKit) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.synthesizer.speak(self.getUtterance("Good Work!"))
+                PhoneVoice.speak(speech: "Good Work!")
             }
         }
         
@@ -136,6 +136,7 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         numUtterances += 1
         if (numUtterances == totalUtterances) {
+            synthesizer.delegate = nil
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 AudioServicesPlaySystemSound(SystemSoundID(self.soundCode))
                 super.startTest()

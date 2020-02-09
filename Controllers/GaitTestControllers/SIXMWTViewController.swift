@@ -53,7 +53,7 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
             synthesizer.speak(getUtterance("On the words BEGIN WALKING, start walking."))
         }
         synthesizer.speak(getUtterance("Ready?"))
-}
+    }
 
     override func stopTest() {
         super.stopTest()
@@ -62,7 +62,7 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         
         if (mode == AppMode.CareKit) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.synthesizer.speak(self.getUtterance("Stop walking."))
+                 PhoneVoice.speak(speech: "Stop walking.")
             }
         }
         
@@ -139,6 +139,7 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         numUtterances += 1
         if (numUtterances == totalUtterances) {
+            synthesizer.delegate = nil
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                 AudioServicesPlaySystemSound(SystemSoundID(self.soundCode))
                 super.startTest()

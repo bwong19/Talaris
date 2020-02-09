@@ -94,7 +94,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         
         if (mode == AppMode.CareKit) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.synthesizer.speak(self.getUtterance("Good Work!"))
+                 PhoneVoice.speak(speech: "Good Work!")
             }
         }
         
@@ -124,6 +124,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         numUtterances += 1
         if (numUtterances == totalUtterances && !self.testStarted) {
+            synthesizer.delegate = nil
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 super.startTest()
                 AudioServicesPlaySystemSound(SystemSoundID(self.soundCode))
