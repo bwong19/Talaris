@@ -12,9 +12,9 @@ import AVFoundation
 
 // Timed Up and Go Gait Test
 class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
-    private let SAMPLING_RATE = 10.0
+    private let SAMPLING_RATE = 100.0
     private let STANDING_THRESHOLD = 1.0
-    private let SITTING_THRESHOLD = 0.4
+    private let SITTING_THRESHOLD = 0.5
 
     private var sit2stand: Double
     private var stand2sit: Double
@@ -39,7 +39,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         testStarted = false
         testStopped = false
         
-        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: false)
+        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: true)
     }
     
     required init?(coder: NSCoder) {
@@ -48,21 +48,17 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     
     override func setupMotionTracker() {
         motionTracker.handleAttitudeUpdate { attitude in
+            self.testInProgressView.dataLabel?.text = "\(attitude.pitch)"
             if ((attitude.pitch >= self.STANDING_THRESHOLD || attitude.pitch <= -self.STANDING_THRESHOLD) && self.hasStoodUp == false) {
-                self.sit2stand = self.counter
+                self.sit2stand = Double(self.motionTracker.attitudeData.count) / self.SAMPLING_RATE
                 self.hasStoodUp = true
                 self.walking = true
             }
-            // TODO: yeet this outta here please
-            /*
-             if ((attitude.pitch <= self.STANDING_THRESHOLD || attitude.pitch >= -self.STANDING_THRESHOLD) && self.walking = true) {
-                self.stand2sit = self.counter
-             */
-            
-            
+
             if (attitude.pitch >= -self.SITTING_THRESHOLD && attitude.pitch <= self.SITTING_THRESHOLD && self.hasStoodUp && !self.testStopped) {
                 self.stopTest()
             }
+            
         }
     }
     
@@ -73,7 +69,6 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         UIApplication.shared.isIdleTimerDisabled = true
         
         self.startTest()
-        
     }
     
     override func startTest() {
@@ -98,13 +93,17 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
             }
         }
         
-        let resultsDict: [String: Any] = ["tug_time": counter, "sit_to_stand_time": sit2stand]
+        let tug_time = Double(self.motionTracker.attitudeData.count) / self.SAMPLING_RATE
+        let resultsDict: [String: Any] = [
+            "tug_time": tug_time,
+            "sit_to_stand_time": sit2stand
+        ]
         
         delegate?.onGaitTestComplete(
             resultsDict: resultsDict,
             resultsMessage: String(
-                format: "Your TUG time is %.1lf seconds. Your sit-to-stand duration is %.1lf seconds.",
-                counter,
+                format: "Your TUG time is %.2f seconds. Your sit-to-stand duration is %.2f seconds.",
+                tug_time,
                 sit2stand
             ),
             gaitTestType: GaitTestType.TUG,

@@ -13,7 +13,7 @@ import FirebaseDatabase
 
 class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate {
     private let TEST_DURATION = 120.0 // in seconds
-    private let SAMPLING_RATE = 10.0
+    private let SAMPLING_RATE = 50.0
     private let ROTATION_DETECTION_THRESHOLD = 150.0
     
     private let synthesizer = AVSpeechSynthesizer()
@@ -24,6 +24,11 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     private var totalUtterances = 0
 
     private var turnaroundDistace : Double
+    
+    private var azimuths: [Double] = []
+    private var accumAzimuthCorrection: Double = 0
+    private var lastTurnIndex: Int = 0
+    private var turnCount: Int = 0
     
     init(turnaroundDistance: Double = 30, appMode: AppMode, delegate: GaitTestDelegate? = nil) {
         self.turnaroundDistace = turnaroundDistance
@@ -54,10 +59,38 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         }
         synthesizer.speak(getUtterance("Ready?"))
     }
+    
+    override func setupMotionTracker() {
+        motionTracker.handleAzimuthUpdate { azimuth in
+            let curIndex = self.azimuths.count
+            self.azimuths.append(azimuth)
+            
+            // real-time smoothing of azimuth signal
+            self.azimuths[curIndex] -= self.accumAzimuthCorrection
+            if (curIndex > 0) {
+                let diff = self.azimuths[curIndex] - self.azimuths[curIndex - 1]
+                if (abs(diff) >= MotionTracker.AZIMUTH_PROCESSING_THRESHOLD) {
+                    self.accumAzimuthCorrection += diff
+                    self.azimuths[curIndex] -= diff
+                }
+            }
+            
+            // real-time turn detection
+            let endIndex = curIndex
+            let startIndex = endIndex - Int(3 * self.SAMPLING_RATE)
+            if (startIndex >= self.lastTurnIndex) {
+                let delta = abs(self.azimuths[endIndex] - self.azimuths[startIndex])
+                if (delta >= self.ROTATION_DETECTION_THRESHOLD) {
+                    self.lastTurnIndex = curIndex
+                    self.turnCount += 1
+                    PhoneVoice.speak(speech: "Turn \(self.turnCount)")
+                }
+            }
+        }
+    }
 
     override func stopTest() {
         super.stopTest()
-        
         AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
         
         if (mode == AppMode.CareKit) {
@@ -66,12 +99,16 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
             }
         }
         
-        let results = getRotationCountAndDistance(azimuthData: motionTracker.processedAzimuthData)
-        let resultsDict: [String: Any] = ["distance" : results.1, "turn_count" : results.0]
+        let timeBeforeLastTurn = Double(lastTurnIndex) / SAMPLING_RATE
+        let timeAfterLastTurn = Double((azimuths.count - lastTurnIndex)) / SAMPLING_RATE
+        var distance = Double(turnCount) * turnaroundDistace
+        distance += (distance / timeBeforeLastTurn) * timeAfterLastTurn
+        
+        let resultsDict: [String: Any] = ["distance" : distance, "turn_count" : turnCount]
         
         delegate?.onGaitTestComplete(
             resultsDict: resultsDict,
-            resultsMessage: String(format: "Your 2MWT distance is %.1lf meters. Turn Count is %d.", results.1, results.0),
+            resultsMessage: String(format: "Your 2MWT distance is %.1lf meters. Turn Count is %d.", distance, turnCount),
             gaitTestType: GaitTestType.SixMWT,
             motionTracker: motionTracker
         )
@@ -99,33 +136,6 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         }
     }
     
-    private func getRotationCountAndDistance(azimuthData: [Double]) -> (Int, Double){
-        var startIndex : Int = 0
-        var turnCount : Int = 0
-        
-        var distance : Double = 0
-        var lastTurnIndex = 0
-        
-        while startIndex < azimuthData.count {
-            let endIndex = min(azimuthData.count - 1, startIndex + Int(3 * SAMPLING_RATE))
-            
-            let delta = abs(azimuthData[endIndex] - azimuthData[startIndex])
-            if (delta >= ROTATION_DETECTION_THRESHOLD) {
-                turnCount += 1
-                startIndex = endIndex + 1
-                lastTurnIndex = startIndex
-            } else {
-                startIndex += 1
-            }
-        }
-        
-        let timeBeforeLastTurn = Double(lastTurnIndex) / SAMPLING_RATE
-        let timeAfterLastTurn = Double((azimuthData.count - lastTurnIndex)) / SAMPLING_RATE
-        distance = Double(turnCount) * turnaroundDistace
-        distance += (distance / timeBeforeLastTurn) * timeAfterLastTurn
-        return (turnCount, distance)
-    }
-    
     func getUtterance(_ speech: String) -> AVSpeechUtterance {
         let utterance = AVSpeechUtterance(string: speech)
         utterance.rate = 0.4
@@ -134,7 +144,6 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         totalUtterances += 1
         return utterance
     }
-    
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         numUtterances += 1
