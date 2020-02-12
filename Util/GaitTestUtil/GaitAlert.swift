@@ -20,16 +20,18 @@ class GaitAlert {
         let alert = UIAlertController(title: "Two Minute Walk Test", message: "Please provide the distance from your starting position to the turnaround point (in meters).", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
-            textField.text = ""
+            textField.placeholder = "Distance"
+            textField.text = "30"
         }
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert!.textFields![0]
+            let distance : Double = Double(textField.text!) ?? 30
             vc.navigationController!.pushViewController(
                 SIXMWTViewController(
-                    turnaroundDistance: Double(textField.text!)!,
+                    turnaroundDistance: distance,
                     appMode: mode,
                     delegate: delegate
                 ),
