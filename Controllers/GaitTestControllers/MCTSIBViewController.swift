@@ -98,14 +98,12 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
         
         AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
         
-        if (mode == AppMode.CareKit) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                PhoneVoice.speak(speech: "Good Work!")
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            PhoneVoice.speak(speech: "Good work!")
         }
         
         if (mode == AppMode.CareKit) {
-            PhoneVoice.speak(speech: endScripts[testNumber.rawValue] + "If the test was completed properly, please press YES. If not, please press REDO. If you wish to exit this assessment without saving any data, please press CANCEL.")
+            //PhoneVoice.speak(speech: endScripts[testNumber.rawValue] + "If the test was completed properly, please press YES. If not, please press REDO. If you wish to exit this assessment without saving any data, please press CANCEL.")
         }
         
         var score = 0.0

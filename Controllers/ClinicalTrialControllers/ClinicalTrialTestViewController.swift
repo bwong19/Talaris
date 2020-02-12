@@ -10,7 +10,7 @@ import UIKit
 
 // class for clinical trials only
 // skips user login
-class ClinicalTrialTestViewController: UIViewController {
+class ClinicalTrialTestViewController: UIViewController, GaitTestDelegate {
     
     private let subjectID: String
     
@@ -90,18 +90,31 @@ class ClinicalTrialTestViewController: UIViewController {
     }
     
     @objc private func tug() {
-        GaitAlert.tugAlert(in: self, mode: AppMode.Clinical, delegate: self as! GaitTestDelegate)
+        GaitAlert.tugAlert(in: self, mode: AppMode.Clinical, delegate: self)
     }
     
     @objc private func sixmwt() {
-        GaitAlert.sixmwtAlert(in: self, mode: AppMode.Clinical, delegate: self as! GaitTestDelegate)
+        GaitAlert.sixmwtAlert(in: self, mode: AppMode.Clinical, delegate: self)
     }
     
     @objc private func mctsib() {
-        GaitAlert.mctsibAlert(in: self, mode: AppMode.Clinical, delegate: self as! GaitTestDelegate)
+        GaitAlert.mctsibAlert(in: self, mode: AppMode.Clinical, delegate: self)
     }
     
     @objc private func finish() {
         self.navigationController!.pushViewController(CompletedViewController(), animated: true)
+    }
+    
+    func onGaitTestComplete(resultsDict: Dictionary<String, Any>, resultsMessage: String, gaitTestType: GaitTestType, motionTracker: MotionTracker) {
+            self.navigationController!.pushViewController(
+                ClinicalCheckViewController(
+                    message: resultsMessage,
+                    resultsDict: resultsDict,
+                    motionTracker: motionTracker,
+                    gaitTestType: gaitTestType,
+                    subjectID: subjectID
+                ),
+                animated: true
+            )
     }
 }

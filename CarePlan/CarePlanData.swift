@@ -30,7 +30,7 @@ class CarePlanData: NSObject {
         let tugTest = OCKCarePlanActivity
             .assessment(withIdentifier: GaitTestType.TUG.rawValue,
                         groupIdentifier: nil,
-                        title: "Timed Up and Go (TUG)",
+                        title: "1. Timed Up and Go (TUG)",
                         text: "This test measures speed",
                         tintColor: UIColor.green,
                         resultResettable: true,
@@ -39,7 +39,7 @@ class CarePlanData: NSObject {
         let sixmwtTest = OCKCarePlanActivity
             .assessment(withIdentifier: GaitTestType.SixMWT.rawValue,
                         groupIdentifier: nil,
-                        title: "Six Minute Walk Test (6MWT)",
+                        title: "2. Two Minute Walk Test (2MWT)",
                         text: "This test measures endurance",
                         tintColor: UIColor.orange,
                         resultResettable: true,
@@ -48,7 +48,7 @@ class CarePlanData: NSObject {
         let mctsibTest = OCKCarePlanActivity
             .assessment(withIdentifier: GaitTestType.MCTSIB.rawValue,
                         groupIdentifier: nil,
-                        title: "Sway Test (mCTSIB)",
+                        title: "3. Sway Test (mCTSIB)",
                         text: "This test measures balance",
                         tintColor: UIColor.orange,
                         resultResettable: true,

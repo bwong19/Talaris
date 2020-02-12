@@ -93,10 +93,8 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         super.stopTest()
         AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
         
-        if (mode == AppMode.CareKit) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                 PhoneVoice.speak(speech: "Stop walking.")
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+             PhoneVoice.speak(speech: "Stop walking. Good Work!")
         }
         
         let timeBeforeLastTurn = Double(lastTurnIndex) / SAMPLING_RATE
@@ -118,15 +116,15 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         // Rounds counter to the nearest second based on TIME_INTERVAL
         switch (Int(10 * counter + 0.5)) {
         case 600:
-            PhoneVoice.speak(speech: "You are doing well. You have 5 minutes to go.")
-        case 1200:
-            PhoneVoice.speak(speech: "Keep up the good work. You have 4 minutes to go.")
-        case 1800:
-            PhoneVoice.speak(speech: "You are doing well. You are halfway done.")
-        case 2400:
-            PhoneVoice.speak(speech: "Keep up the good work. You have only 2 minutes left.")
-        case 3000:
-            PhoneVoice.speak(speech: "You are doing well. You have only 1 minute to go.")
+            PhoneVoice.speak(speech: "You are doing well. You have 1 minute to go.")
+//        case 1200:
+//            PhoneVoice.speak(speech: "Keep up the good work. You have 4 minutes to go.")
+//        case 1800:
+//            PhoneVoice.speak(speech: "You are doing well. You are halfway done.")
+//        case 2400:
+//            PhoneVoice.speak(speech: "Keep up the good work. You have only 2 minutes left.")
+//        case 3000:
+//            PhoneVoice.speak(speech: "You are doing well. You have only 1 minute to go.")
         default:
             break
         }

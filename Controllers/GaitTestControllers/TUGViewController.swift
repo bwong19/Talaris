@@ -39,7 +39,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         testStarted = false
         testStopped = false
         
-        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: true)
+        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: false)
     }
     
     required init?(coder: NSCoder) {
@@ -87,10 +87,8 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         
         AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
         
-        if (mode == AppMode.CareKit) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                 PhoneVoice.speak(speech: "Good Work!")
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+             PhoneVoice.speak(speech: "Good Work!")
         }
         
         let tug_time = Double(self.motionTracker.attitudeData.count) / self.SAMPLING_RATE
