@@ -43,40 +43,40 @@ class CheckViewController: UIViewController {
         
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
-        
+         
         // display results time
         let statusText = UILabel()
         statusText.translatesAutoresizingMaskIntoConstraints = false
         statusText.adjustsFontSizeToFitWidth = true
         statusText.text = message
-        statusText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
+        statusText.textColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         statusText.numberOfLines = 0
         statusText.textAlignment = .center
-        statusText.font = UIFont(name: "Ubuntu-Regular", size: 24)
+        statusText.font = UIFont(name: "Ubuntu-Regular", size: 32)
         view.addSubview(statusText)
         statusText.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         statusText.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
         statusText.heightAnchor.constraint(equalToConstant: view.frame.height / 10).isActive = true
         statusText.widthAnchor.constraint(equalToConstant: view.frame.width - 20).isActive = true
-        
+         
         let yesNoStackView = UIStackView()
         yesNoStackView.translatesAutoresizingMaskIntoConstraints = false
         yesNoStackView.axis = .vertical
-        yesNoStackView.spacing = 10
+        yesNoStackView.spacing = 8
         yesNoStackView.distribution = .fillEqually
         view.addSubview(yesNoStackView)
-        yesNoStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        yesNoStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        yesNoStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        yesNoStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        
+        yesNoStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 249).isActive = true
+        yesNoStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -72).isActive = true
+        yesNoStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        yesNoStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
+         
         // yes button
         let yesButton = CustomButton()
         yesButton.translatesAutoresizingMaskIntoConstraints = false
         yesButton.addTarget(self, action: #selector(handleSuccesfulTest), for: .touchUpInside)
         yesButton.setTitle("Yes", for: .normal)
-        yesButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
-        yesButton.backgroundColor = UIColor(red: 1/255, green: 48/255, blue: 63/255, alpha: 1)
+        yesButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
+        yesButton.backgroundColor = UIColor(red:1.00, green:0.53, blue:0.26, alpha:1.0)
         yesButton.layer.cornerRadius = 14
         yesNoStackView.addArrangedSubview(yesButton)
         
@@ -85,7 +85,7 @@ class CheckViewController: UIViewController {
         noButton.translatesAutoresizingMaskIntoConstraints = false
         noButton.addTarget(self, action: #selector(goToHomeScreen), for: .touchUpInside)
         noButton.setTitle("No", for: .normal)
-        noButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 16)
+        noButton.titleLabel?.font = UIFont(name: "Ubuntu-Regular", size: 32)
         noButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         noButton.layer.cornerRadius = 14
         yesNoStackView.addArrangedSubview(noButton)
@@ -94,8 +94,8 @@ class CheckViewController: UIViewController {
         questionText.translatesAutoresizingMaskIntoConstraints = false
         questionText.adjustsFontSizeToFitWidth = true
         questionText.text = "Was the test completed properly?"
-        questionText.textColor = UIColor(red: 182/255, green: 223/255, blue: 1, alpha: 1)
-        questionText.font = UIFont(name: "Ubuntu-Regular", size: 24)
+        questionText.textColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
+        questionText.font = UIFont(name: "Ubuntu-Regular", size: 32)
         questionText.numberOfLines = 0
         questionText.textAlignment = .center
         view.addSubview(questionText)
@@ -103,6 +103,7 @@ class CheckViewController: UIViewController {
         questionText.topAnchor.constraint(equalTo: yesNoStackView.topAnchor, constant: -70).isActive = true
         questionText.heightAnchor.constraint(equalToConstant: view.frame.height / 10).isActive = true
         questionText.widthAnchor.constraint(equalToConstant: view.frame.width - 20).isActive = true
+        
     }
     
     @objc private func handleSuccesfulTest() {

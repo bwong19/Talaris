@@ -98,11 +98,11 @@ class CareKitTabsViewController: UITabBarController, OCKSymptomTrackerViewContro
     func symptomTrackerViewController(_ viewController: OCKSymptomTrackerViewController, didSelectRowWithAssessmentEvent assessmentEvent: OCKCarePlanEvent) {
         switch assessmentEvent.activity.identifier {
             case GaitTestType.TUG.rawValue:
-                GaitAlert.tugAlert(in: self, mode: AppMode.CareKit, delegate: self)
+                self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.TUG), animated: true)
             case GaitTestType.SixMWT.rawValue:
-                GaitAlert.sixmwtAlert(in: self, mode: AppMode.CareKit, delegate: self)
+                self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.SixMWT), animated: true)
             case GaitTestType.MCTSIB.rawValue:
-                GaitAlert.mctsibAlert(in: self, mode: AppMode.CareKit, delegate: self)
+                self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.MCTSIB), animated: true)
             default:
                 print(assessmentEvent.activity.identifier)
                 print("error: could not find assesment")

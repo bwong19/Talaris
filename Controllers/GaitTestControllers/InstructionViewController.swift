@@ -10,17 +10,15 @@ import UIKit
 
 class InstructionViewController: UIViewController, GaitTestDelegate {
     let gaitTestType: GaitTestType
-    let subjectID: String
     
     private let messages = [
         GaitTestType.TUG: "The Timed-Up and Go test, also known as the TUG test, is a gait assessment used to measure speed. Before you begin the TUG test, please make sure you have placed a chair without wheels in an uncluttered area, and place a cone or marker 3 meters away from it. When you have understood and performed these instructions, please press the 'NEXT' button on the screen. If you want to repeat these instructions, please press the 'REPEAT' button.",
-        GaitTestType.SixMWT: "The Two Minute Walk Test measures endurance. Before you begin the test, please make sure you have set up two cones between 12 meters [1] and 30 meters apart. Please wear your regular footwear and use a walking aid, such as a cane or walker, if needed. After you have set up the two cones, please enter the distance between them and press the “NEXT” button on the screen. If you want to replay these instructions, please press the “REPEAT” button.",
+        GaitTestType.SixMWT: "The Two Minute Walk Test measures endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, such as a cane or walker, if needed. After you have set up the two cones, please enter the distance between them and press the “NEXT” button on the screen. If you want to replay these instructions, please press the “REPEAT” button.",
         GaitTestType.MCTSIB: "The CTSIB-M is a test used to measure balance. This test will be performed on the Biodex machine, but before you begin, please make sure that the hard surface is placed on the  platform of the machine. When you have understood these instructions, please press the ‘NEXT’ button on the screen. If you want to repeat these instructions, please press the “REPEAT” button."
     ]
     
-    init(gaitTestType: GaitTestType, subjectID: String) {
+    init(gaitTestType: GaitTestType) {
         self.gaitTestType = gaitTestType
-        self.subjectID = subjectID
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -87,11 +85,11 @@ class InstructionViewController: UIViewController, GaitTestDelegate {
     @objc private func nextScreen() {
         switch gaitTestType {
             case GaitTestType.TUG:
-                GaitAlert.tugAlert(in: self, mode: AppMode.Clinical, delegate: self)
+                GaitAlert.tugAlert(in: self, mode: AppMode.CareKit, delegate: self)
             case GaitTestType.SixMWT:
-                GaitAlert.sixmwtAlert(in: self, mode: AppMode.Clinical, delegate: self)
+                GaitAlert.sixmwtAlert(in: self, mode: AppMode.CareKit, delegate: self)
             case GaitTestType.MCTSIB:
-                GaitAlert.mctsibAlert(in: self, mode: AppMode.Clinical, delegate: self)
+                GaitAlert.mctsibAlert(in: self, mode: AppMode.CareKit, delegate: self)
             default:
                 print("error: could not find assesment")
         }
@@ -103,12 +101,11 @@ class InstructionViewController: UIViewController, GaitTestDelegate {
     
     func onGaitTestComplete(resultsDict: Dictionary<String, Any>, resultsMessage: String, gaitTestType: GaitTestType, motionTracker: MotionTracker) {
         self.navigationController!.pushViewController(
-            ClinicalCheckViewController(
+            CheckViewController(
                 message: resultsMessage,
                 resultsDict: resultsDict,
                 motionTracker: motionTracker,
-                gaitTestType: gaitTestType,
-                subjectID: subjectID
+                gaitTestType: gaitTestType
             ),
             animated: true
         )

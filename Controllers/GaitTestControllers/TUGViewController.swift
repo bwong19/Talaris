@@ -77,11 +77,11 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
     }
     
     override func startTest() {
-        if (mode == AppMode.CareKit) {
-            synthesizer.speak(getUtterance("Please sit down. Then, please secure your phone to your waist using the provided phone clip. Once the phone is secured, please sit still for at least 5 seconds. Please press “REPEAT” to repeat the instructions"))
-            
-            synthesizer.speak(getUtterance("On the words BEGIN WALKING, you will stand up, walk to the 3-meter mark, turn around, walk back towards the chair. and sit down. Walk at your regular pace."))
-        }
+//        if (mode == AppMode.CareKit) {
+//            synthesizer.speak(getUtterance("Please sit down. Then, please secure your phone to your waist using the provided phone clip. Once the phone is secured, please sit still for at least 5 seconds. Please press “REPEAT” to repeat the instructions"))
+//            
+//            synthesizer.speak(getUtterance("On the words BEGIN WALKING, you will stand up, walk to the 3-meter mark, turn around, walk back towards the chair. and sit down. Walk at your regular pace."))
+//        }
         
         synthesizer.speak(getUtterance("Ready?"))
     }

@@ -90,15 +90,15 @@ class ClinicalTrialTestViewController: UIViewController {
     }
     
     @objc private func tug() {
-        self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.TUG, subjectID: self.subjectID), animated: true)
+        GaitAlert.tugAlert(in: self, mode: AppMode.Clinical, delegate: self as! GaitTestDelegate)
     }
     
     @objc private func sixmwt() {
-        self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.SixMWT, subjectID: self.subjectID), animated: true)
+        GaitAlert.sixmwtAlert(in: self, mode: AppMode.Clinical, delegate: self as! GaitTestDelegate)
     }
     
     @objc private func mctsib() {
-        self.navigationController!.pushViewController(InstructionViewController(gaitTestType: GaitTestType.MCTSIB, subjectID: self.subjectID), animated: true)
+        GaitAlert.mctsibAlert(in: self, mode: AppMode.Clinical, delegate: self as! GaitTestDelegate)
     }
     
     @objc private func finish() {

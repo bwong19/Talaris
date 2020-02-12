@@ -82,13 +82,13 @@ class MCTSIBViewController: GaitTestViewController, AVSpeechSynthesizerDelegate 
     }
     
     override func startTest() {
-        if (mode == AppMode.CareKit) {
-            synthesizer.speak(getUtterance("The mCTSIB is a test used to measure balance. Before you begin, please make sure you are standing comfortably on a hard surface. You will be asked to stand still for 30 seconds on a hard surface first with your eyes open, then with your eyes closed. When you are ready, please press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button."))
-
-            synthesizer.speak(getUtterance("Please secure your phone to your abdomen using the provided phone clip. If you would like to hear the instructions again, please press REPEAT. Otherwise, once the phone is secured, please stand still for at least 5 seconds."))
-
-            synthesizer.speak(getUtterance(startScripts[testNumber.rawValue]))
-        }
+//        if (mode == AppMode.CareKit) {
+//            synthesizer.speak(getUtterance("The mCTSIB is a test used to measure balance. Before you begin, please make sure you are standing comfortably on a hard surface. You will be asked to stand still for 30 seconds on a hard surface first with your eyes open, then with your eyes closed. When you are ready, please press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button."))
+//
+//            synthesizer.speak(getUtterance("Please secure your phone to your abdomen using the provided phone clip. If you would like to hear the instructions again, please press REPEAT. Otherwise, once the phone is secured, please stand still for at least 5 seconds."))
+//
+//            synthesizer.speak(getUtterance(startScripts[testNumber.rawValue]))
+//        }
         
         synthesizer.speak(getUtterance("Ready?"))
     }

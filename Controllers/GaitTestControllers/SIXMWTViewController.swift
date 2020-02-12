@@ -12,7 +12,7 @@ import CoreLocation
 import FirebaseDatabase
 
 class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate {
-    private let TEST_DURATION = 120.0 // in seconds
+    private let TEST_DURATION = 2.0 // in seconds
     private let SAMPLING_RATE = 10.0
     private let ROTATION_DETECTION_THRESHOLD = 150.0
     
@@ -45,13 +45,13 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     }
     
     override func startTest() {
-        if (mode == AppMode.CareKit) {
-            synthesizer.speak(getUtterance("The Six Minute Walk Test is a gait assessment meant to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, if needed. After you have set up the two cones, please enter the distance between them and press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button."))
-            
-            synthesizer.speak(getUtterance("Remember that the objective is to walk AS FAR AS POSSIBLE for 6 minutes, but do not run or jog. You will soon be instructed to start. Please position yourself at your starting cone, and secure your phone at your waist using the provided phone clip. If you want to repeat the instructions, please press the REPEAT button. Otherwise, once you have secured the phone to your waist, please stand still for at least 5 seconds.")) // TODO: "and clicked the NEXT button?
-        
-            synthesizer.speak(getUtterance("On the words BEGIN WALKING, start walking."))
-        }
+//        if (mode == AppMode.CareKit) {
+//            synthesizer.speak(getUtterance("The Six Minute Walk Test is a gait assessment meant to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, if needed. After you have set up the two cones, please enter the distance between them and press the NEXT button on the screen. If you want to repeat the instructions, please press the REPEAT button."))
+//            
+//            synthesizer.speak(getUtterance("Remember that the objective is to walk AS FAR AS POSSIBLE for 6 minutes, but do not run or jog. You will soon be instructed to start. Please position yourself at your starting cone, and secure your phone at your waist using the provided phone clip. If you want to repeat the instructions, please press the REPEAT button. Otherwise, once you have secured the phone to your waist, please stand still for at least 5 seconds.")) // TODO: "and clicked the NEXT button?
+//        
+//            synthesizer.speak(getUtterance("On the words BEGIN WALKING, start walking."))
+//        }
         synthesizer.speak(getUtterance("Ready?"))
 }
 
