@@ -97,10 +97,13 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
              PhoneVoice.speak(speech: "Stop walking. Good Work!")
         }
         
-        let timeBeforeLastTurn = Double(lastTurnIndex) / SAMPLING_RATE
-        let timeAfterLastTurn = Double((azimuths.count - lastTurnIndex)) / SAMPLING_RATE
-        var distance = Double(turnCount) * turnaroundDistace
-        distance += (distance / timeBeforeLastTurn) * timeAfterLastTurn
+        var distance: Double = 0.0
+        if turnCount != 0 {
+            let timeBeforeLastTurn = Double(lastTurnIndex) / SAMPLING_RATE
+            let timeAfterLastTurn = Double((azimuths.count - lastTurnIndex)) / SAMPLING_RATE
+            distance = Double(turnCount) * turnaroundDistace
+            distance += (distance / timeBeforeLastTurn) * timeAfterLastTurn
+        }
         
         let resultsDict: [String: Any] = ["distance" : distance, "turn_count" : turnCount]
         
