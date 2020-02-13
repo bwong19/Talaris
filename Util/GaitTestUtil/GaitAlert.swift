@@ -21,23 +21,38 @@ class GaitAlert {
         
         alert.addTextField { (textField) in
             textField.placeholder = "Distance"
-            textField.text = "30"
+            textField.text = "20"
         }
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: "180 Degree Turn", style: .default, handler: { [weak alert] (_) in
             let textField = alert!.textFields![0]
-            let distance : Double = Double(textField.text!) ?? 30
+            let distance : Double = Double(textField.text!) ?? 20
             vc.navigationController!.pushViewController(
                 SIXMWTViewController(
                     turnaroundDistance: distance,
+                    isFullTurn: true,
                     appMode: mode,
                     delegate: delegate
                 ),
                 animated: true
             )
         }))
+        
+        alert.addAction(UIAlertAction(title: "90 Degree Turn", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0]
+            let distance : Double = Double(textField.text!) ?? 20
+            vc.navigationController!.pushViewController(
+                SIXMWTViewController(
+                    turnaroundDistance: distance,
+                    isFullTurn: false,
+                    appMode: mode,
+                    delegate: delegate
+                ),
+                animated: true
+            )
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         vc.present(alert, animated: true, completion: nil)
     }
