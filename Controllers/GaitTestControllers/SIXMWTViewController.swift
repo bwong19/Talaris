@@ -34,7 +34,8 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         self.turnaroundDistace = turnaroundDistance
         ROTATION_DETECTION_THRESHOLD = isFullTurn ? 150.0 : 75.0
         
-        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: false)
+        super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: true)
+        self.testInProgressView.dataLabel?.text = "Turn Count: 0"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -85,7 +86,8 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
                 if (delta >= self.ROTATION_DETECTION_THRESHOLD) {
                     self.lastTurnIndex = curIndex
                     self.turnCount += 1
-                    PhoneVoice.speak(speech: "Turn \(self.turnCount)")
+                    // PhoneVoice.speak(speech: "Turn \(self.turnCount)")
+                    self.testInProgressView.dataLabel?.text = "Turn Count: \(self.turnCount)"
                 }
             }
         }
