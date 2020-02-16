@@ -64,7 +64,7 @@ class ClinicalCheckViewController: UIViewController {
         // yes button
         let yesButton = CustomButton()
         yesButton.translatesAutoresizingMaskIntoConstraints = false
-        yesButton.addTarget(self, action: #selector(handleSuccesfulTest), for: .touchUpInside)
+        yesButton.addTarget(self, action: #selector(handleSuccessfulTest), for: .touchUpInside)
         yesButton.setTitle("Yes", for: .normal)
         yesButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         yesButton.backgroundColor = UIColor(red:1.00, green:0.53, blue:0.26, alpha:1.0)
@@ -74,7 +74,7 @@ class ClinicalCheckViewController: UIViewController {
         // no button
         let noButton = CustomButton()
         noButton.translatesAutoresizingMaskIntoConstraints = false
-        noButton.addTarget(self, action: #selector(goToHomeScreen), for: .touchUpInside)
+        noButton.addTarget(self, action: #selector(handleUnsuccessfulTest), for: .touchUpInside)
         noButton.setTitle("No", for: .normal)
         noButton.titleLabel?.font = UIFont(name: "Ubuntu-Regular", size: 32)
         noButton.backgroundColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
@@ -97,7 +97,7 @@ class ClinicalCheckViewController: UIViewController {
         
     }
      
-    @objc private func handleSuccesfulTest() {
+    @objc private func handleSuccessfulTest() {
         let alert = UIAlertController(title: "Test Completion", message: "Please provide the test name", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
@@ -116,6 +116,20 @@ class ClinicalCheckViewController: UIViewController {
                 testResults: self.resultsDict
             )
             
+            DispatchQueue.main.async {
+                self.goToHomeScreen()
+            }
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func handleUnsuccessfulTest() {
+        let alert = UIAlertController(title: "Unsaved Data", message: "Are you sure you want to exit without saving data?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (alert) -> Void in
             DispatchQueue.main.async {
                 self.goToHomeScreen()
             }

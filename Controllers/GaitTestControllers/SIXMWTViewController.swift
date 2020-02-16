@@ -14,7 +14,7 @@ import FirebaseDatabase
 class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, AVSpeechSynthesizerDelegate {
     private let TEST_DURATION = 120.0 // in seconds
     private let SAMPLING_RATE = 50.0
-    private let ROTATION_DETECTION_THRESHOLD = 150.0
+    private let ROTATION_DETECTION_THRESHOLD: Double
     
     private let synthesizer = AVSpeechSynthesizer()
     private let didFinish = false
@@ -30,8 +30,10 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     private var lastTurnIndex: Int = 0
     private var turnCount: Int = 0
     
-    init(turnaroundDistance: Double = 30, appMode: AppMode, delegate: GaitTestDelegate? = nil) {
+    init(turnaroundDistance: Double = 30, isFullTurn: Bool = true, appMode: AppMode, delegate: GaitTestDelegate? = nil) {
         self.turnaroundDistace = turnaroundDistance
+        ROTATION_DETECTION_THRESHOLD = isFullTurn ? 150.0 : 75.0
+        
         super.init(samplingRate: SAMPLING_RATE, appMode: appMode, delegate: delegate, includeDataLabel: false)
     }
     

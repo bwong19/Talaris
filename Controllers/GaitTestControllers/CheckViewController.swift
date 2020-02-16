@@ -73,7 +73,7 @@ class CheckViewController: UIViewController {
         // yes button
         let yesButton = CustomButton()
         yesButton.translatesAutoresizingMaskIntoConstraints = false
-        yesButton.addTarget(self, action: #selector(handleSuccesfulTest), for: .touchUpInside)
+        yesButton.addTarget(self, action: #selector(handleSuccessfulTest), for: .touchUpInside)
         yesButton.setTitle("Yes", for: .normal)
         yesButton.titleLabel?.font = UIFont(name: "Ubuntu-Bold", size: 32)
         yesButton.backgroundColor = UIColor(red:1.00, green:0.53, blue:0.26, alpha:1.0)
@@ -106,7 +106,7 @@ class CheckViewController: UIViewController {
         
     }
     
-    @objc private func handleSuccesfulTest() {
+    @objc private func handleSuccessfulTest() {
         if let motionTracker = motionTracker {
             let alert = UIAlertController(title: "Test Completion", message: "Please provide the test name", preferredStyle: .alert)
             
