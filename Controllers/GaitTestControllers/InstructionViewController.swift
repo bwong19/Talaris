@@ -12,9 +12,9 @@ class InstructionViewController: UIViewController, GaitTestDelegate {
     let gaitTestType: GaitTestType
     
     private let messages = [
-        GaitTestType.TUG: "The Timed-Up and Go test, also known as the TUG test, is a gait assessment used to measure speed. Before you begin the TUG test, please make sure you have placed a chair without wheels in an uncluttered area, and place a cone or marker 3 meters away from it. When you have understood and performed these instructions, please press the 'NEXT' button on the screen. If you want to repeat these instructions, please press the 'REPEAT' button.",
-        GaitTestType.SixMWT: "The Two Minute Walk Test measures endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, such as a cane or walker, if needed. After you have set up the two cones, please enter the distance between them and press the “NEXT” button on the screen. If you want to replay these instructions, please press the “REPEAT” button.",
-        GaitTestType.MCTSIB: "The CTSIB-M is a test used to measure balance. This test will be performed on the Biodex machine, but before you begin, please make sure that the hard surface is placed on the  platform of the machine. When you have understood these instructions, please press the ‘NEXT’ button on the screen. If you want to repeat these instructions, please press the “REPEAT” button."
+        GaitTestType.TUG: "The Timed-Up and Go test, also known as the TUG test, is a gait assessment used to measure speed. Before you begin the TUG test, please make sure you have placed a chair without wheels in an uncluttered area. Place a cone or marker 3 meters in front of the chair. Please wear your regular footwear and use a walking aid if needed. \nStarting in a seated position, stand up when you hear a tone. You then walk 3 meters, walk around the cone or marker, and walk back to the chair. The test ends automatically when you are seated in the chair again.",
+        GaitTestType.SixMWT: "The 2-Minute Walk Test, also known as the 2MWT, is a gait assessment used to measure endurance. Before you begin the test, please make sure you have set up two cones between 12 meters and 30 meters apart. Please wear your regular footwear and use a walking aid, such as a cane or walker, if needed. After you have set up the two cones, please enter the distance between them. \nThe goal of this test is to walk as far as possible for 2 minutes. You will walk back and forth between the two cones. Try to walk in a tight circle around the cones when you make turns. Two minutes is a long time to walk, so you may get out of breath or tired. You can slow down or stop to rest as necessary, but please resume walking as soon as you can. The test ends automatically after 2 minutes.",
+        GaitTestType.MCTSIB: "The Modified Clinical Test of Sensory Interaction in Balance, also known as mCTSIB, is a test used to measure balance. This test will be performed on the Biodex machine. There are 4 conditions, or sub-tests, for this test: \n (1) Eyes open on a hard surface \n (2) Eyes closed on a hard surface \n (3) Eyes open on a soft surface \n (4) Eyes closed on a soft surface \nThe goal of this test is to maintain your balance for 30 seconds for each condition. Stand as still as possible for 30 seconds with your arms by your sides. Each sub-test ends automatically after 30 seconds."
     ]
     
     init(gaitTestType: GaitTestType) {
@@ -39,7 +39,7 @@ class InstructionViewController: UIViewController, GaitTestDelegate {
         instructionText.text = messages[gaitTestType]
         instructionText.textColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
         instructionText.font = UIFont(name: "Ubuntu-Regular", size: 16)
-        instructionText.textAlignment = .justified
+        instructionText.textAlignment = .left
         instructionText.numberOfLines = 0
         view.addSubview(instructionText)
         instructionText.topAnchor.constraint(equalTo: view.topAnchor, constant: 72).isActive = true
