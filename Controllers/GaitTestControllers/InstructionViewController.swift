@@ -40,7 +40,7 @@ class InstructionViewController: UIViewController, GaitTestDelegate {
         
         instructionText.text = messages[gaitTestType]
         instructionText.textColor = UIColor(red: 2/255, green: 87/255, blue: 122/255, alpha: 1)
-        instructionText.font = UIFont(name: "Ubuntu-Regular", size: 18)
+        instructionText.font = UIFont(name: "Ubuntu-Regular", size: 24)
         instructionText.textAlignment = .left
         
         let topPoint = CGPoint(x: 0, y: 72) // scrolls to top automatically
