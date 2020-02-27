@@ -94,11 +94,16 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
     }
 
     override func stopTest() {
-        super.stopTest()
-        AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
+        // clear azimuth processing update callback
+        motionTracker.handleAzimuthUpdate { azimuth in
+        }
+        // do timer invalidate instead of stop test so we can record 2 seconds of raw data at "tail" of test
+        timer.invalidate()
+        
+        // AudioServicesPlaySystemSound(SystemSoundID(self.endSoundCode))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-             PhoneVoice.speak(speech: "Stop walking. Good Work!")
+             // PhoneVoice.speak(speech: "Stop walking. Good Work!")
         }
         
         var distance: Double = 0.0
@@ -111,12 +116,16 @@ class SIXMWTViewController: GaitTestViewController, CLLocationManagerDelegate, A
         
         let resultsDict: [String: Any] = ["distance" : distance, "turn_count" : turnCount]
         
-        delegate?.onGaitTestComplete(
-            resultsDict: resultsDict,
-            resultsMessage: String(format: "Your 2MWT distance is %.1lf meters. Turn Count is %d.", distance, turnCount),
-            gaitTestType: GaitTestType.SixMWT,
-            motionTracker: motionTracker
-        )
+        // 2 seconds raw data recording at "tail" of test
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+             self.motionTracker.stopRecording()
+             self.delegate?.onGaitTestComplete(
+                 resultsDict: resultsDict,
+                 resultsMessage: String(format: "Your 2MWT distance is %.1lf meters. Turn Count is %d.", distance, self.turnCount),
+                 gaitTestType: GaitTestType.SixMWT,
+                 motionTracker: self.motionTracker
+             )
+        }
     }
 
     @objc override func updateTimer() {

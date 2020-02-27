@@ -122,7 +122,7 @@ class TUGViewController: GaitTestViewController, AVSpeechSynthesizerDelegate {
         numUtterances += 1
         if (numUtterances == totalUtterances && !self.testStarted) {
             synthesizer.delegate = nil
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 7.5) {
                 super.startTest()
                 AudioServicesPlaySystemSound(SystemSoundID(self.soundCode))
                 self.testStarted = true
